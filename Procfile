@@ -1,1 +1,1 @@
-web: gunicorn kenpachi-estore.wsgi
+web: gunicorn kenpachi.wsgi
