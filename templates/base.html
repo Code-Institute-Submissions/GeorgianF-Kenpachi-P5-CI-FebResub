@@ -26,6 +26,7 @@
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
     {% endblock %}
 
     {% block extra_js %}
@@ -36,9 +37,48 @@
   </head>
 
   <body>
+    <!-- Navigation Bar -->
+    <div class="container nav-container">
+      <div class="navbar-button" onclick="toggle()">
+        menu
+      </div>
+    </div>
 
-    {% block page_header %}
-    {% endblock %}
+    <div class="menu" onclick="togglec()">
+      <div class="navbar-button">
+        close
+      </div>
+      <!-- NAV ITEMS -->
+      <ul class="ul">
+        <li class="nav-item-1 nav-list"><a href="#">Home</a></li>
+        <li class="nav-item-2 nav-list"><a href="#">Our Story</a></li>
+        <li class="nav-item-3 nav-list"><a href="#">The Blacksmith Store</a></li>
+        <li class="nav-item-4 nav-list"><a href="#">Contact Us</a></li>
+        <li class="nav-item-5 nav-list"><a href="#">Login or Sign Up</a></li>
+      <!-- END NAV ITEMS -->
+
+      <!-- NAV IMAGES -->
+        <div class="nav-item-bg-1 background"></div>
+        <div class="nav-item-bg-2 background"></div>
+        <div class="nav-item-bg-3 background"></div>
+        <div class="nav-item-bg-4 background"></div>
+        <div class="nav-item-bg-5 background"></div>
+      <!-- END NAV IMAGES -->
+      </ul>
+
+      <!-- SOCIAL Links -->
+      <div class="social">
+        <ul>
+          <li class="social-li"><a href="#">facebook</a></li>
+          <li class="social-li"><a href="#">instagram</a></li>
+          <li class="social-li"><a href="#">twitter</a></li>
+          <li class="social-li"><a href="#">pinterest</a></li>
+          <li class="social-li"><a href="#">youtube</a></li>
+        </ul>
+      </div>
+      <!-- END SOCIAL Links -->
+    </div>
+    <!-- End Navigation Bar -->
 
     {% block content %}
     {% endblock %}
@@ -46,5 +86,45 @@
     {% block postloadjs %}
     {% endblock %}
 
-  </body>
+    <script>
+      var tl = gsap.timeline({
+        paused: "true"
+      });
+
+      tl.to(".menu", {
+        duration: 0.50,
+        x: "0%",
+        ease: Expo.easeInOut
+      });
+
+      tl.fromTo(".nav-list", {
+        y: "-100%",
+        opacity: 0
+      }, {
+        duration: .3,
+        opacity: 1,
+        y: "0%",
+        stagger: 0.25
+      });
+      tl.fromTo(".social-li",{
+            y:"-50%",
+            opacity: 0
+        },{
+            duration:0.6,
+            opacity: 1,
+            stagger: 0.25,
+            ease: Expo.easeOut
+        },
+        "-=0.5");
+
+      function toggle() {
+        tl.play();
+      }
+
+      function togglec() {
+        tl.reverse();
+      }
+    </script>
+
+  </body>  
 </html>
