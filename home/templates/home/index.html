@@ -27,16 +27,16 @@
 <!-- <script src="{% static 'js/video.js' %}"></script> -->
 <script>
     let video = document.getElementById("background-video");
-    let play = document.getElementById("play-icon");
+    let icon = document.getElementById("play-icon");
 
-    play.addEventListener('click', () => {
+    icon.addEventListener('click', () => {
         video.style.display = 'block';
         if (video.paused) {
             video.play();
-            // play.scr = "/media/images/pause.png";
+            icon.src = "/media/images/pause.png";
         } else {
             video.pause();
-            // play.scr = "/media/images/play.png";
+            icon.src = "/media/images/play.png";
         }
     })
 
