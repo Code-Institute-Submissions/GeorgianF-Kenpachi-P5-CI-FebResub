@@ -2,6 +2,44 @@
 {% load static %}
 
 {% block content %}
+    <div class="container-fluid g-0">
+        <div class="hero">
+            <video autoplay muted id="background-video">
+                <source src="/media/video/background-movie.mp4" type="video/mp4">
+            </video>
 
+            <img class="image-hero" src="/media/images/1.png" alt="blacksmith-at-work">
+            <div class="side-menu">
+                <h1 class="text-decoration-underline">Kenpachi</h1>
+                <h2>Artisan Blacksmith Store</h2>
+                <p class="text-center">
+                    Looking for high-performance samurai swords? <br> 
+                    You are in the right place.
+                </p>
+                <a href="#" class="btn btn-lg">Go To Store</a>
+            </div>
+        </div>
+        <img id="play-icon" src="/media/images/play.png" alt="play-icon">
+    </div>
+{% endblock %}
+
+{% block extrajs %}
+<!-- <script src="{% static 'js/video.js' %}"></script> -->
+<script>
+    let video = document.getElementById("background-video");
+    let play = document.getElementById("play-icon");
+
+    play.addEventListener('click', () => {
+        video.style.display = 'block';
+        if (video.paused) {
+            video.play();
+            // play.scr = "/media/images/pause.png";
+        } else {
+            video.pause();
+            // play.scr = "/media/images/play.png";
+        }
+    })
+
+</script>
 {% endblock %}
 

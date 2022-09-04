@@ -7,7 +7,6 @@
 
 body {
     overflow: hidden;
-    background-color: blue;
 }
 
 /* Main Navigation */
@@ -31,6 +30,7 @@ body {
     font-weight: 400;
     letter-spacing: 3px;
     cursor: pointer;
+    z-index: 5;
 }
 
 .menu {
@@ -41,6 +41,7 @@ body {
     height: 100vh;
     background-color: black;
     transform: translateX(-100%);
+    z-index: 5;
 }
 
 .ul {
@@ -178,3 +179,101 @@ body {
 }
 
 /* End of Main Navigation */
+
+/* INDEX PAGE */
+
+.image-hero {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+.side-menu {
+    width: 35%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    font-family: 'Bangers', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 2px;
+}
+
+.side-menu h1,
+.side-menu h2,
+.side-menu p {
+    padding: 30px;
+}
+
+.side-menu a {
+    color: #fff;
+    position: relative;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.side-menu a::after,
+.side-menu a::before {
+    content: "";
+    border: 2px solid #fff;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    transition: transform 0.3s ease;
+
+}
+
+.side-menu a:hover {
+    color:darkgray;
+}
+
+.side-menu a:hover:after {
+    transform: translate(-5px, -5px);
+  
+}
+
+.side-menu a:hover:before {
+    transform: translate(5px, 5px);
+}
+
+#play-icon {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+#background-video {
+    position: absolute;
+    right: 0;
+    bottom:0;
+    z-index: 1;
+    display: none;
+}
+
+@media (min-aspect-ratio: 16/9) {
+    #background-video {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    #background-video {
+        width: auto;
+        height: 100%;
+    }
+}
