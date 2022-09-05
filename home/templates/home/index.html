@@ -24,22 +24,6 @@
 {% endblock %}
 
 {% block extrajs %}
-<!-- <script src="{% static 'js/video.js' %}"></script> -->
-<script>
-    let video = document.getElementById("background-video");
-    let icon = document.getElementById("play-icon");
-
-    icon.addEventListener('click', () => {
-        video.style.display = 'block';
-        if (video.paused) {
-            video.play();
-            icon.src = "/media/images/pause.png";
-        } else {
-            video.pause();
-            icon.src = "/media/images/play.png";
-        }
-    })
-
-</script>
+<script src="{% static 'js/video.js' %}"></script>
 {% endblock %}
 
