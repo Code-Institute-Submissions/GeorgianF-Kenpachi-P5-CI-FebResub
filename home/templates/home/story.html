@@ -2,11 +2,111 @@
 {% load static %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>our story</h1>
-            </div>
+<div class="container-fluid banner">
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-center align-items-center p-5">
+            <h1>our story</h1>
         </div>
     </div>
+    <div class="row">
+        <div class="content">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6 col-lg-4 col-xl-4 col-12">
+                    <img id='story-hero-image' src="/media/images/blacksmith-at-work.jpeg" alt="blacksmith-at-work">
+                </div>
+                <div
+                    class="col-md-6 col-lg-4 col-xl-4 col-12 d-flex align-items-center justify-content-center flex-column">
+                    <p>
+                        Formerly, the blacksmiths chosen for the creation of the Samurai Katana sword began their
+                        creation process by praying. In order to reach this position, they had to spend at least ten
+                        years as apprentices before they could finally become masters of Katana forging.
+
+                        A perfect Katana is believed to be the result of the blacksmiths spiritual work. Only a true
+                        metal alchemist would be able to transmute his own spirit into the steel of the sword, achieving
+                        an unprecedented sword.
+                    </p>
+                    <p>
+                        At Kenpachi, our blacksmiths work with great pride to provide the best katanas that we can
+                        possibly offer and it has become a trademark
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-xl-12 col-12 d-flex align-items-center justify-content-center m-5">
+                    <h1>Here are the steps we do to forge your Katana</h1>
+                </div>
+            </div>
+            <!-- STEP 1 -->
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-xl-12 col-12 d-flex align-items-center justify-content-center">
+                    <h2 class="d-flex p-2 steps-heading">Step 1 : We Forge it</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="offset-lg-3 col-lg-3 offset-xl-3 col-xl-2 offset-md-3 col-md-3 col-6">
+                    <video autoplay muted loop class="video-how-its-made">
+                        <source src="/media/video/swordsmith_3.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div
+                    class="col-md-3 col-lg-3 col-xl-2 offset-xl-1 col-6 d-flex align-items-center justify-content-center flex-column">
+                    <p>
+                        The Katana is forged by our craftsmen in the Japanese tradition. We use different steels and an
+                        assembly of several layers as well as bending in order to obtain a blade of the best possible
+                        quality.
+                    </p>
+                </div>
+            </div>
+            <!-- END STEP 1 -->
+
+            <!-- STEP 2 -->
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-xl-12 col-12 d-flex align-items-center justify-content-center">
+                    <h2 class="d-flex p-2 steps-heading m-4">Step 2 : Quenching Method</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="offset-lg-3 col-lg-3 offset-xl-3 col-xl-2 offset-md-3 col-md-3 col-6">
+                    <video autoplay muted loop class="video-how-its-made">
+                        <source src="/media/video/swordsmith_2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div
+                class="col-md-3 col-lg-3 col-xl-2 offset-xl-1 col-6 d-flex align-items-center justify-content-center flex-column">
+                    <p>
+                        The blade is immersed in water at a temperature of about 800°C, the temperature of which we keep
+                        secret. When it comes into contact with water, the blade cools down very quickly and becomes
+                        extremely hard. This is how the Hamon is made.
+                    </p>
+                </div>
+
+            </div>
+            <!-- END STEP 2 -->
+
+            <!-- STEP 3 -->
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-xl-12 col-12 d-flex align-items-center justify-content-center">
+                    <h2 class="d-flex p-2 m-4 steps-heading">Step 3 : Time to Polish the Blade</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="offset-lg-3 col-lg-3 offset-xl-3 col-xl-2 offset-md-3 col-md-3 col-6">
+                    <video autoplay muted loop class="video-how-its-made">
+                        <source src="/media/video/swordsmith_1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div
+                class="col-md-3 col-lg-3 col-xl-2 offset-xl-1 col-6 d-flex align-items-center justify-content-center flex-column">
+                    <p>
+                        We polish the Katana with a special stone in order to polish your sword in the best way for a
+                        unique result. The most technical part is the polishing of the Kissaki (tip of the blade) which
+                        takes a lot of time and brings out the Boshi.
+                        It is with this step that Hamon fully emerges.
+                    </p>
+                </div>
+            </div>
+            <!-- END STEP 3 -->
+        </div>
+    </div>
+</div>
 {% endblock %}
