@@ -293,11 +293,13 @@ body {
     text-transform: uppercase;
     font-family: 'Bangers', sans-serif;
     color: var(--text-color);
+    position: relative;
 }
 
 .content {
     background-color: var(--primary-color);
     font-family: 'Cuprum', sans-serif;
+    overflow-x: hidden;
 }
 
 #story-hero-image {
@@ -317,4 +319,36 @@ body {
     color: var(--primary-color)
 }
 
+.blacksmith-video {
+    margin: 0 auto;
+}
+
 /* END OUR STORY PAGE */
+
+/* FOOTER */
+
+footer {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+}
+
+footer a {
+    color: var(--text-backgroung-color);
+}
+
+footer a:hover {
+    color: var(--primary-color)
+}
+
+.hr {
+    background-color: var(--text-backgroung-color);
+}
+
+.footer-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
