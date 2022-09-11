@@ -1,10 +1,12 @@
+from django.forms import ModelForm
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit
 from crispy_bootstrap5.bootstrap5 import FloatingField
+from .models import ContactForm
 
 
-class ContactForm(forms.Form):
+class GetInTouch(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
@@ -27,3 +29,7 @@ class ContactForm(forms.Form):
                 'class': 'form-control',
                 }
             ))
+
+    class Meta:
+        model = ContactForm
+        fields = "__all__"

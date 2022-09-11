@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .forms import ContactForm
+from .forms import GetInTouch
+from django.http import HttpResponseRedirect
 
 
 def index(request):
@@ -13,6 +14,16 @@ def story(request):
 
 
 def contact(request):
-    """ A view to return the contact page """
-    context = {'form': ContactForm()}
+    """ 
+    A view to return the contact page 
+    """
+    if request.method == 'POST':
+        form = GetInTouch(request.POST)
+        if form.is_valid():
+            form.save()
+            form = GetInTouch()
+    else:
+        form = GetInTouch()
+
+    context = {'form': form}
     return render(request, 'home/contact.html', context)
