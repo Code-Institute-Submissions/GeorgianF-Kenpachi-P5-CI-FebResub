@@ -333,6 +333,7 @@ footer {
     padding: 0;
     margin: 0;
     width: 100vw;
+    font-family: 'Bangers', sans-serif;
 }
 
 footer a {
@@ -353,7 +354,48 @@ footer a:hover {
     justify-content: center;
 }
 
+/* END OF FOOTER */
 
+/* CONTACT PAGE */
+.contact-header {
+    font-family: 'Bangers', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.contact-content {
+    background-color: var(--primary-color);
+    height: 70vh;
+}
+
+.card {
+    font-family: 'Bangers', sans-serif;
+    background-color: var(--text-backgroung-color);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: #000407;
+}
+
+.card .card-header {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+textarea.form-control {
+    min-height: calc(10.5em + 0.75rem + 2px);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    letter-spacing: 2px;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+}
+
+/* END OF CONTACT PAGE */
 
 /* MEDIA QUERIES */
 

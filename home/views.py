@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .forms import ContactForm
 
 
 def index(request):
@@ -13,4 +14,5 @@ def story(request):
 
 def contact(request):
     """ A view to return the contact page """
-    return render(request, 'home/contact.html')
+    context = {'form': ContactForm()}
+    return render(request, 'home/contact.html', context)
