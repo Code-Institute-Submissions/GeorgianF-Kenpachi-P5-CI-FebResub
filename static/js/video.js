@@ -5,11 +5,11 @@ icon.addEventListener('click', () => {
     video.style.display = 'block';
     if (video.paused) {
         video.play();
-        icon.src = "/media/images/pause.png";
+        icon.src = "/media/pause.png";
         // video.style.zIndex = '1';
     } else {
         video.pause();
-        icon.src = "/media/images/play.png";
+        icon.src = "/media/play.png";
         // video.style.zIndex = '-1';
     }
 })
