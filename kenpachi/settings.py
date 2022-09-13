@@ -91,6 +91,8 @@ WSGI_APPLICATION = 'kenpachi.wsgi.application'
 
 SITE_ID = 1
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 

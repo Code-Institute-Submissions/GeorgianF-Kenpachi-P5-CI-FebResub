@@ -3,7 +3,6 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-
 <div class="container-fluid contact-header">
     <div class="row">
         <div class="col-md-12 d-flex justify-content-center align-items-center p-5">
@@ -12,6 +11,8 @@
     </div>
 </div>
 <div class="container-fluid contact-content">
+    <div>
+    </div>
     <div class="row">
         <div class="col-12 mt-5 d-flex align-items-center justify-content-center flex-column">
             <div class="card">
@@ -33,5 +34,9 @@
 
 {% include 'includes/footer.html'%}
 
+
+{% endblock %}
+
+{% block extrajs %}
 
 {% endblock %}

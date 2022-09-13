@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .forms import GetInTouch
-from django.http import HttpResponseRedirect
+# from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 
 def index(request):
@@ -14,14 +15,17 @@ def story(request):
 
 
 def contact(request):
-    """ 
-    A view to return the contact page 
+    """
+    A view to return the contact page
     """
     if request.method == 'POST':
         form = GetInTouch(request.POST)
         if form.is_valid():
             form.save()
             form = GetInTouch()
+            messages.success(
+                request,
+                'Message away!')
     else:
         form = GetInTouch()
 

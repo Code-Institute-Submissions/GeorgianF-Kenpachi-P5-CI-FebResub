@@ -14,7 +14,19 @@
 
 body {
     overflow-x: hidden;
+    position: relative  ;
 }
+
+/* TOASTS */
+.toast-container {
+    position: absolute;
+    top: 5%;
+    right: 2%;
+    z-index: 9999999;
+    font-family: 'Bangers', sans-serif;
+}
+
+/* END OF TOASTs */
 
 /* Main Navigation */
 .nav-container {
@@ -393,7 +405,7 @@ textarea.form-control {
 }
 
 .btn-primary:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--secondary-color)!important;
 }
 
 /* END OF CONTACT PAGE */
