@@ -21,16 +21,17 @@
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Let us know what's on your mind</h5>
-                    <form class="card-text" action="/contact/" method="post">
+                    <form class="card-text" action="/contact/" method="POST">
                         {% csrf_token %}
                         {% crispy form %}
                     </form>
+                 
                 </div>
             </div>
         </div>
     </div>
-
 </div>
+
 
 {% include 'includes/footer.html'%}
 
@@ -38,5 +39,10 @@
 {% endblock %}
 
 {% block extrajs %}
+<!-- <script>
+$( document ).ready(function() {
+    $('input[type="submit"]').attr("data-bs-toggle", "modal").attr("data-bs-target", "#staticBackdrop");
+});
+</script> -->
 
 {% endblock %}

@@ -16,7 +16,9 @@ class GetInTouch(ModelForm):
             "contact_details")
             )
         self.helper.form_method = 'POST'
-        self.helper.add_input(Submit('submit', 'Submit'))
+        self.helper.add_input(
+            Submit('submit', 'Submit'),
+            )
 
     contact_name = forms.CharField(
         label="Your full name here...",
