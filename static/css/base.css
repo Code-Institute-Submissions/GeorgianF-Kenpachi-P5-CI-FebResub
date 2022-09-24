@@ -41,6 +41,7 @@ body {
     position: absolute;
     top: 20px;
     left: 60px;
+    width: fit-content;
     text-decoration: none;
     color: #fff;
     right: 100px;
@@ -378,6 +379,7 @@ footer a:hover {
 .contact-content {
     background-color: var(--primary-color);
     height: 70vh;
+    letter-spacing: 2px;
 }
 
 .card {
@@ -409,6 +411,35 @@ textarea.form-control {
 }
 
 /* END OF CONTACT PAGE */
+
+
+/* STORE PAGE */
+
+.store-nav-container {
+    font-family: "Bangers", sans-serif;
+    letter-spacing: 3px;
+    height: 260px;
+}
+
+#cart-icon {
+    height: 35px;
+    width: 35px;
+}
+
+#cart-total{
+	display: block;
+	text-align: center;
+    padding-top: 2px;
+	color:#fff;
+	background-color: red;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	font-size: 14px;
+}
+
+
+/* END OF STORE PAGE */
 
 /* MEDIA QUERIES */
 
