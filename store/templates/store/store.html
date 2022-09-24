@@ -6,57 +6,28 @@
     {% include 'includes/store-nav.html' %}
     <div class="container pt-5 products-container">
         <div class="row">
-            <div class="col-lg-4">
-                <div class="box-element product">
-                    <img class="thumbnail" src="{{MEDIA_URL}}placeholder.png">
+            {% for product in products %}
+                <div class="col-lg-4">
                     <div class="box-element product">
-                        <h6><strong>Product</strong></h6>
-                        <hr>
+                        <img class="thumbnail" src="{{MEDIA_URL}}placeholder.png">
+                        <div class="box-element product">
+                            <h6><strong>{{ Product.name }}</strong></h6>
+                            <hr>
 
-                        <button class="btn btn-primary add-btn">Add to Cart</button>
-                        <a class="btn btn-secondary" href="#">View</a>
-                        <span class="float-end">
-                            <h4><strong>$20</strong></h4>
-                        </span>
+                            <button class="btn btn-primary add-btn">Add to Cart</button>
+                            <a class="btn btn-secondary" href="#">View</a>
+                            <span class="float-end">
+                                <h4><strong>${{ product.price | floatformat:2 }}</strong></h4>
+                            </span>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="box-element product">
-                    <img class="thumbnail" src="{{MEDIA_URL}}placeholder.png">
-                    <div class="box-element product">
-                        <h6><strong>Product</strong></h6>
-                        <hr>
-
-                        <button class="btn btn-primary add-btn">Add to Cart</button>
-                        <a class="btn btn-secondary" href="#">View</a>
-                        <span class="float-end">
-                            <h4><strong>$20</strong></h4>
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="box-element product">
-                    <img class="thumbnail" src="{{MEDIA_URL}}placeholder.png">
-                    <div class="box-element product">
-                        <h6><strong>Product</strong></h6>
-                        <hr>
-
-                        <button class="btn btn-primary add-btn">Add to Cart</button>
-                        <a class="btn btn-secondary" href="#">View</a>
-                        <span class="float-end">
-                            <h4><strong>$20</strong></h4>
-                        </span>
-                    </div>
-                </div>
-            </div>
-
+            {% endfor %}
+            <br>
         </div>
     </div>
 
+    
     {% include 'includes/footer.html'%}
-
 {% endblock %}
+
