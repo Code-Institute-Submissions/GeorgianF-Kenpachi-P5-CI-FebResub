@@ -14,8 +14,8 @@ class CustomerAdmin(admin.ModelAdmin):
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
-        'friendly_name',
         'name',
+        'description',
     )
 
 
@@ -24,6 +24,7 @@ class ProductAdmin(admin.ModelAdmin):
         'category',
         'name',
         'price',
+        'blade',
         'description',
     )
 

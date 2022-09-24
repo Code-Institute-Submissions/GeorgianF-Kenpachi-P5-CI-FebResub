@@ -22,16 +22,23 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
     name = models.CharField(max_length=254)
-    friendly_name = models.CharField(max_length=254, null=True, blank=True)
+    description = models.TextField(max_length=2000, null=True, blank=True)
 
     def __str__(self):
         return str(self.name)
 
-    def get_friendly_name(self):
-        return self.friendly_name
-
 
 class Product(models.Model):
+    STEEL = (
+        ('Maru Steel', (
+            ('T10 steel', 'T10 steel'),
+            ('1095 steel', '1095 steel'),
+            ('Manganese steel', 'Manganese steel'),
+        )),
+        ('Damascus Steel', 'Damascus Steel'),
+        ('Kobuse Forge Steel', 'Kobuse Forge Steel'),
+        ('San-Mai Forge Steel', 'San-Mai Forge Steel'),
+    )
     category = models.ForeignKey(
         'Category',
         null=True,
@@ -40,7 +47,17 @@ class Product(models.Model):
         )
     name = models.CharField(max_length=200)
     price = models.FloatField()
-    description = models.TextField()
+    blade = models.CharField(choices=STEEL, max_length=200, null=True)
+    guard = models.CharField(max_length=200, null=True)
+    scabbard = models.CharField(max_length=200, null=True)
+    handle = models.CharField(max_length=200, null=True)
+    length_with_sleeve = models.FloatField(null=True)
+    length_of_the_blade = models.FloatField(null=True)
+    length_of_the_handle = models.FloatField(null=True)
+    width_of_the_blade = models.FloatField(null=True)
+    blade_thickness = models.FloatField(null=True)
+    weight = models.FloatField(null=True)
+    description = models.TextField(blank=True)
 
     def __str__(self):
         return str(self.name)
