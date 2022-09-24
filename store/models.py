@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django_countries.fields import CountryField
 
 
 class Customer(models.Model):
@@ -58,6 +59,7 @@ class Product(models.Model):
     blade_thickness = models.FloatField(null=True)
     weight = models.FloatField(null=True)
     description = models.TextField(blank=True)
+    stock = models.IntegerField(blank=False, null=True)
 
     def __str__(self):
         return str(self.name)
@@ -86,6 +88,9 @@ class OrderItem(models.Model):
 
 
 class ShippingAddress(models.Model):
+    class Meta:
+        verbose_name_plural = 'Shipping Address'
+
     customer = models.ForeignKey(
         Customer,
         on_delete=models.SET_NULL,
@@ -96,10 +101,11 @@ class ShippingAddress(models.Model):
         on_delete=models.SET_NULL,
         null=True
         )
-    address = models.CharField(max_length=200, null=False)
-    city = models.CharField(max_length=200, null=False)
+    address = models.CharField(max_length=200, null=False, blank=False)
+    city = models.CharField(max_length=200, null=False, blank=False)
     state = models.CharField(max_length=200, blank=True, null=False)
-    zipcode = models.CharField(max_length=200, null=False)
+    zipcode = models.CharField(max_length=200, null=False, blank=False)
+    country = CountryField(null=True, blank=False)
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

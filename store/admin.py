@@ -8,6 +8,7 @@ class CustomerAdmin(admin.ModelAdmin):
         'name',
         'email',
     )
+    search_fields = ['name', 'email']
 
     ordering = ('user',)
 
@@ -24,9 +25,12 @@ class ProductAdmin(admin.ModelAdmin):
         'category',
         'name',
         'price',
+        'stock',
         'blade',
         'description',
     )
+    list_filter = ('category', 'blade', 'stock')
+    search_fields = ['name', 'blade', 'description']
 
 
 class OrderAdmin(admin.ModelAdmin):
@@ -36,6 +40,8 @@ class OrderAdmin(admin.ModelAdmin):
         'complete',
         'transaction_id',
     )
+    list_filter = ('customer', 'date_ordered', )
+    search_fields = ['customer', 'date_ordered', 'complete', 'transaction_id']
 
 
 class OrderItemAdmin(admin.ModelAdmin):
@@ -45,6 +51,8 @@ class OrderItemAdmin(admin.ModelAdmin):
         'quantity',
         'date_added',
     )
+    list_filter = ('product', 'order', 'date_added')
+    search_fields = ['product', 'order', 'quantity', 'date_added']
 
 
 class ShippingAddressAdmin(admin.ModelAdmin):
@@ -54,9 +62,15 @@ class ShippingAddressAdmin(admin.ModelAdmin):
         'address',
         'city',
         'state',
+        'country',
         'zipcode',
         'date_added',
     )
+    list_filter = ('customer', 'order', 'city', 'date_added', 'country')
+    search_fields = [
+        'customer', 'order', 'address', 'country',
+        'city', 'state', 'zipcode', 'date_added'
+        ]
 
 
 admin.site.register(Customer, CustomerAdmin)
