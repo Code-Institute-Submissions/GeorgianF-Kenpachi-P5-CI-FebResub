@@ -4,5 +4,57 @@
 
 {% block content %}
     {% include 'includes/store-nav.html' %}
+    <div class="container products-container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="box-element product">
+                    <img class="thumbnail" src="{{MEDIA_URL}}placeholder.png">
+                    <div class="box-element product">
+                        <h6><strong>Product</strong></h6>
+                        <hr>
+
+                        <button class="btn btn-primary add-btn">Add to Cart</button>
+                        <a class="btn btn-secondary" href="#">View</a>
+                        <span class="float-end">
+                            <h4><strong>$20</strong></h4>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="box-element product">
+                    <img class="thumbnail" src="{{MEDIA_URL}}placeholder.png">
+                    <div class="box-element product">
+                        <h6><strong>Product</strong></h6>
+                        <hr>
+
+                        <button class="btn btn-primary add-btn">Add to Cart</button>
+                        <a class="btn btn-secondary" href="#">View</a>
+                        <span class="float-end">
+                            <h4><strong>$20</strong></h4>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="box-element product">
+                    <img class="thumbnail" src="{{MEDIA_URL}}placeholder.png">
+                    <div class="box-element product">
+                        <h6><strong>Product</strong></h6>
+                        <hr>
+
+                        <button class="btn btn-primary add-btn">Add to Cart</button>
+                        <a class="btn btn-secondary" href="#">View</a>
+                        <span class="float-end">
+                            <h4><strong>$20</strong></h4>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 {% endblock %}
