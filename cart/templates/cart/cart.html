@@ -1,3 +1,60 @@
-<h1>
-    CART PAGE
-</h1>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {% include 'includes/store-nav.html' %}
+
+<div class="container-fluid pt-5 pb-5 background-container">
+    <div class="container cart-container">
+        <div class="row">
+            <div class="col-lg-10 m-auto">
+                <div class="box-element">
+                    <div class="box-element">
+                        <a href="{% url 'store' %}" class="btn btn-primary">Go To Store</a>
+                        <br>
+                        <br>
+                        <table class="table">
+                            <tr>
+                                <th><h5 class="pt-2">Items: <strong>3</strong></h5></th>
+                                <th><h5 class="pt-2">Total: <strong> $42</strong></h5></th>
+                                <th>
+                                   <a class="float-end btn btn-primary" href="{% url 'checkout' %}" >Checkout</a>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <br>
+
+                <div class="box-element">
+                    <div class="row cart-row">
+                        <div class="col-lg-2 col-md-2"></div>
+                        <div class="col-lg-4 col-md-2"><strong>Item</strong></div>
+                        <div class="col-lg-2 col-md-2 text-center"><strong>Price</strong></div>
+                        <div class="col-lg-2 col-md-2 text-center"><strong>Quantity</strong></div>
+                        <div class="col-lg-2 col-md-2 text-center"><strong>Total</strong></div>
+                    </div>
+                    
+                    <div class="row cart-row">
+                        <div class="col-lg-2 col-md-2"><img class="row-image" src="{{MEDIA_URL}}placeholder.png"></div>
+                        <div class="col-lg-4 col-md-2"><p class="pt-3">Product 1</p></div>
+                        <div class="col-lg-2 col-md-2 text-center"><p class="pt-3">$20</p></div>
+                        <div class="col-lg-2 col-md-2 text-center">
+                            <p class="quantity">2</p>
+                            <div class="quantity pt-2">
+                                <img class="chg-quantity" src="{{MEDIA_URL}}arrow-up.png">
+                        
+                                <img class="chg-quantity" src="{{MEDIA_URL}}arrow-down.png">
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 text-center"><p class="pt-3">$32</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'includes/footer.html'%}
+
+{% endblock content%}

@@ -418,7 +418,7 @@ textarea.form-control {
 .store-nav-container {
     font-family: "Bangers", sans-serif;
     letter-spacing: 3px;
-    height: 100px;
+    height: 70px;
     padding-top: 100px;
 }
 
@@ -442,6 +442,7 @@ textarea.form-control {
 .products-container {
     font-family: "Bangers", sans-serif;
     letter-spacing: 3px;
+    height: 80vh;
 }
 
 .box-element{
@@ -469,6 +470,81 @@ textarea.form-control {
 }
 
 /* END OF STORE PAGE */
+
+
+/* CART PAGE */
+
+.cart-container {
+    font-family: 'Bangers', sans-serif;
+    letter-spacing: 3px;
+    z-index: 1;
+}
+
+.background-container {
+    background-color: var(--primary-color);
+    z-index: -1;
+}
+
+.cart-row{
+	display: flex;
+    align-items: flex-stretch;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.row-image{
+	width: 100px;
+}
+
+.quantity{
+	display: inline-block;
+    font-size: 18px;
+	padding-right:10px;
+}
+
+.chg-quantity{
+	width: 12px;
+	cursor: pointer;
+	display: block;
+	margin-top: 5px;
+	transition:.1s;
+}
+
+.chg-quantity:hover{
+	opacity: .6;
+}
+
+
+.hidden{
+	display: none!important;
+}
+
+/* END OF CART PAGE */
+
+/* CHECKOUT PAGE */
+
+.form-field {
+	width:250px;
+	display: inline-block;
+	padding: 5px;
+}
+
+#form-wrapper {
+    background-color: var(--text-backgroung-color);
+    font-family: 'Bangers', sans-serif ;
+    letter-spacing: 3px;
+}
+
+::placeholder {
+    letter-spacing: 3px;
+}
+
+.order-summary {
+    background-color: var(--text-backgroung-color);
+    font-family: 'Bangers', sans-serif ;
+    letter-spacing: 3px;
+}
+/* END CHECKOUT PAGE */
 
 /* MEDIA QUERIES */
 
