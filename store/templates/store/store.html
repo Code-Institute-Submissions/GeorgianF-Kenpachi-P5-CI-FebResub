@@ -6,8 +6,8 @@
     {% include 'includes/store-nav.html' %}
     <div class="container pt-5 products-container">
         <div class="row">
-            {% for product in products %}
-                <div class="col-lg-4">
+            {% for product in store_items %}
+                <div class="col-lg-4 mb-4">
                     <div class="box-element product">
                         <img class="thumbnail" src="{{MEDIA_URL}}placeholder.png">
                         <div class="box-element product">
@@ -24,6 +24,7 @@
                 </div>
             {% endfor %}
             <br>
+            {{ store_items }}
         </div>
     </div>
 
