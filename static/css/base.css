@@ -469,6 +469,17 @@ textarea.form-control {
     color: var(--secondary-color);
 }
 
+.page-link {
+    background-color: var(--text-backgroung-color);
+    color: var(--secondary-color);
+    transition: all 0.5s;
+}
+
+.page-link:hover {
+    background-color: var(--text-backgroung-color);
+    color: var(--secondary-color);
+}
+
 /* END OF STORE PAGE */
 
 
