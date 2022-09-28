@@ -59,6 +59,15 @@ class Product(models.Model):
     weight = models.FloatField(null=True)
     description = models.TextField(blank=True)
     stock = models.IntegerField(blank=False, null=True)
+    image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return str(self.name)
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
