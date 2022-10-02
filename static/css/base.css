@@ -404,6 +404,7 @@ textarea.form-control {
     color: var(--text-color);
     border: none;
     letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .btn-primary:hover {

@@ -4,18 +4,18 @@
 
 {% block content %}
     {% include 'includes/store-nav.html' %}
+
 <div class="container-fluid pt-5 pb-5 background-container">
     <div class="container pt-5 products-container">
         <div class="row">
             {% for product in store_items %}
-                <div class="col-lg-4 mb-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 mb-4">
                     <div class="box-element product">
                         <img class="thumbnail" src="{{product.imageURL}}">
                         <div class="box-element product">
                             <h6><strong>{{ product.name }}</strong></h6>
                             <hr>
-
-                            <button class="btn btn-primary add-btn">Add to Cart</button>
+                            <button data-product="{{product.id}}" data-action="add" class="btn btn-primary add-btn update-cart">Add to Cart</button>
                             <a class="btn btn-secondary" href="#">View</a>
                             <span class="float-end">
                                 <h4><strong>${{ product.price | floatformat:2 }}</strong></h4>
