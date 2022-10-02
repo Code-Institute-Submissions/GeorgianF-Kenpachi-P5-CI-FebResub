@@ -4,18 +4,19 @@
 
 {% block content %}
     {% include 'includes/store-nav.html' %}
-
-<div class="container-fluid pt-5 pb-5 background-container">
-    <div class="container pt-5 products-container">
-        <div class="row">
-            {% for product in store_items %}
+    
+    <div class="container-fluid pt-5 pb-5 background-container">
+        <div class="container mb-5 pt-5 products-container">
+            <div class="row mb-3">
+                {% for product in store_items %}
                 <div class="col-lg-4 col-md-4 col-sm-4 mb-4">
                     <div class="box-element product">
                         <img class="thumbnail" src="{{product.imageURL}}">
                         <div class="box-element product">
                             <h6><strong>{{ product.name }}</strong></h6>
                             <hr>
-                            <button data-product="{{product.id}}" data-action="add" class="btn btn-primary add-btn update-cart">Add to Cart</button>
+                            <button data-product="{{product.id}}" data-action="add"
+                                class="btn btn-primary add-btn update-cart">Add to Cart</button>
                             <a class="btn btn-secondary" href="#">View</a>
                             <span class="float-end">
                                 <h4><strong>${{ product.price | floatformat:2 }}</strong></h4>
@@ -23,29 +24,31 @@
                         </div>
                     </div>
                 </div>
-            {% endfor %}
-            <br>
+                {% endfor %}
+            </div>
+
 
             <nav aria-label="Page navigation">
                 <ul class="pagination">
-                {% if store_items.has_previous%}
-                  <li class="page-item"><a class="page-link" href="?page={{ store_items.previous_page_number }}">&#8656;</a></li>
-                  {% else%}
-                  <li class="page-item"><a class="page-link disabled" href="#">&#8656;</a></li>
-                {% endif %}
-                  <li class="page-item page-number"><a class="page-link" href="?page=1">1</a></li>
-                  <li class="page-item page-number"><a class="page-link" href="?page=2">2</a></li>
-                  <li class="page-item page-number"><a class="page-link" href="?page=3">3</a></li>
-                {% if store_items.has_next %}
-                  <li class="page-item"><a class="page-link" href="?page={{ store_items.next_page_number }}">&#8658;</a></li>
-                {% else %}
+                    {% if store_items.has_previous%}
+                    <li class="page-item"><a class="page-link"
+                            href="?page={{ store_items.previous_page_number }}">&#8656;</a></li>
+                    {% else%}
+                    <li class="page-item"><a class="page-link disabled" href="#">&#8656;</a></li>
+                    {% endif %}
+                    <li class="page-item page-number"><a class="page-link" href="?page=1">1</a></li>
+                    <li class="page-item page-number"><a class="page-link" href="?page=2">2</a></li>
+                    <li class="page-item page-number"><a class="page-link" href="?page=3">3</a></li>
+                    {% if store_items.has_next %}
+                    <li class="page-item"><a class="page-link"
+                            href="?page={{ store_items.next_page_number }}">&#8658;</a></li>
+                    {% else %}
                     <li class="page-item"><a class="page-link disabled" href="#">&#8658;</a></li>
-                {% endif %}
+                    {% endif %}
                 </ul>
-              </nav>
+            </nav>
         </div>
     </div>
-</div>
     
     {% include 'includes/footer.html'%}
 
