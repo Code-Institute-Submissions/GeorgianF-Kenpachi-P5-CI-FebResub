@@ -15,8 +15,8 @@
                         <br>
                         <table class="table">
                             <tr>
-                                <th><h5 class="pt-2">Items: <strong>3</strong></h5></th>
-                                <th><h5 class="pt-2">Total: <strong> $42</strong></h5></th>
+                                <th><h5 class="pt-2">Items: <strong>{{ order.get_cart_items }}</strong></h5></th>
+                                <th><h5 class="pt-2">Total: <strong> ${{ order.get_cart_total|floatformat:2 }}</strong></h5></th>
                                 <th>
                                    <a class="float-end btn btn-primary" href="{% url 'checkout' %}" >Checkout</a>
                                 </th>
@@ -34,13 +34,13 @@
                         <div class="col-lg-2 col-md-2 text-center"><strong>Quantity</strong></div>
                         <div class="col-lg-2 col-md-2 text-center"><strong>Total</strong></div>
                     </div>
-                    
+                    {% for item in items %}
                     <div class="row cart-row">
-                        <div class="col-lg-2 col-md-2"><img class="row-image" src="{{MEDIA_URL}}placeholder.png"></div>
-                        <div class="col-lg-4 col-md-2"><p class="pt-3">Product 1</p></div>
-                        <div class="col-lg-2 col-md-2 text-center"><p class="pt-3">$20</p></div>
+                        <div class="col-lg-2 col-md-2"><img class="row-image" src="{{ product.imageURL }}"></div>
+                        <div class="col-lg-4 col-md-2"><p class="pt-3"> {{ item.product.name}}</p></div>
+                        <div class="col-lg-2 col-md-2 text-center"><p class="pt-3">{{ item.product.price }}</p></div>
                         <div class="col-lg-2 col-md-2 text-center">
-                            <p class="quantity">2</p>
+                            <p class="quantity">{{ item.product.quantity }}</p>
                             <div class="quantity pt-2">
                                 <img class="chg-quantity" src="{{MEDIA_URL}}arrow-up.png">
                         
@@ -49,6 +49,7 @@
                         </div>
                         <div class="col-lg-2 col-md-2 text-center"><p class="pt-3">$32</p></div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
