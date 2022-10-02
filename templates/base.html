@@ -63,6 +63,7 @@
 
     {% block postloadjs %}
       <script src="{% static 'js/navigation.js' %}"></script>
+      <script src="{% static 'js/cart.js' %}"></script>
       <script>
         var toastElList = [].slice.call(document.querySelectorAll('.toast'))
         var toastList = toastElList.map(function (toastEl) {
@@ -73,6 +74,7 @@
     {% endblock %}
 
     {% block extrajs %}
+
     {% endblock %}
   </body>  
 </html>
