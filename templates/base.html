@@ -30,6 +30,9 @@
     {% endblock %}
 
     {% block extra_js %}
+    <script type="text/javascript">
+      var user = '{{request.user}}'
+    </script>
     {% endblock %}
 
     <title>Kenpachi Artisan Store and Katana Makers</title>
@@ -71,10 +74,11 @@
             })
         toastList.forEach(toast => toast.show())
         </script>
+
     {% endblock %}
 
     {% block extrajs %}
-
+   
     {% endblock %}
   </body>  
 </html>
