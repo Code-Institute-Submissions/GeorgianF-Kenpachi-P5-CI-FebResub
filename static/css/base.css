@@ -546,7 +546,7 @@ textarea.form-control {
 }
 
 #form-wrapper {
-    background-color: var(--text-backgroung-color);
+    background-color: var(--text-color);
     font-family: 'Bangers', sans-serif ;
     letter-spacing: 3px;
 }
@@ -556,7 +556,7 @@ textarea.form-control {
 }
 
 .order-summary {
-    background-color: var(--text-backgroung-color);
+    background-color: var(--text-color);
     font-family: 'Bangers', sans-serif ;
     letter-spacing: 3px;
 }
