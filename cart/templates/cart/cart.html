@@ -37,7 +37,7 @@
                     </div>
                     {% for item in items %}
                     <div class="row cart-row">
-                        <div class="col-lg-2 col-md-2"><img class="row-image" src="{{ item.product.imageURL }}"></div>
+                        <div class="col-lg-2 col-md-2 text-center"><img class="row-image" src="{{ item.product.imageURL }}"></div>
                         <div class="col-lg-4 col-md-2"><p class="pt-3"> {{ item.product.name }}</p></div>
                         <div class="col-lg-2 col-md-2 text-center"><p class="pt-3">${{ item.product.price }}</p></div>
                         <div class="col-lg-2 col-md-2 text-center">
@@ -48,7 +48,7 @@
                                 <img data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-cart" src="{{MEDIA_URL}}arrow-down.png">
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-2 text-center"><p class="pt-3">$32</p></div>
+                        <div class="col-lg-2 col-md-2 text-center"><p class="pt-3">${{item.get_total|floatformat:2}}</p></div>
                     </div>
                     {% endfor %}
                 </div>

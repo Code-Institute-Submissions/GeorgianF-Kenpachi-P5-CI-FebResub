@@ -13,9 +13,7 @@ def cart(request):
             complete=False
             )
         items = order.orderitem_set.all()
-        print(items)
         cart_items = order.get_cart_items
-        print(cart_items)
     else:
         # Create empty cart for now for non-logged in user
         items = []
