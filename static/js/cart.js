@@ -29,8 +29,8 @@ function updateUserOrder (productId, action) {
 				'X-CSRFToken': csrftoken,
 			}, 
 			body:JSON.stringify({
-				'productId':productId,
-				'action':action
+				'productId': productId,
+				'action': action,
 			})
 		})
 		.then((response) => {

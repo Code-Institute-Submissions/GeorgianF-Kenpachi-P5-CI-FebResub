@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 {% block content %}
     {% include 'includes/store-nav.html' %}
 
@@ -40,11 +41,11 @@
                         <div class="col-lg-4 col-md-2"><p class="pt-3"> {{ item.product.name }}</p></div>
                         <div class="col-lg-2 col-md-2 text-center"><p class="pt-3">{{ item.product.price }}</p></div>
                         <div class="col-lg-2 col-md-2 text-center">
-                            <p class="quantity">{{ item.product.quantity }}</p>
+                            <p class="quantity">{{ item.quantity }}</p>
                             <div class="quantity pt-2">
-                                <img class="chg-quantity" src="{{MEDIA_URL}}arrow-up.png">
+                                <img data-product="{{item.product.id}}" data-action="add" class="chg-quantity update-cart" src="{{MEDIA_URL}}arrow-up.png">
                         
-                                <img class="chg-quantity" src="{{MEDIA_URL}}arrow-down.png">
+                                <img data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-cart" src="{{MEDIA_URL}}arrow-down.png">
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-2 text-center"><p class="pt-3">$32</p></div>
