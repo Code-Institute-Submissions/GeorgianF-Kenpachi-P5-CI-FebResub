@@ -51,10 +51,42 @@
         return cookieValue;
       }
       
-      var csrftoken = getToken('csrftoken')
-
+      let csrftoken = getToken('csrftoken')
       // https://docs.djangoproject.com/en/3.2/ref/csrf/#ajax
+
+
+      // https://www.autoscripts.net/get-cookie-value-in-javascript/
+
+      function getCookie(name) {
+        // Split cookie string and get all individual name=value pairs in an array
+        let cookieArray = document.cookie.split(";");
+
+        // Loop through the array elements
+        for (let i = 0; i < cookieArray.length; i++) { 
+          var cookiePair=cookieArray[i].split("=");
+
+          /* Removing whitespace at the beginning of the cookie name and compare it with the given string */
+        if(name == cookiePair[0].trim()) {
+            // Decode the cookie value and return
+            return decodeURIComponent(cookiePair[1]);
+        }
+        }
+
+        // Return null if not found
+        return null;
+      }
+
+      var cart = JSON.parse(getCookie('cart'))
+
+      if (cart == undefined) {
+	      cart = {}
+	      console.log('Cart Created!', cart)
+	      document.cookie ='cart=' + JSON.stringify(cart) + " ;domain=;path=/" } console.log('Cart:', cart)
+
+      // https://www.autoscripts.net/get-cookie-value-in-javascript/
+      
     </script>
+
     {% endblock %}
 
     <title>Kenpachi Artisan Store and Katana Makers</title>
