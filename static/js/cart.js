@@ -41,8 +41,7 @@ function updateUserOrder (productId, action) {
 		});
 }
 
-
-function updateCartAnonymusUser (productId, action) {
+function updateCartAnonymusUser(productId, action) {
 	console.log('User is not authenticated')
 
 	if (action == 'add') {
