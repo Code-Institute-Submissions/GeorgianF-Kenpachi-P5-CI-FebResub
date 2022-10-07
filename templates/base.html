@@ -31,7 +31,8 @@
 
     {% block extra_js %}
     <script type="text/javascript">
-      var user = '{{request.user}}'
+      var user = '{{ request.user }}'
+      var total = '{{ order.get_cart_total|floatformat:2 }}'
 
       // https://docs.djangoproject.com/en/3.2/ref/csrf/#ajax
       function getToken(name) {

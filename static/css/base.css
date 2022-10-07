@@ -548,7 +548,11 @@ textarea.form-control {
 #form-wrapper {
     background-color: var(--text-color);
     font-family: 'Bangers', sans-serif ;
-    letter-spacing: 3px;
+    
+}
+
+#form input {
+    letter-spacing: 2px;
 }
 
 ::placeholder {
@@ -559,6 +563,18 @@ textarea.form-control {
     background-color: var(--text-color);
     font-family: 'Bangers', sans-serif ;
     letter-spacing: 3px;
+}
+
+#payment-info {
+    font-family: 'Bangers', sans-serif;
+}
+
+#payment-btn {
+    letter-spacing: 3px;
+}
+
+#stripe-logo {
+    height: 76px;
 }
 
 /* END CHECKOUT PAGE */
