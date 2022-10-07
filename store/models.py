@@ -46,7 +46,7 @@ class Product(models.Model):
         on_delete=models.SET_NULL
         )
     name = models.CharField(max_length=200)
-    price = models.FloatField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     blade = models.CharField(choices=STEEL, max_length=200, null=True)
     guard = models.CharField(max_length=200, null=True)
     scabbard = models.CharField(max_length=200, null=True)
