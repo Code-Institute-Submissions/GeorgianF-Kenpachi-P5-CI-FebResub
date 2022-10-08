@@ -584,6 +584,16 @@ textarea.form-control {
 
 /* END CHECKOUT PAGE */
 
+/* LOGIN PAGE */
+
+.sign-up-container {
+    font-family: 'Bangers', sans-serif;
+    letter-spacing: 3px;
+    height: 60vh;
+}
+
+/* END OF LOGIN PAGE */
+
 /* MEDIA QUERIES */
 
 @media screen and (min-width: 767px) {
@@ -605,3 +615,45 @@ textarea.form-control {
         width: 90%;
     }
 }
+
+@media screen and (max-width: 425px) {
+    .form-container {
+        width: 90vw;
+        font-size: 12px;
+    }
+
+    .form-container button,
+    .form-container a {
+        font-size: 10px;
+    }
+
+    footer {
+        font-size: 12px;
+    }
+
+    footer h4 {
+        font-size: 16px;
+    }
+
+    footer a.p-5 {
+        padding: 1rem!important;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .form-container {
+        width: 98vw;
+    }
+
+    .login-details .btn-secondary{
+        padding: 2px;
+    }
+    
+    footer {
+        font-size: 10px;
+    }
+
+    footer h4 {
+        font-size: 14px;
+    }
+}    
