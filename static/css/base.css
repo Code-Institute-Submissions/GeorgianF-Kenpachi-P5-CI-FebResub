@@ -592,6 +592,16 @@ textarea.form-control {
     height: 60vh;
 }
 
+.form-container input[type=text],
+.form-container input[type=password] {
+    letter-spacing: 2px;
+    width: 50%;
+}
+
+.form-container input::placeholder {
+    color: transparent;
+}
+
 /* END OF LOGIN PAGE */
 
 /* MEDIA QUERIES */
@@ -627,6 +637,7 @@ textarea.form-control {
         font-size: 10px;
     }
 
+    
     footer {
         font-size: 12px;
     }
