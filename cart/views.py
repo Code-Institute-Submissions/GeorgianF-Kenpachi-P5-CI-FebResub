@@ -6,6 +6,7 @@ from store.models import Product
 
 
 def cart(request):
+
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(
@@ -15,12 +16,16 @@ def cart(request):
         items = order.orderitem_set.all()
         cart_items = order.get_cart_items
     else:
+        print(request.COOKIES)
+        # for user that are not authenticated
         try:
-            cart = json.loads(request.COOKIES['cart'])
-        except:
-            cart = {}
-            print('CART:', cart)
+            # load the cookies
+            bag = json.loads(request.COOKIES['cart'])
+        except KeyError:
+            bag = {}
+            print(bag)
 
+        # define the empty cart
         items = []
         order = {
             'get_cart_total': 0,
@@ -28,8 +33,28 @@ def cart(request):
             }
         cart_items = order['get_cart_items']
 
-        for i in cart:
-            cart_items += cart[i]['quantity']
+        # loop through the items in the bag
+        for i in bag:
+            # add them to the cart items
+            cart_items += bag[i]['quantity']
+            # build the order details
+            product = Product.objects.get(id=i)
+            total = (product.price * bag[i]['quantity'])
+            order['get_cart_total'] += total
+            order['get_cart_items'] += bag[i]['quantity']
+
+            item = {
+                'id': product.id,
+                'product': {
+                    'id': product.id,
+                    'name': product.name,
+                    'price': product.price,
+                    'imageURL': product.imageURL
+                    },
+                'quantity': bag[i]['quantity'],
+                'get_total': total,
+            }
+            items.append(item)
 
     context = {
         'items': items,

@@ -52,7 +52,7 @@ function updateCartAnonymusUser(productId, action) {
 		}
 	}
 
-	if (action == 'remove'){
+	if (action == 'remove') {
 		cart[productId]['quantity'] -= 1
 
 		if (cart[productId]['quantity'] <= 0){
