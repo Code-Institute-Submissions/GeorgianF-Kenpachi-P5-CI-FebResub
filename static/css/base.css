@@ -589,7 +589,7 @@ textarea.form-control {
 .sign-up-container {
     font-family: 'Bangers', sans-serif;
     letter-spacing: 3px;
-    height: 60vh;
+    height: 70vh;
 }
 
 .form-container input[type=text],
@@ -602,7 +602,20 @@ textarea.form-control {
     color: transparent;
 }
 
+.footer-sign-in {
+    z-index: -1;
+}
+
 /* END OF LOGIN PAGE */
+
+/* SIGNUP PAGE */
+
+#signup_form input {
+    width: 250px;
+    margin-right: 50px;
+}
+
+/* END OF SIGNUP PAGE */
 
 /* MEDIA QUERIES */
 
@@ -623,6 +636,16 @@ textarea.form-control {
 
     .card {
         width: 90%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .form-container {
+        width: 94vw;
+    }
+
+    #signup_form input {
+        margin-right: 10px;
     }
 }
 
@@ -648,6 +671,11 @@ textarea.form-control {
 
     footer a.p-5 {
         padding: 1rem!important;
+    }
+
+    #signup_form input {
+        margin-right: 5px;
+        width: 150px;
     }
 }
 
