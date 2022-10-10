@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class Customer(models.Model):
@@ -14,6 +16,17 @@ class Customer(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+
+@receiver(post_save, sender=User)
+def create_or_update_customer(sender, instance, created, **kwargs):
+    """
+    Create or update the user profile
+    """
+    if created:
+        Customer.objects.create(user=instance)
+    # Existing users: just save the profile
+    instance.customer.save()
 
 
 class Category(models.Model):

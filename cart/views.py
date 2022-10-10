@@ -22,7 +22,7 @@ def cart(request):
             # load the cookies
             bag = json.loads(request.COOKIES['cart'])
         except KeyError:
-            bag = {}
+            bag = request.session['data']
             print(bag)
 
         # define the empty cart

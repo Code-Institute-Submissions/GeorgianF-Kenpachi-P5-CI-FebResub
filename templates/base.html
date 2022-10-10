@@ -54,11 +54,11 @@
       // https://docs.djangoproject.com/en/3.2/ref/csrf/#ajax
 
 
-      // https://www.autoscripts.net/get-cookie-value-in-javascript/
+      https://www.autoscripts.net/get-cookie-value-in-javascript/
 
       function getCookie(name) {
         // Split cookie string and get all individual name=value pairs in an array
-        var cookieArr = document.cookie.split(";");
+        var cookieArr = document.cookie.split("; ");
 
         // Loop through the array elements
         for(var i = 0; i < cookieArr.length; i++) {
@@ -80,7 +80,7 @@ var cart = JSON.parse(getCookie('cart'))
 if (cart == undefined){
 	cart = {}
 	console.log('Cart Created!', cart)
-	document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
+	document.cookie ='cart=' + JSON.stringify(cart) + "; max-age=3600; domain=; path=/"
 }
 console.log('Cart:', cart)
 
