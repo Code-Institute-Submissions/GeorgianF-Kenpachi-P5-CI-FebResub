@@ -51,9 +51,10 @@
       }
     
       let csrftoken = getToken('csrftoken')
+
       // https://docs.djangoproject.com/en/3.2/ref/csrf/#ajax
 
-
+    
       https://www.autoscripts.net/get-cookie-value-in-javascript/
 
       function getCookie(name) {
@@ -73,22 +74,22 @@
 
     // Return null if not found
     return null;
-}
+    }
 
-var cart = JSON.parse(getCookie('cart'))
+    var cart = JSON.parse(getCookie('cart'))
 
-if (cart == undefined){
-	cart = {}
-	console.log('Cart Created!', cart)
-	document.cookie ='cart=' + JSON.stringify(cart) + "; max-age=3600; domain=; path=/"
-}
-console.log('Cart:', cart)
+    if (cart == undefined){
+	  cart = {}
+	  console.log('Cart Created!', cart)
+	  document.cookie ='cart=' + JSON.stringify(cart) + "; max-age=3600; domain=; path=/"
+    }
+    console.log('Cart:', cart)
 
       // https://www.autoscripts.net/get-cookie-value-in-javascript/
       
     </script>
 
-    {% endblock %}
+{% endblock %}
 
     <title>Kenpachi Artisan Store and Katana Makers</title>
 

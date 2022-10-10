@@ -1,5 +1,5 @@
 import json
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.contrib import messages
@@ -36,6 +36,33 @@ def store(request):
         }
 
     return render(request, 'store/store.html', context)
+
+
+def product_details(request, product_id):
+    """ A view to show individual product details """
+
+    product = get_object_or_404(Product, pk=product_id)
+
+    context = {
+        'product': product,
+    }
+
+    return render(request, 'store/product_details.html', context)
+
+
+def add_to_bag(request, product_id):
+    quantity = 1
+    bag = request.session.get('cart', {})
+    if product_id in list(bag.keys()):
+        bag[product_id] += quantity 
+    else:
+        bag[product_id] = quantity
+
+    request.session['bag'] = bag
+
+    print(request.session['bag'])
+
+    return redirect('store')
 
 
 def item_update(request):
