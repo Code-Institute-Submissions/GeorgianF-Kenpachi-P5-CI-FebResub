@@ -77,11 +77,15 @@
     }
 
     var cart = JSON.parse(getCookie('cart'))
-
+    const d = new Date();
+    
     if (cart == undefined){
-	  cart = {}
-	  console.log('Cart Created!', cart)
-	  document.cookie ='cart=' + JSON.stringify(cart) + "; max-age=3600; domain=; path=/"
+	    cart = {}
+	    console.log('Cart Created!', cart)
+      d.setTime(d.getTime() + (5*24*60*60*1000));
+      let expires = d.toUTCString();
+      
+	    document.cookie ='cart=' + JSON.stringify(cart) + "; expires=${expires}; domain=; path=/"
     }
     console.log('Cart:', cart)
 

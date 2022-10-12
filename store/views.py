@@ -53,32 +53,32 @@ def product_details(request, product_id):
 def add_to_bag(request, product_id):
     quantity = 1
     bag = request.session.get('cart', {})
+    print(bag)
     if product_id in list(bag.keys()):
-        bag[product_id] += quantity 
+        bag[product_id] += quantity
     else:
         bag[product_id] = quantity
 
     request.session['bag'] = bag
 
     print(request.session['bag'])
+    print(bag.keys())
+    print(bag.items())
+    
 
-    return redirect('store')
+    return redirect('cart')
 
 
 def item_update(request):
     data = json.loads(request.body)
     product_id = data['productId']
     action = data['action']
-    print('Action:', action)
-    print('Product:', product_id)
-
     customer = request.user.customer
     product = Product.objects.get(id=product_id)
     order, created = Order.objects.get_or_create(
         customer=customer,
         complete=False
         )
-
     order_item, created = OrderItem.objects.get_or_create(
         order=order,
         product=product
