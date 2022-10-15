@@ -5,6 +5,16 @@
                 <h3>Kenpachi Store</h3>
             </div>
         </div>
+        <div class="row">
+            <form class="" method="post" action="{% url 'subscription' %}">
+                {% csrf_token %}
+                <div class="form-group d-flex align-items-center justify-content-center flex-column">
+                  <label>Subscribe to get the latest Articles</label><br>
+                  <input class="newsletter-input" type="email" name="email" placeholder="Enter Email to Subscribe"><br>
+                  <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+            </form>            
+        </div>
         <hr class="hr">
         <div class="row">
             <div class="submenu text-center mt-2 mb-2">

@@ -366,6 +366,14 @@ footer a:hover {
     justify-content: center;
 }
 
+.newsletter-input {
+    width: 400px;
+}
+
+.newsletter-input::placeholder {
+    text-align: center;
+}
+
 /* END OF FOOTER */
 
 /* CONTACT PAGE */

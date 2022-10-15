@@ -54,19 +54,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div><br>
 </div>
-
-<form method="post" action="{% url 'subscription' %}">
-    {% csrf_token %}
-
-    <div class="form-group">
-      <label>Subscribe to get the latest Articles</label> <br>
-      <input type="email" name="email" placeholder="Enter Email to Subscribe">
-      <button class="btn btn-info" type="submit">Submit</button>
-    </div>
-
-  </form>
 
 {% include 'includes/footer.html'%}
 
