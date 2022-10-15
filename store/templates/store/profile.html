@@ -6,16 +6,51 @@
 
 <div class="container-fluid background-container sign-up-container">
     <div class="container">
+        <br>
+        <div class="col-12">
+            <h1 class="fs-3">Hey there {{ user }} </h1>
+        </div>
         <div class="row">
-            <div class="col-12">
-                <h1>Hey there {{ user }}</h1>
+            <div class="box-element">
+                <div class="box-element">
+                    <h3 class="fs-5">Order History</h3>
+                    <hr>
+                    {% for order in orders %}
+                    <h5 class="fs-5"> Transaction ID: <a href="#">{{ order.transaction_id }}</a></h5>
+                    <h5 class="fs-5"> Date: {{ order.date_ordered }}</h5>
+                    <h5 class="fs-5"> Amount paid: ${{ order.get_cart_total }}</h5>
+                    <h5 class="fs-5"> Items ordered: {{ order.get_cart_items }}</h5>
+
+                    <div class="row cart-row">
+                        <div class="col-lg-2 col-md-2"></div>
+                        <div class="col-lg-4 col-md-2"><strong>Item</strong></div>
+                        <div class="col-lg-2 col-md-2 text-center"><strong>Price</strong></div>
+                        <div class="col-lg-2 col-md-2 text-center"><strong>Quantity</strong></div>
+                        <div class="col-lg-2 col-md-2 text-center"><strong>Total</strong></div>
+                    </div>
+                    <div class="row cart-row">
+                        <div class="col-lg-2 col-md-2 text-center"><img class="row-image"
+                                src="{{ item.product.imageURL }}"></div>
+                        <div class="col-lg-4 col-md-2">
+                            <p class="pt-3"> {{ order.product }}</p>
+                        </div>
+                        <div class="col-lg-2 col-md-2 text-center">
+                            <p class="pt-3">${{ product.price }}</p>
+                        </div>
+                        <div class="col-lg-2 col-md-2 text-center">
+                            <p class="quantity">{{ quantity }}</p>
+                        </div>
+                        <div class="col-lg-2 col-md-2 text-center">
+                            <p class="pt-3">${{item.get_total|floatformat:2}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
-            <hr>
         </div>
     </div>
-
-
 </div>
+
 
 
 {% include 'includes/footer.html'%}

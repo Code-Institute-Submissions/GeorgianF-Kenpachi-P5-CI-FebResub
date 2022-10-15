@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.contrib import messages
-from checkout.models import Order, OrderItem
+from checkout.models import Order, OrderItem, Customer
 from .models import Product
 
 
@@ -20,6 +20,7 @@ def store(request):
     else:
         # Create empty cart for now for non-logged in user
         items = []
+        print(items)
         order = {'get_cart_total': 0, 'get_cart_items': 0}
         cart_items = order['get_cart_items']
 
@@ -103,4 +104,14 @@ def item_update(request):
 
 @login_required
 def profile(request):
-    return render(request, 'store/profile.html')
+    profile = get_object_or_404(Customer, user=request.user)
+    print(profile)
+    orders = Order.objects.filter(customer=profile, complete=True)
+    print(orders)
+
+    context = {
+        'orders': orders,
+        'profile': profile
+    }
+
+    return render(request, 'store/profile.html', context)

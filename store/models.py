@@ -17,14 +17,11 @@ class Customer(models.Model):
     session_id = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
-        if self.first_name:
-            name = self.first_name
+        if self.user:
+            name = self.user
         else:
             name = self.session_id
         return str(name)
-
-    def customer_email(self):
-        Customer.email = User.email
 
 
 @receiver(post_save, sender=User)
