@@ -41,7 +41,7 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
     name = models.CharField(max_length=254, unique=True)
-    slug = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=100, null=True, unique=True)
     description = models.TextField(max_length=2000, null=True, blank=True)
 
     def __str__(self):
@@ -65,7 +65,8 @@ class Product(models.Model):
         blank=True,
         on_delete=models.SET_NULL
         )
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, null=True, unique=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     blade = models.CharField(choices=STEEL, max_length=200, null=True)
     guard = models.CharField(max_length=200, null=True)
@@ -79,6 +80,7 @@ class Product(models.Model):
     weight = models.FloatField(null=True)
     description = models.TextField(blank=True)
     stock = models.IntegerField(blank=False, null=True)
+    is_available = models.BooleanField(default=True)
     image = models.ImageField(null=True, blank=True)
 
     def __str__(self):

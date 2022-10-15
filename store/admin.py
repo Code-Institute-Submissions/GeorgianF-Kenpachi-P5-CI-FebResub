@@ -15,19 +15,30 @@ class CustomerAdmin(admin.ModelAdmin):
 
 
 class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {
+        'slug': ('name',)
+    }
+
     list_display = (
         'name',
+        'slug',
         'description',
     )
 
 
 class ProductAdmin(admin.ModelAdmin):
+    prepopulated_fields = {
+        'slug': ('name',)
+    }
+
     list_display = (
         'category',
+        'slug',
         'name',
         'price',
         'stock',
         'blade',
+        'is_available',
     )
     list_filter = ('category', 'blade', 'stock')
     search_fields = ['name', 'blade', 'description']

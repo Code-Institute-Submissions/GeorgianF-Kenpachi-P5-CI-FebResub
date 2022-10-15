@@ -24,10 +24,10 @@ def store(request):
         order = {'get_cart_total': 0, 'get_cart_items': 0}
         cart_items = order['get_cart_items']
 
-    products = Product.objects.all()
+    products = Product.objects.all().filter(is_available=True)
 
     # Set up pagination
-    p = Paginator(Product.objects.all(), 6)
+    p = Paginator(Product.objects.all().filter(is_available=True), 6)
     page = request.GET.get('page')
     store_items = p.get_page(page)
 
