@@ -40,7 +40,8 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'Categories'
 
-    name = models.CharField(max_length=254)
+    name = models.CharField(max_length=254, unique=True)
+    slug = models.CharField(max_length=100, unique=True)
     description = models.TextField(max_length=2000, null=True, blank=True)
 
     def __str__(self):
