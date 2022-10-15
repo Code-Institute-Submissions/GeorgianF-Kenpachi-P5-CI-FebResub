@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.urls import reverse
 
 
 class Customer(models.Model):
@@ -46,6 +47,9 @@ class Category(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+    def get_url(self):
+        return reverse('products_by_category', args=[self.slug])
 
 
 class Product(models.Model):

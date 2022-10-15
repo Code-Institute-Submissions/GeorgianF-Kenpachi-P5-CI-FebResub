@@ -5,10 +5,21 @@ from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.contrib import messages
 from checkout.models import Order, OrderItem, Customer
-from .models import Product
+from .models import Product, Category
 
 
-def store(request):
+def store(request, category_slug=None):
+    categories = None
+    products = None
+
+    if category_slug is not None:
+        categories = get_object_or_404(Category, slug=category_slug)
+        products = Product.objects.filter(category=categories, is_available=True)
+        products_count = products.count()
+    else:
+        products = Product.objects.all().filter(is_available=True)
+        products_count = products.count()
+
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(
@@ -24,16 +35,15 @@ def store(request):
         order = {'get_cart_total': 0, 'get_cart_items': 0}
         cart_items = order['get_cart_items']
 
-    products = Product.objects.all().filter(is_available=True)
-
     # Set up pagination
-    p = Paginator(Product.objects.all().filter(is_available=True), 6)
-    page = request.GET.get('page')
-    store_items = p.get_page(page)
+    # p = Paginator(Product.objects.all().filter(is_available=True), 6)
+    # page = request.GET.get('page')
+    # store_items = p.get_page(page)
 
     context = {
         'products': products,
-        'store_items': store_items,
+        'products_count': products_count,
+        # 'store_items': store_items,
         'cart_items': cart_items,
         }
 
