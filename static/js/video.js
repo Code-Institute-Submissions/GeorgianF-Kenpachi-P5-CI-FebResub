@@ -5,11 +5,9 @@ icon.addEventListener('click', () => {
     video.style.display = 'block';
     if (video.paused) {
         video.play();
-        icon.src = "/media/pause.png";
-        // video.style.zIndex = '1';
+        icon.src = "./media/pause.png";
     } else {
         video.pause();
-        icon.src = "/media/play.png";
-        // video.style.zIndex = '-1';
+        icon.src = "./media/play.png";
     }
 })
