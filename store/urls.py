@@ -8,6 +8,7 @@ urlpatterns = [
     path('<int:product_id>/', views.product_details, name='product_details'),
     path('add/<product_id>', views.add_to_bag, name='add_to_bag'),
     path('item_update/', views.item_update, name="item_update"),
+    path('profile/', views.profile, name="profile"),
     path(
         'reset_password',
         auth_views.PasswordResetView.as_view(

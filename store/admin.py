@@ -5,7 +5,8 @@ from .models import Customer, Category, Product
 class CustomerAdmin(admin.ModelAdmin):
     list_display = (
         'user',
-        'name',
+        'first_name',
+        'last_name',
         'email',
     )
     search_fields = ['name', 'email']

@@ -11,16 +11,20 @@ class Customer(models.Model):
         blank=True,
         on_delete=models.CASCADE
         )
-    name = models.CharField(max_length=200, null=True)
+    first_name = models.CharField(max_length=200, null=True)
+    last_name = models.CharField(max_length=200, null=True)
     email = models.EmailField(max_length=254)
     session_id = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self):
-        if self.name:
-            name = self.name
+        if self.first_name:
+            name = self.first_name
         else:
             name = self.session_id
         return str(name)
+
+    def customer_email(self):
+        Customer.email = User.email
 
 
 @receiver(post_save, sender=User)

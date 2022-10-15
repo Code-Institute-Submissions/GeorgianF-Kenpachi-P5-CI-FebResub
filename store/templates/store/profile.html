@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'includes/store-nav.html' %}
+
+<div class="container-fluid background-container sign-up-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Hey there {{ user }}</h1>
+            </div>
+            <hr>
+        </div>
+    </div>
+
+
+</div>
+
+
+{% include 'includes/footer.html'%}
+{% endblock %}
