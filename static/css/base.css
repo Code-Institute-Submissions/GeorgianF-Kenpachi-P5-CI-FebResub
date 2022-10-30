@@ -448,14 +448,14 @@ textarea.form-control {
 }
 
 .products-header {
-    color: var(--text-color);
+    color: var(--secondary-color);
     letter-spacing: 4px;
 }
 
 .products-container {
     font-family: "Bangers", sans-serif;
     letter-spacing: 3px;
-    height: 100vh;
+    height: 110vh;
 }
 
 .box-element{
@@ -480,6 +480,8 @@ textarea.form-control {
 
 .product{
 	border-radius: 0 0 4px 4px;
+    width: 45%;
+    position: relative;
 }
 
 .btn-secondary {
@@ -539,7 +541,7 @@ textarea.form-control {
 }
 
 .background-container {
-    background-color: var(--primary-color);
+    background-color: var(--text-color);
     z-index: -1;
 }
 

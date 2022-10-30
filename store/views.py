@@ -36,14 +36,14 @@ def store(request, category_slug=None):
         cart_items = order['get_cart_items']
 
     # Set up pagination
-    # p = Paginator(Product.objects.all().filter(is_available=True), 6)
-    # page = request.GET.get('page')
-    # store_items = p.get_page(page)
+    p = Paginator(Product.objects.all().filter(is_available=True), 6)
+    page = request.GET.get('page')
+    store_items = p.get_page(page)
 
     context = {
         'products': products,
         'products_count': products_count,
-        # 'store_items': store_items,
+        'store_items': store_items,
         'cart_items': cart_items,
         }
 
