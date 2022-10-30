@@ -55,8 +55,19 @@ def product_details(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
 
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(
+            customer=customer,
+            complete=False
+            )
+        items = order.orderitem_set.all()
+        cart_items = order.get_cart_items
+
     context = {
         'product': product,
+        'items': items,
+        'cart_items': cart_items,
     }
 
     return render(request, 'store/product_details.html', context)
