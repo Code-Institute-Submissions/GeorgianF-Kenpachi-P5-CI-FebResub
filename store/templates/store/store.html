@@ -34,8 +34,15 @@
                         <div class="box-element product">
                             <h6><strong>{{ product.name }}</strong></h6>
                             <hr>
+                            {% if product.stock == 0 %}
+                            <button class="btn btn-secondary disabled" data-product="{{product.id}}" data-action="add"
+                            class="btn btn-primary add-btn update-cart">Add to Cart
+                            </button>
+                            {% else %}
                             <button data-product="{{product.id}}" data-action="add"
-                                class="btn btn-primary add-btn update-cart">Add to Cart</button>
+                                class="btn btn-primary add-btn update-cart">Add to Cart
+                            </button>
+                            {% endif %}
                             <a class="btn btn-secondary" href="{% url 'product_details' product.id %}">View</a>
                             <span class="float-end">
                                 <h4 id="product-price"><strong>${{ product.price | floatformat:2 }}</strong></h4>

@@ -14,10 +14,10 @@ def store(request, category_slug=None):
 
     if category_slug is not None:
         categories = get_object_or_404(Category, slug=category_slug)
-        products = Product.objects.filter(category=categories, is_available=True)
+        products = Product.objects.filter(category=categories)
         products_count = products.count()
     else:
-        products = Product.objects.all().filter(is_available=True)
+        products = Product.objects.all()
         products_count = products.count()
 
     if request.user.is_authenticated:
@@ -36,7 +36,7 @@ def store(request, category_slug=None):
         cart_items = order['get_cart_items']
 
     # Set up pagination
-    p = Paginator(Product.objects.all().filter(is_available=True), 6)
+    p = Paginator(Product.objects.all(), 6)
     page = request.GET.get('page')
     store_items = p.get_page(page)
 

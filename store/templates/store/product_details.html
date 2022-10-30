@@ -100,9 +100,13 @@
           <!-- accordion -->
           <hr>
           <a class="btn btn-secondary" href="{% url 'store' %}">to store</a>
+          {% if product.stock == 0 %}
+            <h6 class="text-danger float-end mt-2">out of stock</h6>
+          {% else %}
           <input type="submit" data-product="{{product.id}}" data-action="add"
             class="btn btn-primary add-btn update-cart" value="Add to Bag">
           </input>
+          {% endif %}
         </div>
       </div>
     </form>
