@@ -16,7 +16,7 @@
                         Filter by katana type:
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'store' %}">all</a></li>
+                        <li><a class="dropdown-item" href="{% url 'store' %}">view all</a></li>
                     {% for category in links %}
                         <li><a class="dropdown-item" href="{{ category.get_url }}">{{ category.name }}</a></li>
                     {% endfor %}
@@ -27,7 +27,7 @@
                     <h6 class="mt-2 mb-2 flaot-start">{{ products_count }} products available in store </h6>
                 </div>
                 
-                {% for product in store_items %}
+                {% for product in products %}
                 <div class="col-lg-4 col-md-4 col-sm-4 mb-4">
                     <div class="box-element product">
                         <img class="thumbnail" src="{{product.imageURL}}">
