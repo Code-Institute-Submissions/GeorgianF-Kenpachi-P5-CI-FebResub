@@ -41,15 +41,15 @@
                                     <input class="form-control" type="text" name="country" placeholder="Country..">
                                 </div>
                             </div>
-                        </form>
+                        
                     </div>
 
                     <br>
                     <div class="box-element pb-5" id="payment-info">
-                        <button class="ms-2 btn btn-primary" id="payment-btn">Finish order</button>
+                        <button type="submit" class="ms-2 btn btn-primary" id="payment-btn">Finish order</button>
                         <img id="stripe-logo" class="float-end" src="{{ MEDIA_URL}}stripe.png" alt="stripe-image">
                     </div>
-
+                </form>
                 </div>
                 
                 <div class="col-lg-6">
@@ -91,23 +91,24 @@
 
 {% block extrajs %}
 <script>
+    const form = document.getElementById('form');
+
     document.getElementById('payment-btn').addEventListener('click', function (e) {
         submitFormData();
-    })
+    });
 
-    function submitFormData(){
-        console.log('Order away...')
+    function submitFormData(event) {
         var userData = {
-            'name':null,
-            'email':null,
-            'total':total,
+            'name': null,
+            'email': null,
+            'total': total,
         }
 
         var shippingDetails = {
-            'address':null,
-            'city':null,
-            'state':null,
-            'zipcode':null,
+            'address': null,
+            'city': null,
+            'state': null,
+            'zipcode': null,
         }
 
         shippingDetails.address = form.address.value
@@ -115,7 +116,7 @@
         shippingDetails.state = form.state.value
         shippingDetails.zipcode = form.zipcode.value
 
-        if (user == 'AnonymousUser'){
+        if (user == 'AnonymousUser') {
             userData.name = form.name.value
             userData.email = form.email.value
         } else {
@@ -123,26 +124,27 @@
             userData.email = form.email.value
         }
 
-        console.log('Shipping Info:', shippingDetails)
-        console.log('User Info:', userData)
 
         var url = "process_order/"
-	    
+
         fetch(url, {
-		    method:'POST',
-		    headers:{
-			    'Content-Type':'application/json',
-			    'X-CSRFToken':csrftoken,
-		}, 
-		body:JSON.stringify({'form':userData, 'shipping':shippingDetails}),
-		
-	})
-	.then((response) => response.json())
-	.then((data) => {
-		  console.log('Success:', data);
-		  alert('Transaction completed');  
-		  window.location.href = "{% url 'store' %}"
-		})
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken,
+                },
+                body: JSON.stringify({
+                    'form': userData,
+                    'shipping': shippingDetails
+                }),
+
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+                alert('Transaction completed');
+                window.location.href = "{% url 'store' %}"
+            })
     }
 </script>
 {% endblock %}

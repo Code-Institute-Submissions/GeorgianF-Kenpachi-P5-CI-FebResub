@@ -60,4 +60,4 @@ def process_order(request):
     else:
         print('User is not logged in')
 
-    return JsonResponse('Payment away..', safe=False)
+    return JsonResponse('Transaction complete!', safe=False)

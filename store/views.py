@@ -81,20 +81,23 @@ def product_details(request, product_id):
     return render(request, 'store/product_details.html', context)
 
 
+def _cart_id(request):
+    cart = request.session.session_key
+    if not cart:
+        cart = request.session.create()
+    return cart
+
+
 def add_to_bag(request, product_id):
     quantity = 1
     bag = request.session.get('cart', {})
-    print(bag)
+
     if product_id in list(bag.keys()):
         bag[product_id] += quantity
     else:
         bag[product_id] = quantity
 
     request.session['bag'] = bag
-
-    print(request.session['bag'])
-    print(bag.keys())
-    print(bag.items())
 
     return redirect('cart')
 
