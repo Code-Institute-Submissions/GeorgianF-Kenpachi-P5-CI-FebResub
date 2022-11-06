@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.contrib import messages
-from checkout.models import Order, OrderItem, Customer
+from checkout.models import Order, OrderItem, Customer, ShippingAddress
 from .models import Product, Category
 
 
@@ -154,11 +154,13 @@ def view_order(request, transaction_id):
     order = Order.objects.filter(transaction_id=transaction_id)[0]
     print(order)
     order_items = OrderItem.objects.filter(order=order)
-    print(order_items)
+    shipping_details = get_object_or_404(ShippingAddress, order=order)
+    print(shipping_details)
 
     context = {
         'order': order,
-        'order_items': order_items
+        'order_items': order_items,
+        'shipping_details': shipping_details
     }
 
     return render(request, 'store/view_order.html', context)

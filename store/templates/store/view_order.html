@@ -14,9 +14,10 @@
         <div class="box-element">
             <div class="box-element">
                 <h3 class="fs-5 text-center">Order Details </h3>
-                <p>transaction ID: {{ order.transaction_id }}</p>
-                <p>date ordered: {{ order.date_ordered }}</p>
-                {{ order.address }}
+                <p><span class="text-decoration-underline">transaction ID</span>: {{ order.transaction_id }}</p>
+                <p><span class="text-decoration-underline">date ordered</span>: {{ order.date_ordered }}</p>
+                <p><span class="text-decoration-underline">Shipping details</span>: {{ shipping_details.address }}, {{ shipping_details.city }}, {{ shipping_details.zipcode }}, {{ shipping_details.country }}
+                </p>
                 <hr>
                 <div>
                     

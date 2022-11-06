@@ -1,6 +1,4 @@
-import uuid
 from django.db import models
-from django_countries.fields import CountryField
 from store.models import Customer, Product
 
 
@@ -61,7 +59,7 @@ class ShippingAddress(models.Model):
     city = models.CharField(max_length=200, null=False, blank=False)
     state = models.CharField(max_length=200, blank=True, null=False)
     zipcode = models.CharField(max_length=200, null=False, blank=False)
-    country = CountryField(null=True, blank=False)
+    country = models.CharField(max_length=50, null=True, blank=False)
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
