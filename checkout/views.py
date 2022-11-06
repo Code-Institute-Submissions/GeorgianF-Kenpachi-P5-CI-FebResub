@@ -1,6 +1,6 @@
 import json
 import datetime
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .models import Order, ShippingAddress
 
@@ -58,6 +58,7 @@ def process_order(request):
             country=data['shipping']['country'],
         )
 
+        
     else:
         print('User is not logged in')
 
