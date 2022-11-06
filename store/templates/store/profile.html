@@ -15,26 +15,29 @@
                 <div class="box-element">
                     <h3 class="fs-5">Order History</h3>
                     <hr>
-                    {% for order in orders %}
+
                     <table class="table">
                         <thead>
-                          <tr>
-                            <th scope="col">Transaction ID</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Amount paid</th>
-                            <th scope="col">Items ordered</th>
-                          </tr>
+                            <tr>
+                                <th scope="col">Transaction ID</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Amount paid</th>
+                                <th scope="col">Items ordered</th>
+                            </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td scope="row"><a class="btn btn-primary" href="{% url 'view_order' order.transaction_id %}">{{ order.transaction_id }}</a></td>
-                            <td class="pt-3">{{ order.date_ordered }}</td>
-                            <td class="pt-3">{{ order.get_cart_total }}</td>
-                            <td class="pt-3">{{ order.get_cart_items }}</td>
-                          </tr>
+                            {% for order in orders %}
+                            <tr>
+                                <td scope="row"><a class="btn btn-primary"
+                                        href="{% url 'view_order' order.transaction_id %}">{{ order.transaction_id }}</a>
+                                </td>
+                                <td class="pt-3">{{ order.date_ordered }}</td>
+                                <td class="pt-3">{{ order.get_cart_total }}</td>
+                                <td class="pt-3">{{ order.get_cart_items }}</td>
+                            </tr>
+                            {% endfor %}
                         </tbody>
-                      </table>
-                    {% endfor %}
+                    </table>
                 </div>
             </div>
         </div>
