@@ -16,34 +16,24 @@
                     <h3 class="fs-5">Order History</h3>
                     <hr>
                     {% for order in orders %}
-                    <h5 class="fs-5"> Transaction ID: <a href="#">{{ order.transaction_id }}</a></h5>
-                    <h5 class="fs-5"> Date: {{ order.date_ordered }}</h5>
-                    <h5 class="fs-5"> Amount paid: ${{ order.get_cart_total }}</h5>
-                    <h5 class="fs-5"> Items ordered: {{ order.get_cart_items }}</h5>
-
-                    <div class="row cart-row">
-                        <div class="col-lg-2 col-md-2"></div>
-                        <div class="col-lg-4 col-md-2"><strong>Item</strong></div>
-                        <div class="col-lg-2 col-md-2 text-center"><strong>Price</strong></div>
-                        <div class="col-lg-2 col-md-2 text-center"><strong>Quantity</strong></div>
-                        <div class="col-lg-2 col-md-2 text-center"><strong>Total</strong></div>
-                    </div>
-                    <div class="row cart-row">
-                        <div class="col-lg-2 col-md-2 text-center"><img class="row-image"
-                                src="{{ item.product.imageURL }}"></div>
-                        <div class="col-lg-4 col-md-2">
-                            <p class="pt-3"> {{ order.product }}</p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 text-center">
-                            <p class="pt-3">${{ product.price }}</p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 text-center">
-                            <p class="quantity">{{ quantity }}</p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 text-center">
-                            <p class="pt-3">${{item.get_total|floatformat:2}}</p>
-                        </div>
-                    </div>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Transaction ID</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Amount paid</th>
+                            <th scope="col">Items ordered</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td scope="row"><a class="btn btn-primary" href="{% url 'view_order' order.transaction_id %}">{{ order.transaction_id }}</a></td>
+                            <td class="pt-3">{{ order.date_ordered }}</td>
+                            <td class="pt-3">{{ order.get_cart_total }}</td>
+                            <td class="pt-3">{{ order.get_cart_items }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     {% endfor %}
                 </div>
             </div>

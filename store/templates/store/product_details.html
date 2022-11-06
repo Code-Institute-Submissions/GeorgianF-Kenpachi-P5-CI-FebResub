@@ -98,21 +98,21 @@
             </div>
           </div>
           <!-- accordion -->
-        </form>
-          <hr>
-          <a class="btn btn-secondary" href="{% url 'store' %}">to store</a>
-          {% if product.stock == 0 %}
-            <h6 class="text-danger float-end mt-2">out of stock</h6>
-          {% else %}
-          <button data-product="{{product.id}}" data-action="add" class="btn btn-primary add-btn update-cart">
-            Add to Cart
-          </button>
-          {% endif %}
-        </div>
-      </div>
-    
-    <!-- image and buttons -->
+    </form>
+    <hr>
+    <a class="btn btn-secondary" href="{% url 'store' %}">to store</a>
+    {% if product.stock == 0 %}
+    <h6 class="text-danger float-end mt-2">out of stock</h6>
+    {% else %}
+    <button data-product="{{product.id}}" data-action="add" class="btn btn-primary add-btn update-cart">
+      Add to Cart
+    </button>
+    {% endif %}
   </div>
+</div>
+
+<!-- image and buttons -->
+</div>
 </div>
 </div>
 

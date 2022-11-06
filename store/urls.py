@@ -5,11 +5,16 @@ from . import views
 
 urlpatterns = [
     path('', views.store, name='store'),
-    path('category/<slug:category_slug>/', views.store, name='products_by_category'),
+    path(
+        'category/<slug:category_slug>/',
+        views.store,
+        name='products_by_category'
+        ),
     path('<int:product_id>/', views.product_details, name='product_details'),
     path('add/<product_id>/', views.add_to_bag, name='add_to_bag'),
     path('item_update/', views.item_update, name="item_update"),
     path('profile/', views.profile, name="profile"),
+    path('profile/<str:transaction_id>', views.view_order, name="view_order"),
     path(
         'reset_password',
         auth_views.PasswordResetView.as_view(

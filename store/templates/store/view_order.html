@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'includes/store-nav.html' %}
+
+<div class="container-fluid background-container sign-up-container">
+    <div class="container">
+        <br>
+        <div class="col-12">
+            <h1 class="fs-3">Hey there {{ user }} </h1>
+        </div>
+        
+        <div class="box-element">
+            <div class="box-element">
+                <h3 class="fs-5 text-center">Order Details </h3>
+                <p>transaction ID: {{ order.transaction_id }}</p>
+                <p>date ordered: {{ order.date_ordered }}</p>
+                {{ order.address }}
+                <hr>
+                <div>
+                    
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Product Image</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Product Price</th>
+                            <th scope="col">Quantity</th>
+                          </tr>
+                        </thead>
+                        {% for item in order_items %}
+                            <tbody>
+                            <tr>
+                                <td scope="row"><img class="row-image" src="{{ item.product.imageURL }}"></td>
+                                <td scope="row" class="pt-4">{{ item.product.name }}</td>
+                                <td scope="row" class="pt-4">{{ item.product.price }}</td>
+                                <td scope="row" class="pt-4">{{ item.quantity }}</td>
+                            </tr>
+                            </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+                <a class="btn btn-primary" href="{% url 'profile' %}">Back to profile</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% include 'includes/footer.html'%}
+{% endblock %}

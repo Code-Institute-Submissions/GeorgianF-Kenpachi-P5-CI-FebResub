@@ -137,13 +137,28 @@ def item_update(request):
 @login_required
 def profile(request):
     profile = get_object_or_404(Customer, user=request.user)
-    print(profile)
     orders = Order.objects.filter(customer=profile, complete=True)
     print(orders)
 
+
     context = {
         'orders': orders,
-        'profile': profile
+        'profile': profile,
     }
 
     return render(request, 'store/profile.html', context)
+
+
+@login_required
+def view_order(request, transaction_id):
+    order = Order.objects.filter(transaction_id=transaction_id)[0]
+    print(order)
+    order_items = OrderItem.objects.filter(order=order)
+    print(order_items)
+
+    context = {
+        'order': order,
+        'order_items': order_items
+    }
+
+    return render(request, 'store/view_order.html', context)
