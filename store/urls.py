@@ -15,6 +15,7 @@ urlpatterns = [
     path('item_update/', views.item_update, name="item_update"),
     path('profile/', views.profile, name="profile"),
     path('profile/<str:transaction_id>', views.view_order, name="view_order"),
+    path('add_product', views.add_product, name='add_product'),
     path(
         'reset_password',
         auth_views.PasswordResetView.as_view(

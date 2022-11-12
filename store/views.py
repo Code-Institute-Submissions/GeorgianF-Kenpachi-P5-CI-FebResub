@@ -1,11 +1,12 @@
 import json
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.contrib import messages
 from checkout.models import Order, OrderItem, Customer, ShippingAddress
 from .models import Product, Category
+from .forms import ProductForm
 
 
 def store(request, category_slug=None):
@@ -140,7 +141,6 @@ def profile(request):
     orders = Order.objects.filter(customer=profile, complete=True)
     print(orders)
 
-
     context = {
         'orders': orders,
         'profile': profile,
@@ -164,3 +164,35 @@ def view_order(request, transaction_id):
     }
 
     return render(request, 'store/view_order.html', context)
+
+
+@login_required
+def add_product(request):
+    """
+    Add a product to the store
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    if request.method == 'POST':
+        add_form = ProductForm(request.POST)
+        print(add_form)
+        if add_form.is_valid():
+            product = add_form.save()
+            messages.success(request, 'Successfully added product!')
+            return redirect('profile')
+        else:
+            messages.error(
+                request,
+                'Failed to add product. Please ensure the form is valid.'
+                )
+    else:
+        add_form = ProductForm()
+
+    template = 'store/add_product.html'
+    context = {
+        'add_form': add_form,
+    }
+
+    return render(request, template, context)

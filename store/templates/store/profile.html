@@ -10,6 +10,19 @@
         <div class="col-12">
             <h1 class="fs-3">Hey there {{ user }} </h1>
         </div>
+        {% if request.user.is_superuser %}
+            
+            <div class="row">
+                <div class="box-element">
+                    <div class="box-element">
+                        <hr>
+                        <h2 class="logo-font mb-4">Product Management</h2>
+                        <hr>
+                        <a class="btn btn-primary" href="{% url 'add_product' %}">add product</a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
         <div class="row">
             <div class="box-element">
                 <div class="box-element">
@@ -41,6 +54,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
     </div>
 </div>
 
