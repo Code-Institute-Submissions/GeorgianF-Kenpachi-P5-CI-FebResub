@@ -176,11 +176,11 @@ def add_product(request):
         return redirect(reverse('home'))
 
     if request.method == 'POST':
-        add_form = ProductForm(request.POST)
+        add_form = ProductForm(request.POST, request.FILES)
         print(add_form)
         if add_form.is_valid():
             product = add_form.save()
-            messages.success(request, 'Successfully added product!')
+            messages.success(request, 'Successfully added the product to the store!')
             return redirect('profile')
         else:
             messages.error(

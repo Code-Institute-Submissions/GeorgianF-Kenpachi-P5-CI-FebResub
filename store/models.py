@@ -85,7 +85,7 @@ class Product(models.Model):
     description = models.TextField(blank=True)
     stock = models.IntegerField(blank=False, null=True)
     is_available = models.BooleanField(default=True)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(upload_to="media/", null=True, blank=True)
 
     def __str__(self):
         return str(self.name)
