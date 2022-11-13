@@ -36,14 +36,18 @@
                             <hr>
                             {% if product.stock == 0 %}
                             <button class="btn btn-secondary disabled" data-product="{{product.id}}" data-action="add"
-                            class="btn btn-primary add-btn update-cart">Add to Cart
+                            class="btn btn-primary add-btn update-cart"><i class="fa fa-cart-plus"></i>
                             </button>
                             {% else %}
                             <button data-product="{{product.id}}" data-action="add"
-                                class="btn btn-primary add-btn update-cart">Add to Cart
+                                class="btn btn-primary add-btn update-cart"><i class="fa fa-cart-plus"></i>
                             </button>
                             {% endif %}
-                            <a class="btn btn-secondary" href="{% url 'product_details' product.id %}">View</a>
+                            <a class="btn btn-secondary" href="{% url 'product_details' product.id %}"><i class="fa fa-magnifying-glass"></i></a>
+                            {% if request.user.is_superuser %}
+                                <a class="btn btn-secondary" href="#"><i class="fa fa-pencil"></i></a>
+                                <a class="btn btn-secondary" href="#"><i class="fa fa-trash"></i></a>
+                            {% endif %}
                             <span class="float-end">
                                 <h4 id="product-price"><strong>${{ product.price | floatformat:2 }}</strong></h4>
                             </span>

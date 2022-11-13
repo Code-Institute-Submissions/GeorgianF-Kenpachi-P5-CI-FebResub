@@ -140,8 +140,18 @@ def profile(request):
     profile = get_object_or_404(Customer, user=request.user)
     orders = Order.objects.filter(customer=profile, complete=True)
     print(orders)
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(
+            customer=customer,
+            complete=False
+            )
+        items = order.orderitem_set.all()
+        cart_items = order.get_cart_items
 
     context = {
+        'items': items,
+        'cart_items': cart_items,
         'orders': orders,
         'profile': profile,
     }
@@ -190,9 +200,19 @@ def add_product(request):
     else:
         add_form = ProductForm()
 
-    template = 'store/add_product.html'
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(
+            customer=customer,
+            complete=False
+            )
+        items = order.orderitem_set.all()
+        cart_items = order.get_cart_items
+
     context = {
         'add_form': add_form,
+        'items': items,
+        'cart_items': cart_items,
     }
 
-    return render(request, template, context)
+    return render(request, 'store/add_product.html', context)
