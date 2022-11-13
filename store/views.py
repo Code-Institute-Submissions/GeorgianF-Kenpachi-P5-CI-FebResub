@@ -190,7 +190,10 @@ def add_product(request):
         print(add_form)
         if add_form.is_valid():
             product = add_form.save()
-            messages.success(request, 'Successfully added the product to the store!')
+            messages.success(
+                request, 
+                'Successfully added the product to the store!'
+                )
             return redirect('profile')
         else:
             messages.error(
@@ -216,3 +219,36 @@ def add_product(request):
     }
 
     return render(request, 'store/add_product.html', context)
+
+
+@login_required
+def edit_product(request, product_id):
+    """
+    Edit a product in the store
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect('home')
+
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        edit_form = ProductForm(request.POST, request.FILES, instance=product)
+        if edit_form.is_valid():
+            edit_form.save()
+            messages.success(request, 'Successfully updated product!')
+            return redirect(reverse('store'))
+        else:
+            messages.error(
+                request,
+                'Failed to update product. Please ensure the form is valid.'
+                )
+    else:
+        edit_form = ProductForm(instance=product)
+        messages.info(request, f'You are editing {product.name}')
+
+    context = {
+        'edit_form': edit_form,
+        'product': product,
+    }
+
+    return render(request, 'store/edit_product.html', context)
