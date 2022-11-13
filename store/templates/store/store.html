@@ -46,7 +46,7 @@
                             <a class="btn btn-secondary" href="{% url 'product_details' product.id %}"><i class="fa fa-magnifying-glass"></i></a>
                             {% if request.user.is_superuser %}
                                 <a class="btn btn-secondary" href="{% url 'edit_product' product.id %}"><i class="fa fa-pencil"></i></a>
-                                <a class="btn btn-secondary" href="#"><i class="fa fa-trash"></i></a>
+                                <a class="btn btn-secondary" href="{% url 'delete_product' product.id %}"><i class="fa fa-trash"></i></a>
                             {% endif %}
                             <span class="float-end">
                                 <h4 id="product-price"><strong>${{ product.price | floatformat:2 }}</strong></h4>
