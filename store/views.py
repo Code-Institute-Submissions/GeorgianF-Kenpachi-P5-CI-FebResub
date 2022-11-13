@@ -244,7 +244,7 @@ def edit_product(request, product_id):
                 )
     else:
         edit_form = ProductForm(instance=product)
-        messages.info(request, f'You are editing {product.name}')
+        messages.warning(request, f'You are editing {product.name}')
 
     context = {
         'edit_form': edit_form,
