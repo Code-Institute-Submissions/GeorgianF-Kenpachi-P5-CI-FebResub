@@ -659,6 +659,14 @@ textarea.form-control {
 
 /* END OF SIGNUP PAGE */
 
+/* MODAL CSS */
+
+.modal-header {
+    background-color: var(--text-backgroung-color);
+}
+
+/* END OF MODAL CSS */
+
 /* MEDIA QUERIES */
 
 @media screen and (min-width: 767px) {

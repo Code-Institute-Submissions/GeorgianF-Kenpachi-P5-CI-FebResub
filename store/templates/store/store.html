@@ -46,7 +46,28 @@
                             <a class="btn btn-secondary" href="{% url 'product_details' product.id %}"><i class="fa fa-magnifying-glass"></i></a>
                             {% if request.user.is_superuser %}
                                 <a class="btn btn-secondary" href="{% url 'edit_product' product.id %}"><i class="fa fa-pencil"></i></a>
-                                <a class="btn btn-secondary" href="{% url 'delete_product' product.id %}"><i class="fa fa-trash"></i></a>
+                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa fa-trash"></i></button>
+
+                                <!-- Modal for the delete event -->
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="staticBackdropLabel">confirm the action</h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>are you sure that you want to <span class="text-danger">delete</span> the product?</p>
+                                            <p>the action <span class="text-danger text-decoration-underline">can't</span> be reversed</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                          <a class="btn btn-secondary" href="{% url 'delete_product' product.id %}">Understood</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                <!-- Modal for the delete event -->
                             {% endif %}
                             <span class="float-end">
                                 <h4 id="product-price"><strong>${{ product.price | floatformat:2 }}</strong></h4>
