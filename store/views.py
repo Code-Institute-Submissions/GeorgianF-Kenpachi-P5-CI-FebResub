@@ -5,6 +5,7 @@ from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.contrib import messages
 from checkout.models import Order, OrderItem, Customer, ShippingAddress
+from home.models import ContactForm
 from .models import Product, Category
 from .forms import ProductForm
 
@@ -149,11 +150,15 @@ def profile(request):
         items = order.orderitem_set.all()
         cart_items = order.get_cart_items
 
+    contact_messages = ContactForm.objects.all()
+    print(contact_messages)
+
     context = {
         'items': items,
         'cart_items': cart_items,
         'orders': orders,
         'profile': profile,
+        'contact_messages': contact_messages,
     }
 
     return render(request, 'store/profile.html', context)
