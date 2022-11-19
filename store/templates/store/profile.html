@@ -49,8 +49,8 @@
                                     <th scope="row">{{ forloop.counter }}</th>
                                     <td>{{ message.contact_name }}</td>
                                     <td>{{ message.contact_email }}</td>
-                                    <td>@{{ message.created_at }}</td>
-                                    <td>Pending</td>
+                                    <td>@{{ message.sent_date }}</td>
+                                    <td>{{ message.email_status }}</td>
                                     <td>
                                         <i class="fa fa-magnifying-glass"></i>
                                         <i class="fa fa-trash"></i>

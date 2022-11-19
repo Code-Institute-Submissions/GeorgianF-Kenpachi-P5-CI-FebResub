@@ -22,7 +22,7 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">Let us know what's on your mind</h5>
                     <hr>
-                    <form class="card-text" action="/contact/" method="POST">
+                    <form class="card-text" action="{% url 'contact' %}" method="POST">
                         {% csrf_token %}
                         <div class="row">
                             <div class="col-6">

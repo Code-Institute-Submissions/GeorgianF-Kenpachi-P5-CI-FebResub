@@ -1,5 +1,17 @@
 from django.contrib import admin
-from .models import Customer, Category, Product
+from .models import Customer, Category, Product, Contact_us
+
+
+class ContactUsAdmin(admin.ModelAdmin):
+    list_display = (
+        'contact_name',
+        'contact_email',
+        'contact_details',
+        'sent_date',
+        'email_status',
+        )
+    search_fields = ['contact_email', 'email_status']
+    ordering = ('sent_date',)
 
 
 class CustomerAdmin(admin.ModelAdmin):
@@ -47,3 +59,4 @@ class ProductAdmin(admin.ModelAdmin):
 admin.site.register(Customer, CustomerAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
+admin.site.register(Contact_us, ContactUsAdmin)

@@ -5,6 +5,36 @@ from django.dispatch import receiver
 from django.urls import reverse
 
 
+class Contact_us(models.Model):
+    """
+    Contact form model
+    """
+    NEW_EMAIL = "NEW"
+    PENDING_EMAIL = "PENDING"
+    DONE_EMAIL = "DONE"
+    STATUS = [
+        (NEW_EMAIL, 'NEW'),
+        (PENDING_EMAIL, 'PENDING'),
+        (DONE_EMAIL, 'DONE'),
+    ]
+
+    class Meta:
+        verbose_name_plural = 'Contact Us Forms'
+
+    contact_name = models.CharField(max_length=50)
+    contact_email = models.EmailField(max_length=50)
+    contact_details = models.CharField(max_length=5000)
+    sent_date = models.DateTimeField(auto_now_add=True)
+    email_status = models.CharField(
+        max_length=10,
+        choices=STATUS,
+        default=NEW_EMAIL,
+        )
+
+    def __str__(self):
+        return str(self.contact_name)
+
+
 class Customer(models.Model):
     user = models.OneToOneField(
         User,

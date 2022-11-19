@@ -1,13 +1,14 @@
 import json
+from datetime import datetime
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.contrib import messages
 from checkout.models import Order, OrderItem, Customer, ShippingAddress
-from home.models import ContactForm
+from .models import Contact_us
 from .models import Product, Category
-from .forms import ProductForm
+from .forms import ProductForm, GetInTouch
 
 
 def store(request, category_slug=None):
@@ -52,6 +53,32 @@ def store(request, category_slug=None):
         }
 
     return render(request, 'store/store.html', context)
+
+
+def contact(request):
+    """
+    A view to return the contact page
+    """
+    if request.method == 'POST':
+        form = GetInTouch(request.POST)
+        print(form.data)
+        if form.is_valid():
+            print(form.cleaned_data)
+            form.save()
+            form = GetInTouch()
+            messages.success(
+                request,
+                'Message away!')
+    else:
+        messages.error(
+            request,
+            "There was an error with your request!"
+            )
+        form = GetInTouch()
+
+    context = {'form': form}
+
+    return render(request, 'store/contact.html', context)
 
 
 def product_details(request, product_id):
@@ -150,7 +177,7 @@ def profile(request):
         items = order.orderitem_set.all()
         cart_items = order.get_cart_items
 
-    contact_messages = ContactForm.objects.all()
+    contact_messages = Contact_us.objects.all()
     print(contact_messages)
 
     context = {

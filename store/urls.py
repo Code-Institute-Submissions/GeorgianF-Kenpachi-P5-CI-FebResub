@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns = [
     path('', views.store, name='store'),
+    path('contact/', views.contact, name='contact'),
     path(
         'category/<slug:category_slug>/',
         views.store,

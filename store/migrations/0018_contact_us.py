@@ -5,20 +5,20 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    initial = True
-
     dependencies = [
+        ('store', '0017_alter_product_image'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ContactForm',
+            name='Contact_us',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('contact_name', models.CharField(max_length=50)),
                 ('contact_email', models.EmailField(max_length=50)),
                 ('contact_details', models.CharField(max_length=5000)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('sent_date', models.DateTimeField(auto_now_add=True)),
+                ('email_status', models.CharField(choices=[('NEW', 'NEW'), ('PENDING', 'PENDING'), ('DONE', 'DONE')], default='NEW', max_length=10)),
             ],
         ),
     ]
