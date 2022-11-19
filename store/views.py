@@ -1,5 +1,4 @@
 import json
-from datetime import datetime
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
@@ -221,9 +220,9 @@ def add_product(request):
         add_form = ProductForm(request.POST, request.FILES)
         print(add_form)
         if add_form.is_valid():
-            product = add_form.save()
+            add_form.save()
             messages.success(
-                request, 
+                request,
                 'Successfully added the product to the store!'
                 )
             return redirect('profile')
@@ -278,7 +277,18 @@ def edit_product(request, product_id):
         edit_form = ProductForm(instance=product)
         messages.warning(request, f'You are editing {product.name}')
 
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(
+            customer=customer,
+            complete=False
+            )
+        items = order.orderitem_set.all()
+        cart_items = order.get_cart_items
+
     context = {
+        'items': items,
+        'cart_items': cart_items,
         'edit_form': edit_form,
         'product': product,
     }

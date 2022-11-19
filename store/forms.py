@@ -54,7 +54,6 @@ class ProductForm(forms.ModelForm):
             'weight',
             'description',
             'stock',
-            'is_available',
             'image',
         )
 
