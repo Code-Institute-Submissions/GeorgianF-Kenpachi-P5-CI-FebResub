@@ -58,6 +58,7 @@ def contact(request):
     """
     A view to return the contact page
     """
+    form = GetInTouch()
     if request.method == 'POST':
         form = GetInTouch(request.POST)
         print(form.data)
@@ -68,12 +69,12 @@ def contact(request):
             messages.success(
                 request,
                 'Message away!')
-    else:
-        messages.error(
-            request,
-            "There was an error with your request!"
-            )
-        form = GetInTouch()
+        else:
+            messages.error(
+                request,
+                "There was an error with your request!"
+                )
+            form = GetInTouch()
 
     context = {'form': form}
 
