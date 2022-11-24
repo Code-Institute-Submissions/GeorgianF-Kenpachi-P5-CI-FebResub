@@ -52,11 +52,39 @@
                                     <td>@{{ message.sent_date }}</td>
                                     <td>{{ message.email_status }}</td>
                                     <td>
-                                        <i class="fa fa-magnifying-glass"></i>
-                                        <i class="fa fa-trash"></i>
+                                        <a class="text-black" href="{% url 'view_message' message.id %}"><i class="fa fa-magnifying-glass"></i></a>
+                                        <a class="text-black" data-bs-toggle="modal" data-bs-target="#staticBackdrop-deleteMessage" href="#"><i class="fa fa-trash"></i></a>
                                     </td>
                                     </tr>
                                 </tbody>
+
+                                <!-- Modal for the add event -->
+                                <div class="modal fade" id="staticBackdrop-deleteMessage" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop-deleteMessageLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdrop-deleteMessageLabel">confirm the action
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>are you sure that you want to <span class="text-danger">delete</span>
+                                                    the message?</p>
+                                                <p>the action <span
+                                                        class="text-danger text-decoration-underline">can't</span> be
+                                                    reversed</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <a class="btn btn-secondary" href="{% url 'delete_message' message.id %}">Understood</i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal for the add event -->
                             {% endfor %}
                           </table>
                     </div>

@@ -81,6 +81,44 @@ def contact(request):
     return render(request, 'store/contact.html', context)
 
 
+@login_required
+def view_message(request, message_id):
+    """
+    A view to display the messages to the admin
+    """
+    message = get_object_or_404(Contact_us, id=message_id)
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(
+            customer=customer,
+            complete=False
+            )
+        items = order.orderitem_set.all()
+        cart_items = order.get_cart_items
+
+    context = {
+        'items': items,
+        'cart_items': cart_items,
+        'message': message
+    }
+    return render(request, 'store/view_message.html', context)
+
+
+@login_required
+def delete_message(request, message_id):
+    """
+    Delete a message from the admin profile
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect('profile')
+
+    message = get_object_or_404(Contact_us, id=message_id)
+    message.delete()
+    messages.success(request, 'Congrats, message deleted!')
+    return redirect(reverse('profile'))
+
+
 def product_details(request, product_id):
     """ A view to show individual product details """
 

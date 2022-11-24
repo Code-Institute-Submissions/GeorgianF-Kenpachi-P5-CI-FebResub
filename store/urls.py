@@ -7,6 +7,16 @@ urlpatterns = [
     path('', views.store, name='store'),
     path('contact/', views.contact, name='contact'),
     path(
+        'contact/view_message/<message_id>',
+        views.view_message,
+        name='view_message'
+        ),
+    path(
+        'contact/delete/<int:message_id>',
+        views.delete_message,
+        name='delete_message'
+        ),
+    path(
         'category/<slug:category_slug>/',
         views.store,
         name='products_by_category'

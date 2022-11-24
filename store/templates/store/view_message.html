@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'includes/store-nav.html' %}
+
+<div class="container-fluid background-container sign-up-container">
+    <div class="container">
+        <hr>
+        <h2 class="logo-font mb-3">Message from: 
+            <span class="float-end text-danger">{{ message.contact_name }}</span>
+        </h2>
+        <hr>
+        <a class="btn btn-primary" href="{% url 'profile' %}">go back</a>
+        <div class="row pt-5">
+            <div class="box-element">
+                <div class="box-element">
+                    <div class="row pt-5 pb-5">
+                        <div class="offset-3 col-6">
+                            <p>Email address: <span class="float-end text-danger">{{ message.contact_email }}</span></p>
+                            <p>Sent On: <span class="float-end text-danger">{{ message.sent_date }}</span></p>
+                            <p>Status: <span class="float-end text-danger">{{ message.email_status }}</span></p>
+                            <h6 class="pb-2">Message content:</h6>
+
+                            <div class="card w-100 pt-2">
+                                <div class="card-body">
+                                    {{ message.contact_details }}
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% include 'includes/footer.html'%}
+
+{% endblock %}
