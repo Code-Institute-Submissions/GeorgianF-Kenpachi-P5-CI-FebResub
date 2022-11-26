@@ -58,7 +58,6 @@ def process_order(request):
             country=data['shipping']['country'],
         )
 
-        
     else:
         print('User is not logged in')
 

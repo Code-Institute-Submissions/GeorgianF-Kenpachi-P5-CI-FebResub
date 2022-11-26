@@ -6,7 +6,6 @@ from store.models import Product
 
 
 def cart(request):
-
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(
@@ -16,11 +15,11 @@ def cart(request):
         items = order.orderitem_set.all()
         cart_items = order.get_cart_items
     else:
-        print(request.COOKIES)
         # for user that are not authenticated
         try:
             # load the cookies
             bag = json.loads(request.COOKIES['cart'])
+            print(bag)
         except KeyError:
             bag = {}
             print(bag)

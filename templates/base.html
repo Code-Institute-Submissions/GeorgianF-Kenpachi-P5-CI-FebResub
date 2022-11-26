@@ -16,6 +16,7 @@
     {% block corecss %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="shortcut icon" href="#">
     {% endblock %}
 
     {% block extra_css %}
@@ -63,33 +64,27 @@
 
         // Loop through the array elements
         for(var i = 0; i < cookieArr.length; i++) {
-        var cookiePair = cookieArr[i].split("=");
+          var cookiePair = cookieArr[i].split("=");
 
         /* Removing whitespace at the beginning of the cookie name and compare it with the given string */
-        if(name == cookiePair[0].trim()) {
+          if(name == cookiePair[0].trim()) {
           // Decode the cookie value and return
-          return decodeURIComponent(cookiePair[1]);
+            return decodeURIComponent(cookiePair[1]);
+          }
         }
-    }
+        // Return null if not found
+        return null;
+      }
 
-    // Return null if not found
-    return null;
-    }
-
-    var cart = JSON.parse(getCookie('cart'))
-    const d = new Date();
+    var cart = JSON.parse(getCookie('cart')); // this is a json object, so we need to parse it
+    console.log(cart)
     
-    if (cart == undefined){
-	    cart = {}
-	    console.log('Cart Created!', cart)
-      d.setTime(d.getTime() + (5*24*60*60*1000));
-      let expires = d.toUTCString();
-      
-	    document.cookie ='cart=' + JSON.stringify(cart) + "; expires=${expires}; domain=; path=/"
+    if (cart == undefined) {
+        cart = {};
+        document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/;SameSite=Strict;Secure;";
     }
-    console.log('Cart:', cart)
-
-      // https://www.autoscripts.net/get-cookie-value-in-javascript/
+ 
+    // https://www.autoscripts.net/get-cookie-value-in-javascript/
       
     </script>
 

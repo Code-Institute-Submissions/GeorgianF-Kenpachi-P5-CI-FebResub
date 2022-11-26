@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.http import JsonResponse
+from django.views.decorators.cache import never_cache
 from django.contrib import messages
 from checkout.models import Order, OrderItem, Customer, ShippingAddress
 from .models import Contact_us
@@ -10,6 +11,7 @@ from .models import Product, Category
 from .forms import ProductForm, GetInTouch
 
 
+@never_cache
 def store(request, category_slug=None):
     categories = None
     products = None
@@ -34,10 +36,20 @@ def store(request, category_slug=None):
         items = order.orderitem_set.all()
         cart_items = order.get_cart_items
     else:
-        # Create empty cart for now for non-logged in user
+        # for user that are not authenticated
+        try:
+            # load the cookies
+            bag = json.loads(request.COOKIES['cart'])
+        except KeyError:
+            bag = {}
+            print(bag)
+
+        # define the empty cart
         items = []
-        print(items)
-        order = {'get_cart_total': 0, 'get_cart_items': 0}
+        order = {
+            'get_cart_total': 0,
+            'get_cart_items': 0,
+            }
         cart_items = order['get_cart_items']
 
     # Set up pagination
@@ -46,6 +58,7 @@ def store(request, category_slug=None):
     store_items = paginator.get_page(page)
 
     context = {
+        'items': items,
         'products': store_items,
         'products_count': products_count,
         'cart_items': cart_items,
