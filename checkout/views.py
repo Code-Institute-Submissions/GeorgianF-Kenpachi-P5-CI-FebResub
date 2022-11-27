@@ -1,9 +1,21 @@
 import json
 import datetime
+from django.conf import settings
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from .models import Order, ShippingAddress
 import stripe
+
+
+@csrf_exempt
+def stripe_config(request):
+    if request.method == 'GET':
+        stripe_config = {
+            'publicKey': settings.STRIPE_PUBLIC_KEY
+            }
+        print(stripe_config)
+        return JsonResponse(stripe_config, safe=False)
 
 
 def checkout(request):
