@@ -4,7 +4,7 @@ console.log(document.cookie)
 for (i = 0; i < updateBtns.length; i++) {
 	updateBtns[i].addEventListener('click', function(){
 		var productId = this.dataset.product;
-		var action = this.dataset.action;	
+		var action = this.dataset.action;
 
 		if (user == 'AnonymousUser'){
 			updateCartAnonymusUser(productId, action);

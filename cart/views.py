@@ -18,7 +18,7 @@ def cart(request):
         # for user that are not authenticated
         try:
             # load the cookies
-            bag = json.loads(request.COOKIES['cart'])
+            bag = json.dumps(request.COOKIES['cart'])
             print(bag)
         except KeyError:
             bag = {}

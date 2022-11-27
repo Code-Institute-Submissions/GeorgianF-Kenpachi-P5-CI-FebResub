@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
 {% block content %}
     {% include 'includes/store-nav.html' %}
 
@@ -9,7 +13,8 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="box-element" id="form-wrapper">
-                        <form id="form">
+                        <form id="form" >
+                            {% csrf_token %}
                             <div id="user-info">
                                 <p class="ps-2">personal details</p>
                                 <div class="form-field">
@@ -300,6 +305,7 @@
                     <br>
                     <div class="box-element pb-5" id="payment-info">
                         <input type="text" class="ms-2 btn btn-primary" id="payment-btn" value="Finish order"></input>
+                        <button type="submit">Checkout</button>
                         <img id="stripe-logo" class="float-end" src="{{ MEDIA_URL}}stripe.png" alt="stripe-image">
                     </div>
                 </form>
