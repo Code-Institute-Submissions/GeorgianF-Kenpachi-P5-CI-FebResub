@@ -37,12 +37,13 @@ def store(request, category_slug=None):
         cart_items = order.get_cart_items
     else:
         # for user that are not authenticated
+        print(request.COOKIES)
         try:
             # load the cookies
             bag = json.loads(request.COOKIES['cart'])
         except KeyError:
             bag = {}
-            print(bag)
+            print(bag, 'is empty')
 
         # define the empty cart
         items = []
@@ -159,13 +160,6 @@ def product_details(request, product_id):
     }
 
     return render(request, 'store/product_details.html', context)
-
-
-def _cart_id(request):
-    cart = request.session.session_key
-    if not cart:
-        cart = request.session.create()
-    return cart
 
 
 def add_to_bag(request, product_id):
