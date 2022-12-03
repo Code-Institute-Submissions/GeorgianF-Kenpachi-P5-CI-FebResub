@@ -667,6 +667,15 @@ textarea.form-control {
 
 /* END OF MODAL CSS */
 
+/* CHECKOUT REDIRECT PAGE */
+
+#success-container,
+#cancelled-container {
+    font-family: 'Bangers', sans-serif;
+}
+
+/* END SUCCESS CHECKOUT PAGE */
+
 /* MEDIA QUERIES */
 
 @media screen and (min-width: 767px) {

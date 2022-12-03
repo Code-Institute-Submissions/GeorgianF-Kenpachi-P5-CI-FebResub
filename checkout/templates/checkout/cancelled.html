@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+
+{% endblock %}
+
+{% block content %}
+    {% include 'includes/store-nav.html' %}
+
+    <div class="container-fluid mt-5 mb-5 pt-5 pb-5" id="cancelled-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 offset-3">
+                    <div class="box-element">
+                        <div class="box-element">
+                            <p class="fs-5 text-center">Your payment was not processed!</p>
+                            <img class="w-100" src="{{MEDIA_URL}}office.gif" alt="the-office-failed">
+                            <a class="mt-4 mb-4 btn btn-primary" href="{% url 'store' %}">Go to Store</a>
+                            <!-- <a class="mt-4 mb-4 btn btn-primary" href="{% url 'profile' %}">View Order</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% include 'includes/footer.html'%}
+{% endblock content%}

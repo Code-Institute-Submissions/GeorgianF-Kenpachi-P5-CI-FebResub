@@ -7,4 +7,6 @@ urlpatterns = [
     path('process_order/', views.process_order, name='process_order'),
     path('config/', views.stripe_config),
     path('create-checkout-session/', views.create_checkout_session),
+    path('success/', views.success),
+    path('cancelled/', views.cancelled),
 ]

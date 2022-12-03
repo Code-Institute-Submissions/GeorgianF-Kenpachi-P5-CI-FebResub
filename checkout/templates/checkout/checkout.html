@@ -5,10 +5,6 @@
 
 {% endblock %}
 
-{% block extra_js %}
-<script src="{% static '/js/checkout.js' %}"></script>
-{% endblock %}
-
 {% block content %}
     {% include 'includes/store-nav.html' %}
 
@@ -380,14 +376,9 @@
         shippingDetails.zipcode = form.zipcode.value
         shippingDetails.country = form.country.value
 
-        if (user == 'AnonymousUser') {
-            userData.name = form.name.value
-            userData.email = form.email.value
-        } else {
-            userData.name = form.name.value
-            userData.email = form.email.value
-        }
 
+        userData.name = form.name.value
+        userData.email = form.email.value
 
         var url = "process_order/"
 

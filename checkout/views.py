@@ -4,8 +4,8 @@ from django.conf import settings
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Order, ShippingAddress
 import stripe
+from .models import Order, ShippingAddress
 
 
 @csrf_exempt
@@ -14,14 +14,13 @@ def stripe_config(request):
         stripe_config = {
             'publicKey': settings.STRIPE_PUBLIC_KEY
             }
-        print(stripe_config)
         return JsonResponse(stripe_config, safe=False)
 
 
 @csrf_exempt
 def create_checkout_session(request):
     if request.method == 'GET':
-        domain_url = 'https://georgianf-kenpachip5ci-l5z6xtwb420.ws-eu77.gitpod.io/' # need to change to production 
+        domain_url = 'https://8000-georgianf-kenpachip5ci-xy1eqdvnyps.ws-eu77.gitpod.io/checkout/'
         stripe.api_key = settings.STRIPE_SECRET_KEY
         try:
             # Create new Checkout Session for the order
@@ -43,13 +42,67 @@ def create_checkout_session(request):
                         'name': 'Katana',
                         'quantity': 1,
                         'currency': 'usd',
-                        'amount': '100',
+                        'amount': '1000',
                     }
                 ]
             )
             return JsonResponse({'sessionId': checkout_session['id']})
         except Exception as e:
-            return JsonResponse({'error': str(e)})
+            return JsonResponse({
+                'error': str(e)
+                })
+
+
+def success(request):
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(
+            customer=customer,
+            complete=False
+            )
+        items = order.orderitem_set.all()
+        cart_items = order.get_cart_items
+    else:
+        # Create empty cart for now for non-logged in user
+        items = []
+        order = {
+            'get_cart_total': 0,
+            'get_cart_items': 0
+            }
+        cart_items = order['get_cart_items']
+
+    context = {
+        'items': items,
+        'order': order,
+        'cart_items': cart_items,
+        }
+    return render(request, 'checkout/success.html', context)
+
+
+def cancelled(request):
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(
+            customer=customer,
+            complete=False
+            )
+        items = order.orderitem_set.all()
+        cart_items = order.get_cart_items
+    else:
+        # Create empty cart for now for non-logged in user
+        items = []
+        order = {
+            'get_cart_total': 0,
+            'get_cart_items': 0
+            }
+        cart_items = order['get_cart_items']
+
+    context = {
+        'items': items,
+        'order': order,
+        'cart_items': cart_items,
+        }
+    return render(request, 'checkout/cancelled.html', context)
 
 
 def checkout(request):

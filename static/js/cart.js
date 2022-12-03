@@ -1,5 +1,4 @@
 const updateBtns = document.getElementsByClassName('update-cart')
-console.log(document.cookie)
 
 for (i = 0; i < updateBtns.length; i++) {
 	updateBtns[i].addEventListener('click', function(){
