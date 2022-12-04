@@ -21,11 +21,12 @@ def stripe_config(request):
 @csrf_exempt
 def create_checkout_session(request):
     if request.method == 'GET':
-        domain_url = 'https://8000-georgianf-kenpachip5ci-xy1eqdvnyps.ws-eu77.gitpod.io/checkout/'
+        domain_url = 'https://8000-georgianf-kenpachip5ci-7443sf8vb74.ws-eu77.gitpod.io/checkout/'
         stripe.api_key = settings.STRIPE_SECRET_KEY
 
         try:
             checkout_session = stripe.checkout.Session.create(
+                shipping_address_collection={"allowed_countries": ["US", "CA"]},
                 client_reference_id=request.user.id if request.user.is_authenticated else None,
                 customer_email=request.user.email,
                 success_url=domain_url + 'success?session_id={CHECKOUT_SESSION_ID}',
