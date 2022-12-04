@@ -239,10 +239,8 @@ def profile(request):
 @login_required
 def view_order(request, transaction_id):
     order = Order.objects.filter(transaction_id=transaction_id)[0]
-    print(order)
     order_items = OrderItem.objects.filter(order=order)
     shipping_details = get_object_or_404(ShippingAddress, order=order)
-    print(shipping_details)
 
     context = {
         'order': order,

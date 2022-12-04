@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block extra_css %}
+{% block stripe %}
+    <script src="{% static '/js/checkout.js' %}"></script>
+    <script src="https://js.stripe.com/v3/"></script>
 
-{% endblock %}
+{% endblock%}
 
 {% block content %}
     {% include 'includes/store-nav.html' %}

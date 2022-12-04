@@ -2,8 +2,9 @@ import json
 import datetime
 from django.conf import settings
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+
 import stripe
 from .models import Order, ShippingAddress
 
@@ -22,17 +23,11 @@ def create_checkout_session(request):
     if request.method == 'GET':
         domain_url = 'https://8000-georgianf-kenpachip5ci-xy1eqdvnyps.ws-eu77.gitpod.io/checkout/'
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        try:
-            # Create new Checkout Session for the order
-            # Other optional params include:
-            # [billing_address_collection] - to display billing address details on the page
-            # [customer] - if you have an existing Stripe Customer ID
-            # [payment_intent_data] - capture the payment later
-            # [customer_email] - prefill the email input in the form
-            # For full details see https://stripe.com/docs/api/checkout/sessions/create
 
-            # ?session_id={CHECKOUT_SESSION_ID} means the redirect will have the session ID set as a query param
+        try:
             checkout_session = stripe.checkout.Session.create(
+                client_reference_id=request.user.id if request.user.is_authenticated else None,
+                customer_email=request.user.email,
                 success_url=domain_url + 'success?session_id={CHECKOUT_SESSION_ID}',
                 cancel_url=domain_url + 'cancelled/',
                 payment_method_types=['card'],
@@ -42,7 +37,7 @@ def create_checkout_session(request):
                         'name': 'Katana',
                         'quantity': 1,
                         'currency': 'usd',
-                        'amount': '1000',
+                        'amount': '10000',
                     }
                 ]
             )
@@ -51,6 +46,33 @@ def create_checkout_session(request):
             return JsonResponse({
                 'error': str(e)
                 })
+
+
+@csrf_exempt
+def stripe_webhook(request):
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    endpoint_secret = settings.STRIPE_ENDPOINT_SECRET
+    payload = request.body
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    event = None
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, endpoint_secret
+        )
+    except ValueError as e:
+        # Invalid payload
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError as e:
+        # Invalid signature
+        return HttpResponse(status=400)
+
+    # Handle the checkout.session.completed event
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+        print(session)
+
+    return HttpResponse(status=200)
 
 
 def success(request):
