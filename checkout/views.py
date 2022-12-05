@@ -21,12 +21,15 @@ def stripe_config(request):
 @csrf_exempt
 def create_checkout_session(request):
     if request.method == 'GET':
-        domain_url = 'https://8000-georgianf-kenpachip5ci-7443sf8vb74.ws-eu77.gitpod.io/checkout/'
+        domain_url = "https://8000-georgianf-kenpachip5ci-7443sf8vb74.ws-eu77.gitpod.io/checkout/"
         stripe.api_key = settings.STRIPE_SECRET_KEY
 
         try:
             checkout_session = stripe.checkout.Session.create(
-                shipping_address_collection={"allowed_countries": ["US", "CA"]},
+                shipping_address_collection={
+                    "allowed_countries":
+                        ["US", "CA", "NL"]
+                    },
                 client_reference_id=request.user.id if request.user.is_authenticated else None,
                 customer_email=request.user.email,
                 success_url=domain_url + 'success?session_id={CHECKOUT_SESSION_ID}',
@@ -59,19 +62,34 @@ def stripe_webhook(request):
 
     try:
         event = stripe.Webhook.construct_event(
-            payload, sig_header, endpoint_secret
+            payload,
+            sig_header,
+            endpoint_secret
         )
     except ValueError as e:
-        # Invalid payload
         return HttpResponse(status=400)
     except stripe.error.SignatureVerificationError as e:
-        # Invalid signature
         return HttpResponse(status=400)
 
-    # Handle the checkout.session.completed event
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
         print(session)
+        session = stripe.checkout.Session.retrieve(
+            event['data']['object']['id'],
+            expand=['line_items'],
+        )
+
+        line_items = session.line_items
+        # Fulfill the purchase...
+        fulfill_order(line_items)
+
+        # Passed signature verification
+        return HttpResponse(status=200)
+
+
+def fulfill_order(line_items):
+    # TODO: fill me in
+    print("Fulfilling order")
 
     return HttpResponse(status=200)
 
