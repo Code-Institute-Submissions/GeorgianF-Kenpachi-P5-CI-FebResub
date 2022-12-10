@@ -4,9 +4,11 @@ from django.conf import settings
 from django.shortcuts import render
 from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from store.models import Customer
+from .models import Order, ShippingAddress
 
 import stripe
-from .models import Order, ShippingAddress
+
 
 
 @csrf_exempt
@@ -20,8 +22,9 @@ def stripe_config(request):
 
 @csrf_exempt
 def create_checkout_session(request):
+    customer=request.user.customer
     if request.method == 'GET':
-        domain_url = "https://8000-georgianf-kenpachip5ci-7443sf8vb74.ws-eu77.gitpod.io/checkout/"
+        domain_url = 'http://localhost:8000/checkout/'
         stripe.api_key = settings.STRIPE_SECRET_KEY
 
         try:
@@ -73,25 +76,47 @@ def stripe_webhook(request):
 
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
-        print(session)
         session = stripe.checkout.Session.retrieve(
             event['data']['object']['id'],
             expand=['line_items'],
         )
 
         line_items = session.line_items
+        
         # Fulfill the purchase...
-        fulfill_order(line_items)
+        print('Processing Order...')
+        print(session)
+        transaction_id = datetime.datetime.now().timestamp()
+        total = session['amount_total']
+        customer_id =session['client_reference_id']
+        customer = Customer.objects.get(pk=customer_id)        
+        order, created = Order.objects.get_or_create(
+            customer=customer,
+            complete=True
+        )
+        items = order.orderitem_set.all()
+        cart_items = order.get_cart_items
+        order.transaction_id = transaction_id
+
+        # TODO: need to match the total from stripe with the total from cart
+        if total == order.get_cart_total:
+            order.complete = True
+        order.save()
+
+        ShippingAddress.objects.create(
+            customer=customer,
+            order=order,
+            address=session['shipping']['address']['line1'],
+            city=session['shipping']['address']['city'],
+            state=session['shipping']['address']['state'],
+            zipcode=session['shipping']['address']['postal_code'],
+            country=session['shipping']['address']['country'],
+        )
+
+        print('Order added!')
 
         # Passed signature verification
         return HttpResponse(status=200)
-
-
-def fulfill_order(line_items):
-    # TODO: fill me in
-    print("Fulfilling order")
-
-    return HttpResponse(status=200)
 
 
 def success(request):
