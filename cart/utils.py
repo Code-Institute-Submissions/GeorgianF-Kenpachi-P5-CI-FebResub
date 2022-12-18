@@ -36,7 +36,7 @@ def cookie_cart(request):
             'quantity': bag[i]['quantity'],
             'get_total': total,
         }
-        
+
         items.append(item)
 
     return {
