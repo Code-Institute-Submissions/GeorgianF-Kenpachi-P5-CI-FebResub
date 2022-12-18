@@ -4,11 +4,10 @@ from django.conf import settings
 from django.shortcuts import render
 from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from store.models import Customer
+from store.models import Customer, Product
 from .models import Order, ShippingAddress
 
 import stripe
-
 
 
 @csrf_exempt
@@ -22,7 +21,11 @@ def stripe_config(request):
 
 @csrf_exempt
 def create_checkout_session(request):
-    customer=request.user.customer
+    customer = request.user.customer
+    order, created = Order.objects.get_or_create(
+            customer=customer,
+            complete=False
+        )
     if request.method == 'GET':
         domain_url = 'http://localhost:8000/checkout/'
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -41,10 +44,10 @@ def create_checkout_session(request):
                 mode='payment',
                 line_items=[
                     {
-                        'name': 'Katana',
+                        'name': 'Kenpachi Katana Store',
                         'quantity': 1,
                         'currency': 'usd',
-                        'amount': '10000',
+                        'amount': int(order.get_cart_total*100),
                     }
                 ]
             )
@@ -81,27 +84,21 @@ def stripe_webhook(request):
             expand=['line_items'],
         )
 
-        line_items = session.line_items
-        
         # Fulfill the purchase...
-        print('Processing Order...')
-        print(session)
         transaction_id = datetime.datetime.now().timestamp()
         total = session['amount_total']
-        customer_id =session['client_reference_id']
-        customer = Customer.objects.get(pk=customer_id)        
+        customer_id = session['client_reference_id']
+        customer = Customer.objects.get(pk=customer_id)
         order, created = Order.objects.get_or_create(
             customer=customer,
-            complete=True
+            complete=False
         )
         items = order.orderitem_set.all()
         cart_items = order.get_cart_items
         order.transaction_id = transaction_id
 
-        # TODO: need to match the total from stripe with the total from cart
-        if total == order.get_cart_total:
+        if (total / 100) == int(order.get_cart_total):
             order.complete = True
-        order.save()
 
         ShippingAddress.objects.create(
             customer=customer,
@@ -112,6 +109,11 @@ def stripe_webhook(request):
             zipcode=session['shipping']['address']['postal_code'],
             country=session['shipping']['address']['country'],
         )
+
+        order.save()
+
+        print(items)
+        print(cart_items)
 
         print('Order added!')
 

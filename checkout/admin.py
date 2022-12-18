@@ -24,7 +24,7 @@ class OrderAdmin(admin.ModelAdmin):
         'get_cart_total',
         'get_cart_items'
     )
-    list_filter = ('customer', 'date_ordered', )
+    list_filter = ('customer', 'date_ordered', 'complete')
     search_fields = ['customer', 'date_ordered', 'complete', 'transaction_id']
 
 
