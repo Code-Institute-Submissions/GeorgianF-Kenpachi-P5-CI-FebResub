@@ -57,11 +57,6 @@ def create_checkout_session(request):
                 'error': str(e)
                 })
 
-    if order.complete is False:
-        order.delete()
-
-        print('Order deleted!')
-
 
 @csrf_exempt
 def stripe_webhook(request):

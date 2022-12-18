@@ -9,6 +9,7 @@ from checkout.models import Order, OrderItem, Customer, ShippingAddress
 from .models import Contact_us
 from .models import Product, Category
 from .forms import ProductForm, GetInTouch
+from cart.utils import cookie_cart
 
 
 @never_cache
@@ -36,32 +37,15 @@ def store(request, category_slug=None):
         items = order.orderitem_set.all()
         cart_items = order.get_cart_items
     else:
-        # for user that are not authenticated
-        print(request.COOKIES)
-        try:
-            # load the cookies
-            bag = json.loads(request.COOKIES['cart'])
-        except KeyError:
-            bag = {}
-            print(bag, 'is empty')
-
-        # define the empty cart
-        items = []
-        order = {
-            'get_cart_total': 0,
-            'get_cart_items': 0,
-            }
-        cart_items = order['get_cart_items']
+        cookie_info = cookie_cart(request)
+        cart_items = cookie_info['cart_items']
+        order = cookie_info['order']
+        items = cookie_info['items']
 
     # Set up pagination
     paginator = Paginator(products.order_by('id'), 6)
     page = request.GET.get('page')
     store_items = paginator.get_page(page)
-
-    # if order.complete is False:
-    #     order.delete()
-
-    #     print('Order deleted!')
 
     context = {
         'items': items,
@@ -80,9 +64,7 @@ def contact(request):
     form = GetInTouch()
     if request.method == 'POST':
         form = GetInTouch(request.POST)
-        print(form.data)
         if form.is_valid():
-            print(form.cleaned_data)
             form.save()
             form = GetInTouch()
             messages.success(
