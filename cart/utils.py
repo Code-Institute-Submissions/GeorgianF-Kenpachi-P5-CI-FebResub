@@ -1,12 +1,12 @@
 import json
 from store.models import Product
+from checkout.models import Order
 
 
 def cookie_cart(request):
     # for user that are not authenticated
     try:
         bag = json.loads(request.COOKIES['cart'])
-        print(bag)
     except KeyError:
         bag = {}
 
@@ -36,10 +36,33 @@ def cookie_cart(request):
             'quantity': bag[i]['quantity'],
             'get_total': total,
         }
-    items.append(item)
+        
+        items.append(item)
 
     return {
         'cart_items': cart_items,
         'order': order,
         'items': items
         }
+
+
+def cart_details(request):
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(
+            customer=customer,
+            complete=False
+            )
+        items = order.orderitem_set.all()
+        cart_items = order.get_cart_items
+    else:
+        cookie_info = cookie_cart(request)
+        cart_items = cookie_info['cart_items']
+        order = cookie_info['order']
+        items = cookie_info['items']
+
+    return {
+        'cart_items': cart_items,
+        'order': order,
+        'items': items
+    }

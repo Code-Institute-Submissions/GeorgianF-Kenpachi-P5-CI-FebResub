@@ -3,57 +3,15 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from checkout.models import Order, OrderItem
 from store.models import Product
+from .utils import cart_details
 
 
 def cart(request):
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(
-            customer=customer,
-            complete=False,
-            )
-        items = order.orderitem_set.all()
-        cart_items = order.get_cart_items
-    else:
-        # for user that are not authenticated
-        try:
-            # load the cookies
-            bag = json.dumps(request.COOKIES['cart'])
-            print(bag)
-        except KeyError:
-            bag = {}
-            print(bag)
+    cart_info = cart_details(request)
 
-        # define the empty cart
-        items = []
-        order = {
-            'get_cart_total': 0,
-            'get_cart_items': 0,
-            }
-        cart_items = order['get_cart_items']
-
-        # loop through the items in the bag
-        for i in bag:
-            # add them to the cart items
-            cart_items += bag[i]['quantity']
-            # build the order details
-            product = Product.objects.get(id=i)
-            total = (product.price * bag[i]['quantity'])
-            order['get_cart_total'] += total
-            order['get_cart_items'] += bag[i]['quantity']
-
-            item = {
-                'id': product.id,
-                'product': {
-                    'id': product.id,
-                    'name': product.name,
-                    'price': product.price,
-                    'imageURL': product.imageURL
-                    },
-                'quantity': bag[i]['quantity'],
-                'get_total': total,
-            }
-            items.append(item)
+    cart_items = cart_info['cart_items']
+    order = cart_info['order']
+    items = cart_info['items']
 
     context = {
         'items': items,

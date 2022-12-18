@@ -6,10 +6,10 @@ from django.http import JsonResponse
 from django.views.decorators.cache import never_cache
 from django.contrib import messages
 from checkout.models import Order, OrderItem, Customer, ShippingAddress
+from cart.utils import cart_details
 from .models import Contact_us
 from .models import Product, Category
 from .forms import ProductForm, GetInTouch
-from cart.utils import cookie_cart
 
 
 @never_cache
@@ -28,19 +28,11 @@ def store(request, category_slug=None):
         products = Product.objects.all().filter(is_available=True)
         products_count = products.count()
 
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(
-            customer=customer,
-            complete=False
-            )
-        items = order.orderitem_set.all()
-        cart_items = order.get_cart_items
-    else:
-        cookie_info = cookie_cart(request)
-        cart_items = cookie_info['cart_items']
-        order = cookie_info['order']
-        items = cookie_info['items']
+    cart_info = cart_details(request)
+
+    cart_items = cart_info['cart_items']
+    order = cart_info['order']
+    items = cart_info['items']
 
     # Set up pagination
     paginator = Paginator(products.order_by('id'), 6)
@@ -52,6 +44,7 @@ def store(request, category_slug=None):
         'products': store_items,
         'products_count': products_count,
         'cart_items': cart_items,
+        'order': order
         }
 
     return render(request, 'store/store.html', context)
@@ -136,7 +129,6 @@ def product_details(request, product_id):
     else:
         # Create empty cart for now for non-logged in user
         items = []
-        print(items)
         order = {'get_cart_total': 0, 'get_cart_items': 0}
         cart_items = order['get_cart_items']
 
@@ -199,7 +191,6 @@ def item_update(request):
 def profile(request):
     profile = get_object_or_404(Customer, user=request.user)
     orders = Order.objects.filter(customer=profile, complete=True)
-    print(orders)
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(
@@ -210,7 +201,6 @@ def profile(request):
         cart_items = order.get_cart_items
 
     contact_messages = Contact_us.objects.all()
-    print(contact_messages)
 
     context = {
         'items': items,
