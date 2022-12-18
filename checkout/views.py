@@ -4,11 +4,10 @@ from django.conf import settings
 from django.shortcuts import render
 from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from store.models import Customer
-from .models import Order, ShippingAddress
-from cart.utils import cart_details
-
 import stripe
+from store.models import Customer
+from cart.utils import cart_details
+from .models import Order, ShippingAddress
 
 
 @csrf_exempt
@@ -22,8 +21,12 @@ def stripe_config(request):
 
 @csrf_exempt
 def create_checkout_session(request):
-    customer = request.user.customer
-    print(customer)
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        print(customer)
+    else:
+        # TODO: add checkout session for Anonymus Users
+
     order, created = Order.objects.get_or_create(
             customer=customer,
             complete=False
