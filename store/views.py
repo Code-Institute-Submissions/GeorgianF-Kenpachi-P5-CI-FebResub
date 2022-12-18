@@ -58,6 +58,11 @@ def store(request, category_slug=None):
     page = request.GET.get('page')
     store_items = paginator.get_page(page)
 
+    # if order.complete is False:
+    #     order.delete()
+
+    #     print('Order deleted!')
+
     context = {
         'items': items,
         'products': store_items,

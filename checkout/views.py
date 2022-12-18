@@ -4,7 +4,7 @@ from django.conf import settings
 from django.shortcuts import render
 from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from store.models import Customer, Product
+from store.models import Customer
 from .models import Order, ShippingAddress
 
 import stripe
@@ -57,6 +57,11 @@ def create_checkout_session(request):
                 'error': str(e)
                 })
 
+    if order.complete is False:
+        order.delete()
+
+        print('Order deleted!')
+
 
 @csrf_exempt
 def stripe_webhook(request):
@@ -93,8 +98,6 @@ def stripe_webhook(request):
             customer=customer,
             complete=False
         )
-        items = order.orderitem_set.all()
-        cart_items = order.get_cart_items
         order.transaction_id = transaction_id
 
         if (total / 100) == int(order.get_cart_total):
@@ -111,11 +114,6 @@ def stripe_webhook(request):
         )
 
         order.save()
-
-        print(items)
-        print(cart_items)
-
-        print('Order added!')
 
         # Passed signature verification
         return HttpResponse(status=200)
@@ -196,6 +194,7 @@ def checkout(request):
         'order': order,
         'cart_items': cart_items,
         }
+
     return render(request, 'checkout/checkout.html', context)
 
 
