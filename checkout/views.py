@@ -24,13 +24,13 @@ def create_checkout_session(request):
     if request.user.is_authenticated:
         customer = request.user.customer
         print(customer)
-    else:
-        # TODO: add checkout session for Anonymus Users
-
-    order, created = Order.objects.get_or_create(
+        order, created = Order.objects.get_or_create(
             customer=customer,
             complete=False
         )
+    # else:
+    #     # TODO: add checkout session for Anonymus Users
+
     if request.method == 'GET':
         domain_url = 'http://localhost:8000/checkout/'
         stripe.api_key = settings.STRIPE_SECRET_KEY
