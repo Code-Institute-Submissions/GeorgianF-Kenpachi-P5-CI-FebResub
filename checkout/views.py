@@ -24,14 +24,24 @@ def create_checkout_session(request):
     if request.user.is_authenticated:
         customer = request.user.customer
         print(customer)
-        order, created = Order.objects.get_or_create(
+    else:
+        data = json.loads(request.body)
+        total = data['form']['total'].replace('.', '')
+        email = data['form']['email']
+        name = data['form']['name']
+        customer, created = Customer.objects.get_or_create(
+            email=email
+        )
+        customer.first_name = name.split(' ')[0]
+        customer.last_name = name.split(' ')[1]
+        customer.save()
+
+    order, created = Order.objects.get_or_create(
             customer=customer,
             complete=False
         )
-    # else:
-    #     # TODO: add checkout session for Anonymus Users
 
-    if request.method == 'GET':
+    if request.method == 'POST':
         domain_url = 'http://localhost:8000/checkout/'
         stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -42,7 +52,7 @@ def create_checkout_session(request):
                         ["US", "CA", "NL"]
                     },
                 client_reference_id=request.user.id if request.user.is_authenticated else None,
-                customer_email=request.user.email,
+                customer_email=request.user.email if request.user.is_authenticated else email,
                 success_url=domain_url + 'success?session_id={CHECKOUT_SESSION_ID}',
                 cancel_url=domain_url + 'cancelled/',
                 payment_method_types=['card'],
@@ -52,7 +62,7 @@ def create_checkout_session(request):
                         'name': 'Kenpachi Katana Store',
                         'quantity': 1,
                         'currency': 'usd',
-                        'amount': int(order.get_cart_total*100),
+                        'amount': int(order.get_cart_total*100) if request.user.is_authenticated else total,
                     }
                 ]
             )

@@ -14,7 +14,7 @@
 
 body {
     overflow-x: hidden;
-    position: relative  ;
+    position: relative;
 }
 
 /* TOASTS */
@@ -92,7 +92,7 @@ body {
     letter-spacing: 2px;
 }
 
-.ul li a:hover{
+.ul li a:hover {
     transition: 2s;
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 1px white;
@@ -144,7 +144,7 @@ body {
     background-size: cover;
     opacity: 0;
     transform: translateY(-50%);
-    transition: 1s ease-in-out;  
+    transition: 1s ease-in-out;
 }
 
 .nav-item-bg-5 {
@@ -154,14 +154,14 @@ body {
     background-size: cover;
     opacity: 0;
     transform: translateY(-50%);
-    transition: 1s ease-in-out;  
+    transition: 1s ease-in-out;
 }
 
-.nav-item-1:hover ~ .nav-item-bg-1,
-.nav-item-2:hover ~ .nav-item-bg-2,
-.nav-item-3:hover ~ .nav-item-bg-3,
-.nav-item-4:hover ~ .nav-item-bg-4,
-.nav-item-5:hover ~ .nav-item-bg-5 {
+.nav-item-1:hover~.nav-item-bg-1,
+.nav-item-2:hover~.nav-item-bg-2,
+.nav-item-3:hover~.nav-item-bg-3,
+.nav-item-4:hover~.nav-item-bg-4,
+.nav-item-5:hover~.nav-item-bg-5 {
     opacity: 1;
     transform: translateY(0%);
     transition: 1s ease-in-out;
@@ -173,7 +173,7 @@ body {
     position: absolute;
     bottom: 0;
     display: flex;
-    flex-direction: row-reverse;   
+    flex-direction: row-reverse;
     height: 80px;
     width: 100%;
 }
@@ -184,12 +184,12 @@ body {
     margin-right: 50px;
 }
 
-.social ul li{
+.social ul li {
     margin: 0px 10px;
     letter-spacing: 2px;
 }
 
-.social ul li a{
+.social ul li a {
     text-decoration: none;
     color: white;
     font-family: 'Bangers';
@@ -253,12 +253,12 @@ body {
 }
 
 .side-menu a:hover {
-    color:darkgray;
+    color: darkgray;
 }
 
 .side-menu a:hover:after {
     transform: translate(-5px, -5px);
-  
+
 }
 
 .side-menu a:hover:before {
@@ -278,7 +278,7 @@ body {
 #background-video {
     position: absolute;
     right: 0;
-    bottom:0;
+    bottom: 0;
     z-index: 1;
     display: none;
 }
@@ -415,7 +415,7 @@ textarea.form-control {
 }
 
 .btn-primary:hover {
-    background-color: var(--secondary-color)!important;
+    background-color: var(--secondary-color) !important;
 }
 
 /* END OF CONTACT PAGE */
@@ -435,16 +435,16 @@ textarea.form-control {
     width: 35px;
 }
 
-#cart-total{
-	display: block;
-	text-align: center;
+#cart-total {
+    display: block;
+    text-align: center;
     padding-top: 2px;
-	color:#fff;
-	background-color: var(--primary-color);
-	width: 25px;
-	height: 25px;
-	border-radius: 50%;
-	font-size: 14px;
+    color: #fff;
+    background-color: var(--primary-color);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    font-size: 14px;
 }
 
 .products-header {
@@ -458,28 +458,28 @@ textarea.form-control {
     height: 110vh;
 }
 
-.box-element{
-	box-shadow:hsl(0, 0%, 80%) 0 0 16px;
-	background-color: var(--text-color);
-	border-radius: 4px;
-	padding: 10px;
+.box-element {
+    box-shadow: hsl(0, 0%, 80%) 0 0 16px;
+    background-color: var(--text-color);
+    border-radius: 4px;
+    padding: 10px;
 }
 
 #product-price {
     padding-top: 5px;
-    margin-bottom: 0!important;
+    margin-bottom: 0 !important;
 }
 
-.thumbnail{
-	width: 100%;
-	height: 250px;
-	-webkit-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
-    -moz-box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
-    box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
+.thumbnail {
+    width: 100%;
+    height: 250px;
+    -webkit-box-shadow: -1px -3px 5px -2px rgba(214, 214, 214, 1);
+    -moz-box-shadow: -1px -3px 5px -2px rgba(214, 214, 214, 1);
+    box-shadow: -1px -3px 5px -2px rgba(214, 214, 214, 1);
 }
 
-.product{
-	border-radius: 0 0 4px 4px;
+.product {
+    border-radius: 0 0 4px 4px;
 }
 
 .btn-secondary {
@@ -516,7 +516,7 @@ textarea.form-control {
 }
 
 .item-description {
-    font-size: 14px!important;
+    font-size: 14px !important;
 }
 
 #product-page-icon {
@@ -525,8 +525,9 @@ textarea.form-control {
 }
 
 .text-danger {
-    color: var(--primary-color)!important;
+    color: var(--primary-color) !important;
 }
+
 /* END OF PRODUCT DETAILS PAGE */
 
 
@@ -543,38 +544,38 @@ textarea.form-control {
     z-index: -1;
 }
 
-.cart-row{
-	display: flex;
+.cart-row {
+    display: flex;
     align-items: flex-stretch;
     padding-bottom: 10px;
     margin-bottom: 10px;
 }
 
-.row-image{
-	width: 100px;
+.row-image {
+    width: 100px;
 }
 
-.quantity{
-	display: inline-block;
+.quantity {
+    display: inline-block;
     font-size: 18px;
-	padding-right:10px;
+    padding-right: 10px;
 }
 
-.chg-quantity{
-	width: 12px;
-	cursor: pointer;
-	display: block;
-	margin-top: 5px;
-	transition:.1s;
+.chg-quantity {
+    width: 12px;
+    cursor: pointer;
+    display: block;
+    margin-top: 5px;
+    transition: .1s;
 }
 
-.chg-quantity:hover{
-	opacity: .6;
+.chg-quantity:hover {
+    opacity: .6;
 }
 
 
-.hidden{
-	display: none!important;
+.hidden {
+    display: none !important;
 }
 
 /* END OF CART PAGE */
@@ -582,15 +583,15 @@ textarea.form-control {
 /* CHECKOUT PAGE */
 
 .form-field {
-	width:250px;
-	display: inline-block;
-	padding: 5px;
+    width: 250px;
+    display: inline-block;
+    padding: 5px;
 }
 
 #form-wrapper {
     background-color: var(--text-color);
-    font-family: 'Bangers', sans-serif ;
-    
+    font-family: 'Bangers', sans-serif;
+
 }
 
 #form input {
@@ -603,7 +604,7 @@ textarea.form-control {
 
 .order-summary {
     background-color: var(--text-color);
-    font-family: 'Bangers', sans-serif ;
+    font-family: 'Bangers', sans-serif;
     letter-spacing: 3px;
 }
 
@@ -615,7 +616,9 @@ textarea.form-control {
     letter-spacing: 3px;
 }
 
-#payment-btn:focus {
+#payment-btn:focus,
+#submitBtn:focus {
+    box-shadow: none;
     background-color: var(--secondary-color);
 }
 
@@ -719,7 +722,7 @@ textarea.form-control {
         font-size: 10px;
     }
 
-    
+
     footer {
         font-size: 12px;
     }
@@ -729,7 +732,7 @@ textarea.form-control {
     }
 
     footer a.p-5 {
-        padding: 1rem!important;
+        padding: 1rem !important;
     }
 
     #signup_form input {
@@ -743,10 +746,10 @@ textarea.form-control {
         width: 98vw;
     }
 
-    .login-details .btn-secondary{
+    .login-details .btn-secondary {
         padding: 2px;
     }
-    
+
     footer {
         font-size: 10px;
     }
@@ -754,4 +757,4 @@ textarea.form-control {
     footer h4 {
         font-size: 14px;
     }
-}    
+}
