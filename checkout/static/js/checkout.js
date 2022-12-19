@@ -37,12 +37,14 @@ document.getElementById('payment-btn').addEventListener('click', function (e) {
 
 function submitFormData(event) {
   var userData = {
-    'name': null,
+    'first_name': null,
+    'last_name': null,
     'email': null,
     'total': total,
   }
 
-  userData.name = form.name.value
+  userData.first_name = form.first_name.value
+  userData.last_name = form.last_name.value
   userData.email = form.email.value
 
   fetch("/checkout/config/")

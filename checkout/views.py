@@ -21,18 +21,21 @@ def stripe_config(request):
 
 @csrf_exempt
 def create_checkout_session(request):
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    domain_url = 'http://localhost:8000/checkout/'
     if request.user.is_authenticated:
         customer = request.user.customer
     else:
         data = json.loads(request.body)
         total = data['form']['total'].replace('.', '')
         email = data['form']['email']
-        name = data['form']['name']
+        first_name = data['form']['first_name']
+        last_name = data['form']['last_name']
         customer, created = Customer.objects.get_or_create(
             email=email
         )
-        customer.first_name = name.split(' ')[0]
-        customer.last_name = name.split(' ')[1]
+        customer.first_name = first_name
+        customer.last_name = last_name
         customer.save()
 
     order, created = Order.objects.get_or_create(
@@ -41,9 +44,6 @@ def create_checkout_session(request):
         )
 
     if request.method == 'GET':
-        domain_url = 'http://localhost:8000/checkout/'
-        stripe.api_key = settings.STRIPE_SECRET_KEY
-
         checkout_session = stripe.checkout.Session.create(
             shipping_address_collection={
                 "allowed_countries":
@@ -65,8 +65,31 @@ def create_checkout_session(request):
             ]
         )
         return JsonResponse({'sessionId': checkout_session['id']})
-    
+    else:
+        checkout_session = stripe.checkout.Session.create(
+            shipping_address_collection={
+                "allowed_countries":
+                    ["US", "CA", "NL"]
+                },
+            client_reference_id=request.user.id if request.user.is_authenticated else None,
+            customer_email=request.user.email if request.user.is_authenticated else email,
+            success_url=domain_url + 'success?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url=domain_url + 'cancelled/',
+            payment_method_types=['card'],
+            mode='payment',
+            line_items=[
+                {
+                    'name': 'Kenpachi Katana Store',
+                    'quantity': 1,
+                    'currency': 'usd',
+                    'amount': int(order.get_cart_total*100) if request.user.is_authenticated else total,
+                }
+            ]
+        )
+        return JsonResponse({'sessionId': checkout_session['id']})
+
     return JsonResponse('Transaction complete!', safe=False)
+
 
 @csrf_exempt
 def stripe_webhook(request):
