@@ -148,22 +148,17 @@ def stripe_webhook(request):
 
 
 def success(request):
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(
-            customer=customer,
-            complete=False
-            )
-        items = order.orderitem_set.all()
-        cart_items = order.get_cart_items
-    else:
-        # Create empty cart for now for non-logged in user
-        items = []
-        order = {
-            'get_cart_total': 0,
-            'get_cart_items': 0
-            }
-        cart_items = order['get_cart_items']
+    cart_info = cart_details(request)
+
+    cart_items = cart_info['cart_items']
+    order = cart_info['order']
+    items = cart_info['items']
+
+    context = {
+        'items': items,
+        'order': order,
+        'cart_items': cart_items,
+        }
 
     context = {
         'items': items,
@@ -174,22 +169,17 @@ def success(request):
 
 
 def cancelled(request):
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(
-            customer=customer,
-            complete=False
-            )
-        items = order.orderitem_set.all()
-        cart_items = order.get_cart_items
-    else:
-        # Create empty cart for now for non-logged in user
-        items = []
-        order = {
-            'get_cart_total': 0,
-            'get_cart_items': 0
-            }
-        cart_items = order['get_cart_items']
+    cart_info = cart_details(request)
+
+    cart_items = cart_info['cart_items']
+    order = cart_info['order']
+    items = cart_info['items']
+
+    context = {
+        'items': items,
+        'order': order,
+        'cart_items': cart_items,
+        }
 
     context = {
         'items': items,
