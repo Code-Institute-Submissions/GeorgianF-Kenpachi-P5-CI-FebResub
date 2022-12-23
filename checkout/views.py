@@ -49,8 +49,8 @@ def create_checkout_session(request):
                 "allowed_countries":
                     ["US", "CA", "NL"]
                 },
-            client_reference_id=request.user.id if request.user.is_authenticated else None,
-            customer_email=request.user.email if request.user.is_authenticated else email,
+            client_reference_id=request.user.id,
+            customer_email=request.user.email,
             success_url=domain_url + 'success?session_id={CHECKOUT_SESSION_ID}',
             cancel_url=domain_url + 'cancelled/',
             payment_method_types=['card'],
@@ -60,19 +60,20 @@ def create_checkout_session(request):
                     'name': 'Kenpachi Katana Store',
                     'quantity': 1,
                     'currency': 'usd',
-                    'amount': int(order.get_cart_total*100) if request.user.is_authenticated else total,
+                    'amount': int(order.get_cart_total*100),
                 }
             ]
         )
         return JsonResponse({'sessionId': checkout_session['id']})
     else:
+        print(customer.id)
         checkout_session = stripe.checkout.Session.create(
             shipping_address_collection={
                 "allowed_countries":
                     ["US", "CA", "NL"]
                 },
-            client_reference_id=request.user.id if request.user.is_authenticated else None,
-            customer_email=request.user.email if request.user.is_authenticated else email,
+            client_reference_id=customer.id,
+            customer_email=email,
             success_url=domain_url + 'success?session_id={CHECKOUT_SESSION_ID}',
             cancel_url=domain_url + 'cancelled/',
             payment_method_types=['card'],
@@ -82,13 +83,11 @@ def create_checkout_session(request):
                     'name': 'Kenpachi Katana Store',
                     'quantity': 1,
                     'currency': 'usd',
-                    'amount': int(order.get_cart_total*100) if request.user.is_authenticated else total,
+                    'amount': total,
                 }
             ]
         )
         return JsonResponse({'sessionId': checkout_session['id']})
-
-    return JsonResponse('Transaction complete!', safe=False)
 
 
 @csrf_exempt
@@ -118,31 +117,55 @@ def stripe_webhook(request):
         )
 
         # Fulfill the purchase...
-        transaction_id = datetime.datetime.now().timestamp()
-        total = session['amount_total']
-        customer_id = session['client_reference_id']
-        customer = Customer.objects.get(pk=customer_id)
-        order, created = Order.objects.get_or_create(
-            customer=customer,
-            complete=False
-        )
-        order.transaction_id = transaction_id
+        if request.user.is_authenticated:
+            transaction_id = datetime.datetime.now().timestamp()
+            total = session['amount_total']
+            customer_id = session['client_reference_id']
+            customer = Customer.objects.get(pk=customer_id)
+            order, created = Order.objects.get_or_create(
+                customer=customer,
+                complete=False
+            )
+            order.transaction_id = transaction_id
 
-        if (total / 100) == int(order.get_cart_total):
-            order.complete = True
+            if (total / 100) == int(order.get_cart_total):
+                order.complete = True
 
-        ShippingAddress.objects.create(
-            customer=customer,
-            order=order,
-            address=session['shipping']['address']['line1'],
-            city=session['shipping']['address']['city'],
-            state=session['shipping']['address']['state'],
-            zipcode=session['shipping']['address']['postal_code'],
-            country=session['shipping']['address']['country'],
-        )
+            ShippingAddress.objects.create(
+                customer=customer,
+                order=order,
+                address=session['shipping']['address']['line1'],
+                city=session['shipping']['address']['city'],
+                state=session['shipping']['address']['state'],
+                zipcode=session['shipping']['address']['postal_code'],
+                country=session['shipping']['address']['country'],
+            )
+            order.save()
+        else:
+            print(session)
+            transaction_id = datetime.datetime.now().timestamp()
+            total = session['amount_total']
+            customer_id = session['client_reference_id']
+            customer = Customer.objects.get(pk=customer_id)
+            order, created = Order.objects.get_or_create(
+                customer=customer,
+                complete=False
+            )
+            order.transaction_id = transaction_id
+            if (total / 100) == int(order.get_cart_total):
+                order.complete = True
 
-        order.save()
-
+            ShippingAddress.objects.create(
+                customer=customer,
+                order=order,
+                address=session['shipping']['address']['line1'],
+                city=session['shipping']['address']['city'],
+                state=session['shipping']['address']['state'],
+                zipcode=session['shipping']['address']['postal_code'],
+                country=session['shipping']['address']['country'],
+            )
+            order.save()
+            print('Order added to the database')
         # Passed signature verification
         return HttpResponse(status=200)
 
