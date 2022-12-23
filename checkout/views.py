@@ -6,7 +6,7 @@ from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import stripe
 from store.models import Customer
-from cart.utils import cart_details
+from cart.utils import cart_details, cookie_cart
 from .models import Order, ShippingAddress
 
 
@@ -38,10 +38,14 @@ def create_checkout_session(request):
         customer.last_name = last_name
         customer.save()
 
-    order, created = Order.objects.get_or_create(
-            customer=customer,
-            complete=False
-        )
+    cart_info = cart_details(request)
+
+    cart_items = cart_info['cart_items']
+    order = cart_info['order']
+    items = cart_info['items']
+
+    print(cart_items)
+    print(items)
 
     if request.method == 'GET':
         checkout_session = stripe.checkout.Session.create(
@@ -66,7 +70,6 @@ def create_checkout_session(request):
         )
         return JsonResponse({'sessionId': checkout_session['id']})
     else:
-        print(customer.id)
         checkout_session = stripe.checkout.Session.create(
             shipping_address_collection={
                 "allowed_countries":
@@ -142,7 +145,6 @@ def stripe_webhook(request):
             )
             order.save()
         else:
-            print(session)
             transaction_id = datetime.datetime.now().timestamp()
             total = session['amount_total']
             customer_id = session['client_reference_id']
