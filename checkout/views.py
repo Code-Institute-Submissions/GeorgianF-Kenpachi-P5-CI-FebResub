@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 import stripe
 from store.models import Customer
 from cart.utils import cart_details, cookie_cart
-from .models import Order, ShippingAddress
+from .models import Order, ShippingAddress, OrderItem
 
 
 @csrf_exempt
@@ -23,6 +23,7 @@ def stripe_config(request):
 def create_checkout_session(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
     domain_url = 'http://localhost:8000/checkout/'
+
     if request.user.is_authenticated:
         customer = request.user.customer
     else:
@@ -44,14 +45,11 @@ def create_checkout_session(request):
     order = cart_info['order']
     items = cart_info['items']
 
-    print(cart_items)
-    print(items)
-
     if request.method == 'GET':
         checkout_session = stripe.checkout.Session.create(
             shipping_address_collection={
                 "allowed_countries":
-                    ["US", "CA", "NL"]
+                    ["US", "CA", "NL", "GB"]
                 },
             client_reference_id=request.user.id,
             customer_email=request.user.email,
@@ -120,55 +118,30 @@ def stripe_webhook(request):
         )
 
         # Fulfill the purchase...
-        if request.user.is_authenticated:
-            transaction_id = datetime.datetime.now().timestamp()
-            total = session['amount_total']
-            customer_id = session['client_reference_id']
-            customer = Customer.objects.get(pk=customer_id)
-            order, created = Order.objects.get_or_create(
-                customer=customer,
-                complete=False
-            )
-            order.transaction_id = transaction_id
+        transaction_id = datetime.datetime.now().timestamp()
+        total = session['amount_total']
+        customer_id = session['client_reference_id']
+        customer = Customer.objects.get(pk=customer_id)
+        order, created = Order.objects.get_or_create(
+            customer=customer,
+            complete=False
+        )
+        order.transaction_id = transaction_id
 
-            if (total / 100) == int(order.get_cart_total):
-                order.complete = True
+        if (total / 100) == int(order.get_cart_total):
+            order.complete = True
 
-            ShippingAddress.objects.create(
-                customer=customer,
-                order=order,
-                address=session['shipping']['address']['line1'],
-                city=session['shipping']['address']['city'],
-                state=session['shipping']['address']['state'],
-                zipcode=session['shipping']['address']['postal_code'],
-                country=session['shipping']['address']['country'],
-            )
-            order.save()
-        else:
-            transaction_id = datetime.datetime.now().timestamp()
-            total = session['amount_total']
-            customer_id = session['client_reference_id']
-            customer = Customer.objects.get(pk=customer_id)
-            order, created = Order.objects.get_or_create(
-                customer=customer,
-                complete=False
-            )
-            order.transaction_id = transaction_id
-            if (total / 100) == int(order.get_cart_total):
-                order.complete = True
+        ShippingAddress.objects.create(
+            customer=customer,
+            order=order,
+            address=session['shipping']['address']['line1'],
+            city=session['shipping']['address']['city'],
+            state=session['shipping']['address']['state'],
+            zipcode=session['shipping']['address']['postal_code'],
+            country=session['shipping']['address']['country'],
+        )
+        order.save()
 
-            ShippingAddress.objects.create(
-                customer=customer,
-                order=order,
-                address=session['shipping']['address']['line1'],
-                city=session['shipping']['address']['city'],
-                state=session['shipping']['address']['state'],
-                zipcode=session['shipping']['address']['postal_code'],
-                country=session['shipping']['address']['country'],
-            )
-            order.save()
-            print('Order added to the database')
-        # Passed signature verification
         return HttpResponse(status=200)
 
 
