@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 import stripe
 from store.models import Customer
 from cart.utils import cart_details, cookie_cart
+from store.models import Product
 from .models import Order, ShippingAddress, OrderItem
 
 
@@ -44,6 +45,7 @@ def create_checkout_session(request):
     cart_items = cart_info['cart_items']
     order = cart_info['order']
     items = cart_info['items']
+    print(items)
 
     if request.method == 'GET':
         checkout_session = stripe.checkout.Session.create(
@@ -73,6 +75,7 @@ def create_checkout_session(request):
                 "allowed_countries":
                     ["US", "CA", "NL"]
                 },
+            metadata=[items],
             client_reference_id=customer.id,
             customer_email=email,
             success_url=domain_url + 'success?session_id={CHECKOUT_SESSION_ID}',
@@ -118,15 +121,30 @@ def stripe_webhook(request):
         )
 
         # Fulfill the purchase...
+        items = str(session['metadata'])
+        # TODO: drill down on the metadata from stripe
         transaction_id = datetime.datetime.now().timestamp()
         total = session['amount_total']
         customer_id = session['client_reference_id']
         customer = Customer.objects.get(pk=customer_id)
+        print(customer)
         order, created = Order.objects.get_or_create(
             customer=customer,
             complete=False
         )
         order.transaction_id = transaction_id
+        # try:
+        #     for item in items:
+        #         product = Product.objects.get(id=item[0]['id'])
+        #         order_item = OrderItem.objects.create(
+        #             product=product,
+        #             order=order,
+        #             quantity=item['quantity'],
+        #         )
+        #         print(order_item)
+        # except ValueError as cartError:
+        #     print(cartError)
+        #     pass
 
         if (total / 100) == int(order.get_cart_total):
             order.complete = True
@@ -141,7 +159,7 @@ def stripe_webhook(request):
             country=session['shipping']['address']['country'],
         )
         order.save()
-
+        print('Order was added to the database')
         return HttpResponse(status=200)
 
 
