@@ -45,6 +45,12 @@ def create_checkout_session(request):
     cart_items = cart_info['cart_items']
     order = cart_info['order']
     items = cart_info['items']
+
+    print(type(items))
+
+    for item in items:
+        print(item)
+
     print(items)
 
     if request.method == 'GET':
@@ -120,31 +126,22 @@ def stripe_webhook(request):
             expand=['line_items'],
         )
 
+        stripe_metadata = session['metadata'].setdefault('0')
+        print(stripe_metadata)
+        print(type(stripe_metadata))
+
         # Fulfill the purchase...
-        items = str(session['metadata'])
-        # TODO: drill down on the metadata from stripe
+
+        #   TODO: drill down on the metadata from stripe
         transaction_id = datetime.datetime.now().timestamp()
         total = session['amount_total']
         customer_id = session['client_reference_id']
         customer = Customer.objects.get(pk=customer_id)
-        print(customer)
         order, created = Order.objects.get_or_create(
             customer=customer,
             complete=False
         )
         order.transaction_id = transaction_id
-        # try:
-        #     for item in items:
-        #         product = Product.objects.get(id=item[0]['id'])
-        #         order_item = OrderItem.objects.create(
-        #             product=product,
-        #             order=order,
-        #             quantity=item['quantity'],
-        #         )
-        #         print(order_item)
-        # except ValueError as cartError:
-        #     print(cartError)
-        #     pass
 
         if (total / 100) == int(order.get_cart_total):
             order.complete = True
