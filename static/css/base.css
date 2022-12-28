@@ -862,7 +862,6 @@ textarea.form-control {
         margin: 5px;
     }
 
-
     footer {
         font-size: 12px;
     }
@@ -909,5 +908,23 @@ textarea.form-control {
 
     footer h4 {
         font-size: 14px;
+    }
+
+    .nav-item-bg-2 {
+        top: 240px;
+        left: 80px;
+    }
+
+    .nav-item-bg-3 {
+        top: 250px;
+        left: 110px;
+    }
+
+    .nav-item-bg-4 {
+        left: 130px;
+    }
+
+    .nav-item-bg-5 {
+        left: 130px;
     }
 }
