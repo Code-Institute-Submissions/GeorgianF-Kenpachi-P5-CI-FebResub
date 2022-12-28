@@ -937,6 +937,10 @@ textarea.form-control {
     }
 
     input.btn.btn-primary {
+        font-size: 9px;
+    }
+
+    form.signup p label {
         font-size: 10px;
     }
 }
