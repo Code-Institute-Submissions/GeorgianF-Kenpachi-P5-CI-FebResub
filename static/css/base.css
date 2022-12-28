@@ -385,7 +385,7 @@ footer a:hover {
 
 .contact-content {
     background-color: var(--primary-color);
-    height: 70vh;
+    height: 100vh;
     letter-spacing: 2px;
 }
 
@@ -395,6 +395,7 @@ footer a:hover {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border: #000407;
     width: 50%;
+    padding-bottom: 50px;
 }
 
 .card .card-header {
@@ -708,17 +709,22 @@ textarea.form-control {
         height: 200px;
         width: 200px;
     }
+
+    .card {
+        width: 70%;
+    }
 }
 
+@media screen and (max-width: 767px) {
+    .card {
+        width: 75%;
+    }
+}
 
 @media screen and (min-width: 767px) {
 
     #story-hero-image {
         width: 100%;
-    }
-
-    .card {
-        width: 50%;
     }
 }
 

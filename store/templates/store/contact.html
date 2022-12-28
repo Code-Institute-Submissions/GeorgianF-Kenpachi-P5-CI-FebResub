@@ -14,7 +14,7 @@
     <div>
     </div>
     <div class="row">
-        <div class="col-12 mt-5 d-flex align-items-center justify-content-center flex-column">
+        <div class="col-12 mt-5 mb-5 d-flex align-items-center justify-content-center flex-column">
             <div class="card">
                 <div class="card-header">
                     CONTACT FORM
@@ -33,37 +33,45 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="col-12">                      
+                        <div class="col-12">
                             {{ form.contact_details | as_crispy_field }}
                         </div>
-                        <p class="float-end text-danger">* all fields are required <i class="fa fa-circle-exclamation"></i></p>
+                        <p class="float-end text-danger">* all fields are required <i
+                                class="fa fa-circle-exclamation"></i></p>
                         <div class="text-right">
                             <a class="btn btn-primary" href="{% url 'home' %}">Back</a>
-                            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop-contact">Send</button>
+                            <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop-contact">Send</button>
                         </div>
 
                         <!-- Modal for the add event -->
-                        <div class="modal fade" id="staticBackdrop-contact" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop-contactLabel" aria-hidden="true">
+                        <div class="modal fade" id="staticBackdrop-contact" data-bs-backdrop="static"
+                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop-contactLabel"
+                            aria-hidden="true">
                             <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="staticBackdrop-contactLabel">confirm the action</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdrop-contactLabel">confirm the action</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>are you sure that you want to <span class="text-danger">send</span> the
+                                            request?</p>
+                                        <p>the action <span class="text-danger text-decoration-underline">can't</span>
+                                            be reversed</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-secondary">Understood</button>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                    <p>are you sure that you want to <span class="text-danger">send</span> the request?</p>
-                                    <p>the action <span class="text-danger text-decoration-underline">can't</span> be reversed</p>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                  <button type="submit" class="btn btn-secondary">Understood</button>
-                                </div>
-                              </div>
                             </div>
-                          </div>
+                        </div>
                         <!-- Modal for the add event -->
                     </form>
-                 
+
                 </div>
             </div>
         </div>
