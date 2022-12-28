@@ -878,6 +878,10 @@ textarea.form-control {
         margin-right: 5px;
         width: 150px;
     }
+
+    input.btn.btn-primary {
+        font-size: 10px;
+    }
 }
 
 @media screen and (max-width: 320px) {
@@ -926,5 +930,13 @@ textarea.form-control {
 
     .nav-item-bg-5 {
         left: 130px;
+    }
+
+    .login-details .btn-secondary {
+        padding: 5px;
+    }
+
+    input.btn.btn-primary {
+        font-size: 10px;
     }
 }
