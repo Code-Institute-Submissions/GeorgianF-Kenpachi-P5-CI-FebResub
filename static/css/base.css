@@ -757,6 +757,20 @@ textarea.form-control {
 }
 
 @media screen and (max-width: 425px) {
+    .video-how-its-made {
+        width: 300px;
+        height: 300px;
+    }
+
+    .content p {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .steps-heading {
+        font-size: 14px;
+    }
+
     .navbar-button {
         top: 10px;
         left: 20px;
@@ -842,6 +856,10 @@ textarea.form-control {
 }
 
 @media screen and (max-width: 320px) {
+    .newsletter-input {
+        width: 200px;
+    }
+
     .social ul {
         flex-direction: column-reverse;
     }
