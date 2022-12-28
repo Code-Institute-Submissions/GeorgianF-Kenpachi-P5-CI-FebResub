@@ -680,8 +680,39 @@ textarea.form-control {
 /* END SUCCESS CHECKOUT PAGE */
 
 /* MEDIA QUERIES */
+@media screen and (max-width: 1198.98px) {
+    .side-menu h2 {
+        align-items: center;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .side-menu {
+        width: 45%
+    }
+
+    #play-icon {
+        left: 20%;
+    }
+
+    .ul li a {
+        font-size: 25px;
+    }
+
+    .social ul li a {
+        font-size: 14px;
+    }
+
+    .background {
+        height: 200px;
+        width: 200px;
+    }
+}
+
 
 @media screen and (min-width: 767px) {
+
     #story-hero-image {
         width: 100%;
     }
@@ -692,6 +723,10 @@ textarea.form-control {
 }
 
 @media screen and (max-width: 767px) {
+    #play-icon {
+        display: none;
+    }
+
     #story-hero-image {
         width: 100%;
     }
@@ -702,6 +737,10 @@ textarea.form-control {
 }
 
 @media screen and (max-width: 576px) {
+    .ul li {
+        margin: 17px 0;
+    }
+
     .form-container {
         width: 94vw;
     }
@@ -711,7 +750,68 @@ textarea.form-control {
     }
 }
 
+@media screen and (max-width: 576px) {
+    .ul li {
+        margin: 15px 0;
+    }
+}
+
 @media screen and (max-width: 425px) {
+    .navbar-button {
+        top: 10px;
+        left: 20px;
+        font-size: 18px;
+    }
+
+    .side-menu {
+        margin: 0;
+        width: 100% !important;
+    }
+
+    .ul {
+        width: auto;
+    }
+
+    .nav-item-bg-1 {
+        top: 115px;
+    }
+
+    .nav-item-bg-2 {
+        top: 175px;
+    }
+
+    .social {
+        height: 30px;
+    }
+
+    .social ul {
+        margin-right: 0;
+    }
+
+    .social ul li a {
+        font-size: 12px;
+    }
+
+    .side-menu {
+        margin: 0;
+        width: 50%;
+    }
+
+    .side-menu h2,
+    .side-menu p {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .ul li a {
+        font-size: 14px;
+    }
+
+    .background {
+        width: 150px;
+        height: 150px;
+    }
+
     .form-container {
         width: 90vw;
         font-size: 12px;
@@ -742,6 +842,15 @@ textarea.form-control {
 }
 
 @media screen and (max-width: 320px) {
+    .social ul {
+        flex-direction: column-reverse;
+    }
+
+    .side-menu a {
+        padding: 10px 20px 5px;
+        font-size: 14px;
+    }
+
     .form-container {
         width: 98vw;
     }
