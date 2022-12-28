@@ -36,6 +36,8 @@ def store(request, category_slug=None):
 
     # Set up pagination
     paginator = Paginator(products.order_by('id'), 6)
+    num_pages = paginator.page_range
+    total_num_pages = paginator.num_pages
     page = request.GET.get('page')
     store_items = paginator.get_page(page)
 
@@ -44,7 +46,9 @@ def store(request, category_slug=None):
         'products': store_items,
         'products_count': products_count,
         'cart_items': cart_items,
-        'order': order
+        'order': order,
+        'num_pages': num_pages,
+        'total_num_pages': total_num_pages,
         }
 
     return render(request, 'store/store.html', context)

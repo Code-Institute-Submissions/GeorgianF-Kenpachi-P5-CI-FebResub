@@ -3,106 +3,127 @@
 
 
 {% block content %}
-    {% include 'includes/store-nav.html' %}
-         
-    <div class="container-fluid pt-3 background-container">
-        <div class="container products-container">
-            <div class="row mb-3">
-                <h1 class="products-header text-center">Welcome to Kenpachi store</h1>
-                <hr class="mb-1">
+{% include 'includes/store-nav.html' %}
 
-                <div class="dropdown text-center">
-                    <button class="btn btn-secondary dropdown-toggle mt-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Filter by katana type:
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'store' %}">view all</a></li>
+<div class="container-fluid pt-3 background-container">
+    <div class="container products-container">
+        <div class="row mb-3">
+            <h1 class="products-header text-center">Welcome to Kenpachi store</h1>
+            <hr class="mb-1">
+
+            <div class="dropdown text-center">
+                <button class="btn btn-secondary dropdown-toggle mt-3" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Filter by katana type:
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'store' %}">view all</a></li>
                     {% for category in links %}
-                        <li><a class="dropdown-item" href="{{ category.get_url }}">{{ category.name }}</a></li>
+                    <li><a class="dropdown-item" href="{{ category.get_url }}">{{ category.name }}</a></li>
                     {% endfor %}
-                    </ul>
-                    
-                </div>
-                <div>
-                    <h6 class="mt-2 mb-2 flaot-start">{{ products_count }} products available in store </h6>
-                </div>
-                
-                {% for product in products %}
-                <div class="col-lg-4 col-md-4 col-sm-4 mb-4">
-                    <div class="box-element product">
-                        <img class="thumbnail" src="{{product.imageURL}}">
-                        <div class="box-element product">
-                            <h6><strong>{{ product.name }}</strong></h6>
-                            <hr>
-                            {% if product.stock == 0 %}
-                            <button class="btn btn-secondary disabled" data-product="{{product.id}}" data-action="add"
-                            class="btn btn-primary add-btn update-cart"><i class="fa fa-cart-plus"></i>
-                            </button>
-                            {% else %}
-                            <button data-product="{{product.id}}" data-action="add"
-                                class="btn btn-primary add-btn update-cart"><i class="fa fa-cart-plus"></i>
-                            </button>
-                            {% endif %}
-                            <a class="btn btn-secondary" href="{% url 'product_details' product.id %}"><i class="fa fa-magnifying-glass"></i></a>
-                            {% if request.user.is_superuser %}
-                                <a class="btn btn-secondary" href="{% url 'edit_product' product.id %}"><i class="fa fa-pencil"></i></a>
-                                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa fa-trash"></i></button>
+                </ul>
 
-                                <!-- Modal for the delete event -->
-                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title" id="staticBackdropLabel">confirm the action</h5>
-                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>are you sure that you want to <span class="text-danger">delete</span> the product?</p>
-                                            <p>the action <span class="text-danger text-decoration-underline">can't</span> be reversed</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                          <a class="btn btn-secondary" href="{% url 'delete_product' product.id %}">Understood</a>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                <!-- Modal for the delete event -->
-                            {% endif %}
-                            <span class="float-end">
-                                <h4 id="product-price"><strong>${{ product.price | floatformat:2 }}</strong></h4>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
+            </div>
+            <div>
+                <h6 class="mt-2 mb-2 flaot-start">{{ products_count }} products available in store </h6>
             </div>
 
-            <nav aria-label="Page navigation">
-                <ul class="pagination">
-                    {% if store_items.has_previous%}
-                    <li class="page-item"><a class="page-link"
-                            href="?page={{ store_items.previous_page_number }}">&#8656;</a></li>
-                    {% else%}
-                    <li class="page-item"><a class="page-link disabled" href="#">&#8656;</a></li>
-                    {% endif %}
-                    <li class="page-item page-number"><a class="page-link" href="?page=1">1</a></li>
-                    <li class="page-item page-number"><a class="page-link" href="?page=2">2</a></li>
-                    <li class="page-item page-number"><a class="page-link" href="?page=3">3</a></li>
-                    {% if store_items.has_next %}
-                    <li class="page-item"><a class="page-link"
-                            href="?page={{ store_items.next_page_number }}">&#8658;</a></li>
-                    {% else %}
-                    <li class="page-item"><a class="page-link disabled" href="#">&#8658;</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
-        </div>
-    </div>
+            {% for product in products %}
+            <div class="col-lg-4 col-md-4 col-sm-4 mb-4">
+                <div class="box-element product">
+                    <img class="thumbnail" src="{{product.imageURL}}">
+                    <div class="box-element product">
+                        <h6><strong>{{ product.name }}</strong></h6>
+                        <hr>
+                        {% if product.stock == 0 %}
+                        <button class="btn btn-secondary disabled" data-product="{{product.id}}" data-action="add"
+                            class="btn btn-primary add-btn update-cart"><i class="fa fa-cart-plus"></i>
+                        </button>
+                        {% else %}
+                        <button data-product="{{product.id}}" data-action="add"
+                            class="btn btn-primary add-btn update-cart"><i class="fa fa-cart-plus"></i>
+                        </button>
+                        {% endif %}
+                        <a class="btn btn-secondary" href="{% url 'product_details' product.id %}"><i
+                                class="fa fa-magnifying-glass"></i></a>
+                        {% if request.user.is_superuser %}
+                        <a class="btn btn-secondary" href="{% url 'edit_product' product.id %}"><i
+                                class="fa fa-pencil"></i></a>
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop"><i class="fa fa-trash"></i></button>
 
-    
-    {% include 'includes/footer.html'%}
+                        <!-- Modal for the delete event -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">confirm the action</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>are you sure that you want to <span class="text-danger">delete</span> the
+                                            product?</p>
+                                        <p>the action <span class="text-danger text-decoration-underline">can't</span>
+                                            be reversed</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <a class="btn btn-secondary"
+                                            href="{% url 'delete_product' product.id %}">Understood</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal for the delete event -->
+                        {% endif %}
+                        <span class="float-end">
+                            <h4 id="product-price"><strong>${{ product.price | floatformat:2 }}</strong></h4>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if products.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}">&#8656;</a>
+                </li>
+                {% else%}
+                <li class="page-item"><a class="page-link disabled" href="#">&#8656;</a></li>
+                {% endif %}
+                {% for i in num_pages %}
+                <li class="page-item page-number"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                {% endfor %}
+                {% if products.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">&#8658;</a>
+                </li>
+                {% else %}
+                <li class="page-item"><a class="page-link disabled" href="#">&#8658;</a></li>
+                {% endif %}
+            </ul>
+            <div class="w-100 d-flex align-items-center justify-content-center">
+                <p id="page-numbers" class="btn btn-primary justify-content-center">{{ products }}</p>
+            </div>
+
+        </nav>
+    </div>
+</div>
+
+
+{% include 'includes/footer.html'%}
 {% endblock %}
 
 {% block extrajs %}
+<script>
+    $(document).ready(function () {
+        let text = $('#page-numbers')
+        let pageNums = $('#page-numbers').text().replace("<", "").replace(">", "");
+        text.text(pageNums)
+    });
+</script>
 {% endblock %}
