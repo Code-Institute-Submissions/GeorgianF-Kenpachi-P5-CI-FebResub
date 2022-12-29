@@ -734,6 +734,10 @@ textarea.form-control {
     .products-container {
         height: 150vh;
     }
+
+    .order-summary {
+        margin-bottom: 20px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -983,6 +987,11 @@ textarea.form-control {
 
     .cart-row {
         font-size: 12px;
+    }
+
+    #stripe-logo {
+        height: 50px;
+        width: 100%;
     }
 }
 
