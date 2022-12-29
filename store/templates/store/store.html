@@ -25,15 +25,19 @@
 
             </div>
             <div>
-                <h6 class="mt-2 mb-2 flaot-start">{{ products_count }} products available in store </h6>
+                <h6 class="mt-2 mb-2 float-start">{{ products_count }} products available in store </h6>
             </div>
 
             {% for product in products %}
-            <div class="col-lg-4 col-md-4 col-sm-4 mb-4">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-4">
                 <div class="box-element product">
                     <img class="thumbnail" src="{{product.imageURL}}">
                     <div class="box-element product">
-                        <h6><strong>{{ product.name }}</strong></h6>
+                        <h6><strong id="product-name">{{ product.name }}</strong>
+                            <span class="float-end">
+                                <h4 id="product-price"><strong>${{ product.price | floatformat:2 }}</strong></h4>
+                            </span>
+                        </h6>
                         <hr>
                         {% if product.stock == 0 %}
                         <button class="btn btn-secondary disabled" data-product="{{product.id}}" data-action="add"
@@ -79,9 +83,6 @@
                         </div>
                         <!-- Modal for the delete event -->
                         {% endif %}
-                        <span class="float-end">
-                            <h4 id="product-price"><strong>${{ product.price | floatformat:2 }}</strong></h4>
-                        </span>
                     </div>
                 </div>
             </div>
@@ -109,8 +110,26 @@
             <div class="w-100 d-flex align-items-center justify-content-center">
                 <p id="page-numbers" class="btn btn-primary justify-content-center">{{ products }}</p>
             </div>
-
+            <hr class="store-hr mx-auto w-100">
         </nav>
+    </div>
+</div>
+
+<div class="container-fluid background-container text-center mascotte-container">
+    <div class="row">
+        <div class="col-3 offset-lg-3 col-lg-2 offset-md-3 col-md-2 col-sm-4 col-4">
+            <img class="img-thumbnail mascotte" src="{{MEDIA_URL}}mascotte-icones_1.webp" alt="mascotte-icones_1">
+            <h6 class="mt-2 text-center mascotte-header">Rated 4.8/5.0</h6>
+        </div>
+        <div class="col-3 col-lg-2 col-md-2 col-sm-4 col-4">
+            <img class="img-thumbnail mascotte" src="{{MEDIA_URL}}mascotte-icones_2.webp" alt="mascotte-icones_1">
+            <h6 class="mt-2 text-center mascotte-header">Free Shipping.</h6>
+        </div>
+        <div class="col-3 col-lg-2 col-md-2 col-sm-4 col-4">
+            <img class="img-thumbnail mascotte" src="{{MEDIA_URL}}mascotte-icones_3.webp" alt="mascotte-icones_1">
+            <h6 class="mt-2 text-center mascotte-header">Handmade Katanas.</h6>
+        </div>
+        <hr class="mt-4 store-hr mx-auto w-50 mb-5">
     </div>
 </div>
 
