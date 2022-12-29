@@ -700,7 +700,13 @@ textarea.form-control {
 /* MEDIA QUERIES */
 @media screen and (max-width: 2560px) {
     .products-container {
-        height: 65vh;
+        height: 110vh;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    .products-container {
+        height: 120vh;
     }
 }
 
@@ -715,6 +721,10 @@ textarea.form-control {
 }
 
 @media screen and (max-width: 1200px) {
+    .products-container {
+        height: 120vh;
+    }
+
     img.img-thumbnail.mascotte {
         margin-top: 20px;
     }
