@@ -11,85 +11,93 @@
             <h1 class="fs-3">Hey there {{ user }} </h1>
         </div>
         {% if request.user.is_superuser %}
-            
-            <div class="row">
+
+        <div class="row">
+            <div class="box-element">
                 <div class="box-element">
-                    <div class="box-element">
-                        <hr>
-                        <h2 class="logo-font mb-3">Product Management</h2>
-                        <hr>
-                        <a class="btn btn-primary" href="{% url 'store' %}">back to store</a>
-                        <a class="btn btn-primary" href="{% url 'add_product' %}"><i class="fa fa-plus"></i> add product</a>
-                        <a class="btn btn-primary" href="{% url 'store' %}"><i class="fa fa-pencil"></i> Edit existing product</a>
-                        <a class="btn btn-primary" href="{% url 'store' %}"><i class="fa fa-trash"></i> Delete existing product</a>
-                    </div>
+                    <hr>
+                    <h2 class="logo-font mb-3">Product Management</h2>
+                    <hr>
+                    <a class="btn btn-primary" href="{% url 'store' %}">back to store</a>
+                    <a class="btn btn-primary" href="{% url 'add_product' %}"><i class="fa fa-plus"></i> add product</a>
+                    <a class="btn btn-primary" href="{% url 'store' %}"><i class="fa fa-pencil"></i> Edit existing
+                        product</a>
+                    <a class="btn btn-primary" href="{% url 'store' %}"><i class="fa fa-trash"></i> Delete existing
+                        product</a>
                 </div>
             </div>
-            <br>
-            <div class="row">
+        </div>
+        <br>
+        <div class="row" id="store-messages">
+            <div class="box-element">
                 <div class="box-element">
-                    <div class="box-element">
-                        <hr>
-                        <h2 class="logo-font mb-3">store messages</h2>
-                        <hr>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                  <th scope="col">#</th>
-                                  <th scope="col">Contact name</th>
-                                  <th scope="col">Email</th>
-                                  <th scope="col">Date</th>
-                                  <th scope="col">Status</th>
-                                  <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            {% for message in contact_messages %}
-                                <tbody>
-                                    <tr>
-                                    <th scope="row">{{ forloop.counter }}</th>
-                                    <td>{{ message.contact_name }}</td>
-                                    <td>{{ message.contact_email }}</td>
-                                    <td>@{{ message.sent_date }}</td>
-                                    <td>{{ message.email_status }}</td>
-                                    <td>
-                                        <a class="text-black" href="{% url 'view_message' message.id %}"><i class="fa fa-magnifying-glass"></i></a>
-                                        <a class="text-black" data-bs-toggle="modal" data-bs-target="#staticBackdrop-deleteMessage" href="#"><i class="fa fa-trash"></i></a>
-                                    </td>
-                                    </tr>
-                                </tbody>
+                    <hr>
+                    <h2 class="logo-font mb-3">store messages</h2>
+                    <hr>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Contact name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Status</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        {% for message in contact_messages %}
+                        <tbody>
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ message.contact_name }}</td>
+                                <td>{{ message.contact_email }}</td>
+                                <td>@{{ message.sent_date }}</td>
+                                <td>{{ message.email_status }}</td>
+                                <td>
+                                    <a class="text-black" href="{% url 'view_message' message.id %}"><i
+                                            class="fa fa-magnifying-glass"></i></a>
+                                    <a class="text-black" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop-deleteMessage" href="#"><i
+                                            class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
 
-                                <!-- Modal for the add event -->
-                                <div class="modal fade" id="staticBackdrop-deleteMessage" data-bs-backdrop="static"
-                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop-deleteMessageLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="staticBackdrop-deleteMessageLabel">confirm the action
-                                                </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>are you sure that you want to <span class="text-danger">delete</span>
-                                                    the message?</p>
-                                                <p>the action <span
-                                                        class="text-danger text-decoration-underline">can't</span> be
-                                                    reversed</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <a class="btn btn-secondary" href="{% url 'delete_message' message.id %}">Understood</i></a>
-                                            </div>
-                                        </div>
+                        <!-- Modal for the add event -->
+                        <div class="modal fade" id="staticBackdrop-deleteMessage" data-bs-backdrop="static"
+                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop-deleteMessageLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdrop-deleteMessageLabel">confirm the
+                                            action
+                                        </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>are you sure that you want to <span class="text-danger">delete</span>
+                                            the message?</p>
+                                        <p>the action <span class="text-danger text-decoration-underline">can't</span>
+                                            be
+                                            reversed</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <a class="btn btn-secondary"
+                                            href="{% url 'delete_message' message.id %}">Understood</i></a>
                                     </div>
                                 </div>
-                                <!-- Modal for the add event -->
-                            {% endfor %}
-                          </table>
-                    </div>
+                            </div>
+                        </div>
+                        <!-- Modal for the add event -->
+                        {% endfor %}
+                    </table>
                 </div>
             </div>
+        </div>
         {% else %}
         <div class="row">
             <div class="box-element">

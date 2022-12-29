@@ -738,6 +738,18 @@ textarea.form-control {
     .order-summary {
         margin-bottom: 20px;
     }
+
+    .box-element a {
+        font-size: 12px;
+    }
+
+    th[scope=col] {
+        font-size: 12px;
+    }
+
+    td {
+        font-size: 12px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -992,6 +1004,19 @@ textarea.form-control {
     #stripe-logo {
         height: 50px;
         width: 100%;
+    }
+
+    .box-element a {
+        margin-top: 5px;
+    }
+
+    #store-messages {
+        display: none;
+    }
+
+    span.float-end.text-danger,
+    h2.logo-font.mb-3 {
+        font-size: 12px;
     }
 }
 
