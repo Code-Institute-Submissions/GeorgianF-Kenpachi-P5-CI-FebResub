@@ -23,7 +23,8 @@ def stripe_config(request):
 @csrf_exempt
 def create_checkout_session(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
-    domain_url = 'http://localhost:8000/checkout/'
+    # domain_url = 'http://localhost:8000/checkout/'
+    domain_url = 'https://kenpachi-estore.herokuapp.com/checkout/'
 
     if request.user.is_authenticated:
         customer = request.user.customer
