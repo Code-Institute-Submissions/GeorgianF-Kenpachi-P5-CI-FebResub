@@ -23,8 +23,9 @@ def stripe_config(request):
 @csrf_exempt
 def create_checkout_session(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
-    # domain_url = 'http://localhost:8000/checkout/'
-    domain_url = 'https://kenpachi-estore.herokuapp.com/checkout/'
+    domain_url = 'http://localhost:8000/checkout/'
+    # domain_url = 'https://kenpachi-estore.herokuapp.com/checkout/'
+    success_url = 'success?session_id={CHECKOUT_SESSION_ID}'
 
     if request.user.is_authenticated:
         customer = request.user.customer
@@ -62,7 +63,7 @@ def create_checkout_session(request):
                 },
             client_reference_id=request.user.id,
             customer_email=request.user.email,
-            success_url=domain_url + 'success?session_id={CHECKOUT_SESSION_ID}',
+            success_url=domain_url + success_url,
             cancel_url=domain_url + 'cancelled/',
             payment_method_types=['card'],
             mode='payment',
@@ -80,12 +81,12 @@ def create_checkout_session(request):
         checkout_session = stripe.checkout.Session.create(
             shipping_address_collection={
                 "allowed_countries":
-                    ["US", "CA", "NL"]
+                    ["US", "CA", "NL", "GB"]
                 },
             metadata=[items],
             client_reference_id=customer.id,
             customer_email=email,
-            success_url=domain_url + 'success?session_id={CHECKOUT_SESSION_ID}',
+            success_url=domain_url + success_url,
             cancel_url=domain_url + 'cancelled/',
             payment_method_types=['card'],
             mode='payment',
