@@ -1,4 +1,3 @@
-console.log('All system go!')
 const form = document.getElementById('form');
 
 // Get Stripe publishable key

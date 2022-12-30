@@ -1,7 +1,7 @@
 import json
 import datetime
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import stripe
@@ -23,37 +23,11 @@ def stripe_config(request):
 @csrf_exempt
 def create_checkout_session(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
-    # domain_url = 'http://localhost:8000/checkout/'
-    domain_url = 'https://kenpachi-estore.herokuapp.com/checkout/'
+    domain_url = 'http://localhost:8000/checkout/'
+    # domain_url = 'https://kenpachi-estore.herokuapp.com/checkout/'
     success_url = 'success?session_id={CHECKOUT_SESSION_ID}'
-
-    if request.user.is_authenticated:
-        customer = request.user.customer
-    else:
-        data = json.loads(request.body)
-        total = data['form']['total'].replace('.', '')
-        email = data['form']['email']
-        first_name = data['form']['first_name']
-        last_name = data['form']['last_name']
-        customer, created = Customer.objects.get_or_create(
-            email=email
-        )
-        customer.first_name = first_name
-        customer.last_name = last_name
-        customer.save()
-
     cart_info = cart_details(request)
-
-    cart_items = cart_info['cart_items']
     order = cart_info['order']
-    items = cart_info['items']
-
-    print(type(items))
-
-    for item in items:
-        print(item)
-
-    print(items)
 
     if request.method == 'GET':
         checkout_session = stripe.checkout.Session.create(
@@ -73,29 +47,6 @@ def create_checkout_session(request):
                     'quantity': 1,
                     'currency': 'usd',
                     'amount': int(order.get_cart_total*100),
-                }
-            ]
-        )
-        return JsonResponse({'sessionId': checkout_session['id']})
-    else:
-        checkout_session = stripe.checkout.Session.create(
-            shipping_address_collection={
-                "allowed_countries":
-                    ["US", "CA", "NL", "GB"]
-                },
-            metadata=[items],
-            client_reference_id=customer.id,
-            customer_email=email,
-            success_url=domain_url + success_url,
-            cancel_url=domain_url + 'cancelled/',
-            payment_method_types=['card'],
-            mode='payment',
-            line_items=[
-                {
-                    'name': 'Kenpachi Katana Store',
-                    'quantity': 1,
-                    'currency': 'usd',
-                    'amount': total,
                 }
             ]
         )
@@ -128,13 +79,6 @@ def stripe_webhook(request):
             expand=['line_items'],
         )
 
-        stripe_metadata = session['metadata'].setdefault('0')
-        print(stripe_metadata)
-        print(type(stripe_metadata))
-
-        # Fulfill the purchase...
-
-        #   TODO: drill down on the metadata from stripe
         transaction_id = datetime.datetime.now().timestamp()
         total = session['amount_total']
         customer_id = session['client_reference_id']
@@ -144,7 +88,6 @@ def stripe_webhook(request):
             complete=False
         )
         order.transaction_id = transaction_id
-
         if (total / 100) == int(order.get_cart_total):
             order.complete = True
 
@@ -174,12 +117,6 @@ def success(request):
         'order': order,
         'cart_items': cart_items,
         }
-
-    context = {
-        'items': items,
-        'order': order,
-        'cart_items': cart_items,
-        }
     return render(request, 'checkout/success.html', context)
 
 
@@ -189,12 +126,6 @@ def cancelled(request):
     cart_items = cart_info['cart_items']
     order = cart_info['order']
     items = cart_info['items']
-
-    context = {
-        'items': items,
-        'order': order,
-        'cart_items': cart_items,
-        }
 
     context = {
         'items': items,
