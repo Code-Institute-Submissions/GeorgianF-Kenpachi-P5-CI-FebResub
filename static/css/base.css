@@ -706,13 +706,13 @@ textarea.form-control {
 
 @media screen and (max-width: 1440px) {
     .products-container {
-        height: 120vh;
+        height: 110vh;
     }
 }
 
 @media screen and (max-width: 1400px) {
     .products-container {
-        height: 120vh;
+        height: auto;
     }
 
     img.img-thumbnail.mascotte {
@@ -722,7 +722,7 @@ textarea.form-control {
 
 @media screen and (max-width: 1200px) {
     .products-container {
-        height: 120vh;
+        height: 110vh;
     }
 
     img.img-thumbnail.mascotte {
@@ -732,7 +732,7 @@ textarea.form-control {
 
 @media screen and (max-width: 1198.98px) {
     .products-container {
-        height: 110vh;
+        height: 100vh;
     }
 
     .side-menu h2 {
@@ -758,15 +758,11 @@ textarea.form-control {
     }
 
     .products-container {
-        height: 150vh;
+        height: 140vh;
     }
 
     .order-summary {
         margin-bottom: 20px;
-    }
-
-    .box-element a {
-        font-size: 12px;
     }
 
     th[scope=col] {
@@ -858,7 +854,7 @@ textarea.form-control {
     }
 
     .products-container {
-        height: 150vh;
+        height: 135vh;
     }
 
     .product {
@@ -873,12 +869,17 @@ textarea.form-control {
 
 @media screen and (max-width: 575.98px) {
     .products-container {
-        height: 280vh;
+        height: 250vh;
     }
 
     .product {
         width: 70%;
         margin: 0 auto;
+    }
+
+    .mascotte {
+        width: 70px;
+        height: 70px;
     }
 }
 
@@ -893,8 +894,7 @@ textarea.form-control {
         width: 5px;
     }
 
-    .box-element table h5,
-    .box-element a {
+    .box-element table h5 {
         font-size: 12px;
     }
 
@@ -1034,10 +1034,6 @@ textarea.form-control {
     #stripe-logo {
         height: 50px;
         width: 100%;
-    }
-
-    .box-element a {
-        margin-top: 5px;
     }
 
     #store-messages {

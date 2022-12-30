@@ -6,7 +6,7 @@
 {% include 'includes/store-nav.html' %}
 
 <div class="container-fluid pt-3 background-container">
-    <div class="container products-container">
+    <div class="container products-container h-100">
         <div class="row mb-3">
             <h1 class="products-header text-center">Welcome to Kenpachi store</h1>
             <hr class="mb-1">
@@ -110,12 +110,12 @@
             <div class="w-100 d-flex align-items-center justify-content-center">
                 <p id="page-numbers" class="btn btn-primary justify-content-center">{{ products }}</p>
             </div>
-            <hr class="store-hr mx-auto w-100">
+            <hr class="store-hr mb-0 w-100">
         </nav>
     </div>
 </div>
 
-<div class="container-fluid background-container text-center mascotte-container">
+<div class="container-fluid background-container text-center mascotte-container pt-4">
     <div class="row">
         <div class="col-3 offset-lg-3 col-lg-2 offset-md-3 col-md-2 col-sm-4 col-4">
             <img class="img-thumbnail mascotte" src="{{MEDIA_URL}}mascotte-icones_1.webp" alt="mascotte-icones_1">
