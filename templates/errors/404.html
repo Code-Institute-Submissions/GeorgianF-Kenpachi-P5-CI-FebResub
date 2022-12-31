@@ -6,27 +6,26 @@
 
 <div class="container-fluid pt-3 background-container">
     <div class="container products-container h-100 pb-5 pt-5">
-        <div class="row box-element justify-content-start">
+        <div class="row justify-content-center">
             <div class="box-element col-lg-6 col-md-6 col-sm-6 col-6">
                 <div class="row">
-                    <h1 class="error-header text-start">page not found - 404</h1>
-                </div>
-                <div class="row">
-                    <a id="error-btn-1" class="ms-3 error-header btn btn-primary" href="{% url 'store' %}">Back to
-                        store</a>
-                    <a id="error-btn-2" class="ms-3 error-header btn btn-primary" href="{% url 'cart' %}">go to
-                        cart</a>
-
+                    <h1 class="error-header text-center">page not found - 404</h1>
+                    <div class="row h-100 w-100 mx-auto">
+                        <img src="{{MEDIA_URL}}lionel.jpg" alt="lionel">
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
-                <div class="row h-100 w-100 mx-auto">
-                    <img src="{{MEDIA_URL}}lionel.jpg" alt="lionel">
-                </div>
+            <div class="row justify-content-center mt-3">
+                <a id="error-btn-1" class="ms-3 error-header btn btn-primary" href="{% url 'store' %}">Back to
+                    store</a>
+                <a id="error-btn-2" class="ms-3 error-header btn btn-primary" href="{% url 'cart' %}">go to
+                    cart</a>
+
             </div>
         </div>
     </div>
 </div>
+
 
 
 {% include 'includes/footer.html'%}
