@@ -18,4 +18,4 @@ def handler404(request, exception):
         'cart_items': cart_items,
         }
 
-    return render(request, 'home/404.html', context)
+    return render(request, 'home/404.html', context, status=404)
