@@ -1,14 +1,12 @@
-import json
 import datetime
 from django.conf import settings
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import stripe
 from store.models import Customer
-from cart.utils import cart_details, cookie_cart
-from store.models import Product
-from .models import Order, ShippingAddress, OrderItem
+from cart.utils import cart_details
+from .models import Order, ShippingAddress
 
 
 @csrf_exempt

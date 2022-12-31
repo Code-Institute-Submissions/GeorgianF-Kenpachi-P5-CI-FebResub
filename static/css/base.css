@@ -17,6 +17,11 @@ body {
     position: relative;
 }
 
+#error-btn-1,
+#error-btn-2 {
+    width: fit-content !important;
+}
+
 /* TOASTS */
 .toast-container {
     position: absolute;
@@ -803,6 +808,10 @@ textarea.form-control {
     .mascotte-header {
         font-size: 12px;
     }
+
+    .error-header {
+        font-size: 14px;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -880,6 +889,10 @@ textarea.form-control {
     .mascotte {
         width: 70px;
         height: 70px;
+    }
+
+    .error-header {
+        font-size: 14px;
     }
 }
 
