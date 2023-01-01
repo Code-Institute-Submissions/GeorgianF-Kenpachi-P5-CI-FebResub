@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/story/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/contact/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/accounts/login/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/cart/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/category/katana/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/category/wakizashi/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/category/tanto/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/category/manga-katana/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/1/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/2/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/3/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/4/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/5/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/6/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/?page=1</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/?page=2</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/?page=3</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/?page=4</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/accounts/signup/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/accounts/password/reset/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/7/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/8/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/9/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/10/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/category/katana/?page=1</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/category/katana/?page=2</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/13/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/14/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/15/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/category/wakizashi/?page=1</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/16/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/17/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/18/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/category/tanto/?page=1</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/12/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/category/manga-katana/?page=1</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/11/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://kenpachi-estore.herokuapp.com/store/19/</loc>
+  <lastmod>2023-01-01T16:53:08+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>
