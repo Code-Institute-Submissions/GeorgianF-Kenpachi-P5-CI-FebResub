@@ -5,6 +5,7 @@ from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.views.decorators.cache import never_cache
 from django.contrib import messages
+from django.db.models import Q
 from checkout.models import Order, OrderItem, Customer, ShippingAddress
 from cart.utils import cart_details
 from .models import Contact_us
@@ -16,6 +17,7 @@ from .forms import ProductForm, GetInTouch
 def store(request, category_slug=None):
     categories = None
     products = None
+    query = None
 
     if category_slug is not None:
         categories = get_object_or_404(Category, slug=category_slug)
@@ -27,6 +29,24 @@ def store(request, category_slug=None):
     else:
         products = Product.objects.all().filter(is_available=True)
         products_count = products.count()
+
+    if request.GET:
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(
+                    request,
+                    'You did not enter any information!')
+                return redirect(reverse('store'))
+
+            queries = Q(
+                name__icontains=query) | Q(description__icontains=query)
+            products = products.filter(queries)
+
+            if products == 0:
+                print(products_count)
+            else:
+                print(products_count)
 
     cart_info = cart_details(request)
 
@@ -49,6 +69,7 @@ def store(request, category_slug=None):
         'order': order,
         'num_pages': num_pages,
         'total_num_pages': total_num_pages,
+        'search_term': query,
         }
 
     return render(request, 'store/store.html', context)
