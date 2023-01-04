@@ -4,41 +4,42 @@
 {% block content %}
 {% include 'includes/store-nav.html' %}
 
-<div class="container-fluid background-container sign-up-container">
-    <div class="container">
+<div class="container-fluid background-container sign-up-container h-100">
+    <div class="container pb-5">
         <br>
         <div class="col-12">
             <h1 class="fs-3">Hey there {{ user }} </h1>
         </div>
-        
-        <div class="box-element">
+
+        <div class="box-element ">
             <div class="box-element">
                 <h3 class="fs-5 text-center">Order Details </h3>
                 <p><span class="text-decoration-underline">transaction ID</span>: {{ order.transaction_id }}</p>
                 <p><span class="text-decoration-underline">date ordered</span>: {{ order.date_ordered }}</p>
-                <p><span class="text-decoration-underline">Shipping details</span>: {{ shipping_details.address }}, {{ shipping_details.city }}, {{ shipping_details.zipcode }}, {{ shipping_details.country }}
+                <p><span class="text-decoration-underline">Shipping details</span>: {{ shipping_details.address }},
+                    {{ shipping_details.city }}, {{ shipping_details.zipcode }}, {{ shipping_details.country }}
                 </p>
                 <hr>
                 <div>
-                    
+
                     <table class="table">
                         <thead>
-                          <tr>
-                            <th scope="col">Product Image</th>
-                            <th scope="col">Product Name</th>
-                            <th scope="col">Product Price</th>
-                            <th scope="col">Quantity</th>
-                          </tr>
+                            <tr>
+                                <th scope="col">Product Image</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Product Price</th>
+                                <th scope="col">Quantity</th>
+                            </tr>
                         </thead>
                         {% for item in order_items %}
-                            <tbody>
+                        <tbody>
                             <tr>
                                 <td scope="row"><img class="row-image" src="{{ item.product.imageURL }}"></td>
                                 <td scope="row" class="pt-4">{{ item.product.name }}</td>
                                 <td scope="row" class="pt-4">{{ item.product.price }}</td>
                                 <td scope="row" class="pt-4">{{ item.quantity }}</td>
                             </tr>
-                            </tbody>
+                        </tbody>
                         {% endfor %}
                     </table>
                 </div>
