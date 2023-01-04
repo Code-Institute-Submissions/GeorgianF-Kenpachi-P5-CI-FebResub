@@ -11,6 +11,7 @@ from cart.utils import cart_details
 from .models import Contact_us
 from .models import Product, Category
 from .forms import ProductForm, GetInTouch
+from cart.utils import cart_details
 
 
 @never_cache
@@ -238,11 +239,17 @@ def view_order(request, transaction_id):
     order = Order.objects.filter(transaction_id=transaction_id)[0]
     order_items = OrderItem.objects.filter(order=order)
     shipping_details = get_object_or_404(ShippingAddress, order=order)
+    cart_info = cart_details(request)
+
+    cart_items = cart_info['cart_items']
+    items = cart_info['items']
 
     context = {
         'order': order,
         'order_items': order_items,
-        'shipping_details': shipping_details
+        'shipping_details': shipping_details,
+        'cart_items': cart_items,
+        'items': items,
     }
 
     return render(request, 'store/view_order.html', context)
