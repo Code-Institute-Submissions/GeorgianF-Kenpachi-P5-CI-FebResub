@@ -26,6 +26,11 @@ def create_checkout_session(request):
     cart_info = cart_details(request)
     order = cart_info['order']
 
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        customer.email = request.user.email
+        customer.save()
+
     if request.method == 'GET':
         checkout_session = stripe.checkout.Session.create(
             shipping_address_collection={
@@ -33,7 +38,7 @@ def create_checkout_session(request):
                     ["US", "CA", "NL", "GB"]
                 },
             client_reference_id=request.user.id,
-            customer_email=request.user.email,
+            customer_email=customer.email,
             success_url=domain_url + success_url,
             cancel_url=domain_url + 'cancelled/',
             payment_method_types=['card'],
@@ -78,10 +83,12 @@ def stripe_webhook(request):
             expand=['line_items'],
         )
 
+        print(session)
+
         transaction_id = datetime.datetime.now().timestamp()
         total = session['amount_total']
-        customer_id = session['client_reference_id']
-        customer = Customer.objects.get(pk=customer_id)
+        customer_email = session['customer_email']
+        customer = Customer.objects.get(email=customer_email)
         order, created = Order.objects.get_or_create(
             customer=customer,
             complete=False
