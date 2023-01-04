@@ -43,11 +43,6 @@ def store(request, category_slug=None):
                 name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
-            if products == 0:
-                print(products_count)
-            else:
-                print(products_count)
-
     cart_info = cart_details(request)
 
     cart_items = cart_info['cart_items']
