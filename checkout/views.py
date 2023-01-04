@@ -65,8 +65,10 @@ def stripe_webhook(request):
             endpoint_secret
         )
     except ValueError as e:
+        print(e)
         return HttpResponse(status=400)
     except stripe.error.SignatureVerificationError as e:
+        print(e)
         return HttpResponse(status=400)
 
     if event['type'] == 'checkout.session.completed':
