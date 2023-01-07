@@ -89,7 +89,7 @@ def stripe_webhook(request):
         transaction_id = datetime.datetime.now().timestamp()
         total = session['amount_total']
         customer_email = session['customer_email']
-        shipping_details = session['shipping_address']
+        shipping_details = session['customer_details']['address']
         customer = Customer.objects.get(email=customer_email)
         order, created = Order.objects.get_or_create(
             customer=customer,
