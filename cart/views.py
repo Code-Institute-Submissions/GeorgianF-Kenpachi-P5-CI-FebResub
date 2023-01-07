@@ -1,6 +1,7 @@
 import json
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.contrib import messages
 from checkout.models import Order, OrderItem
 from store.models import Product
 from .utils import cart_details
@@ -41,8 +42,16 @@ def item_update(request):
 
     if action == 'add':
         order_item.quantity = (order_item.quantity + 1)
+        messages.success(
+            request,
+            "Item has been added to the cart!"
+        )
     elif action == 'remove':
         order_item.quantity = (order_item.quantity - 1)
+        messages.success(
+            request,
+            "Item has been removed from the cart!"
+        )
 
     order_item.save()
 

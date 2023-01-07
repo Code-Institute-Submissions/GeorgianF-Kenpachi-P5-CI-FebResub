@@ -190,14 +190,16 @@ def item_update(request):
 
     if action == 'add':
         order_item.quantity = (order_item.quantity + 1)
-    elif action == 'remove':
-        order_item.quantity = (order_item.quantity - 1)
-
-    order_item.save()
-
-    messages.success(
+        messages.success(
                 request,
                 'Item has been added to cart')
+    elif action == 'remove':
+        order_item.quantity = (order_item.quantity - 1)
+        messages.success(
+                request,
+                'Item has been removed from cart')
+
+    order_item.save()
 
     if order_item.quantity <= 0:
         order_item.delete()
