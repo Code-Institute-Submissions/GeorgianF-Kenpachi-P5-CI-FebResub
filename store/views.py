@@ -162,6 +162,11 @@ def product_details(request, product_id):
     return render(request, 'store/product_details.html', context)
 
 
+def product_details_add(request, product_id):
+    item_update(request)
+    return redirect('cart')
+
+
 def add_to_bag(request, product_id):
     quantity = 1
     bag = request.session.get('cart', {})
