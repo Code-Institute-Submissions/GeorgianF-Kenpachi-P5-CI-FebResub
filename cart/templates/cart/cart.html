@@ -34,11 +34,11 @@
                         <table class="table">
                             <tr>
                                 <th>
-                                    <h5 class="pt-2">Items: <strong>{{ order.get_cart_items }}</strong></h5>
+                                    <p class="pt-3">Items: <strong>{{ order.get_cart_items }}</strong></p>
                                 </th>
                                 <th>
-                                    <h5 class="pt-2">Total: <strong> ${{ order.get_cart_total|floatformat:2 }}</strong>
-                                    </h5>
+                                    <p class="pt-3">Total: <strong> ${{ order.get_cart_total|floatformat:2 }}</strong>
+                                    </p>
                                 </th>
                                 <th>
                                     <a class="float-end btn btn-primary" href="{% url 'checkout' %}">Checkout</a>
@@ -60,7 +60,7 @@
                     {% for item in items %}
                     <div class="row cart-row">
                         <div class="col-lg-2 col-md-2 col-sm-1 col-1 text-center"><img class="row-image"
-                                src="{{ item.product.imageURL }}"></div>
+                                src="{{ item.product.imageURL }}" alt="product-cart-image"></div>
                         <div class="col-lg-4 col-md-2 col-sm-2 col-2">
                             <p class="pt-3"> {{ item.product.name }}</p>
                         </div>
@@ -71,10 +71,10 @@
                             <p class="quantity">{{ item.quantity }}</p>
                             <div class="quantity pt-2">
                                 <img data-product="{{item.product.id}}" data-action="add"
-                                    class="chg-quantity update-cart" src="{{MEDIA_URL}}arrow-up.png">
+                                    class="chg-quantity update-cart" src="{{MEDIA_URL}}arrow-up.png" alt="arrow-up">
 
                                 <img data-product="{{item.product.id}}" data-action="remove"
-                                    class="chg-quantity update-cart" src="{{MEDIA_URL}}arrow-down.png">
+                                    class="chg-quantity update-cart" src="{{MEDIA_URL}}arrow-down.png" alt="arrow-down">
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-2 col-2 text-center">

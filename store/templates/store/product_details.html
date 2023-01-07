@@ -18,7 +18,7 @@
       {% csrf_token %}
       <div class="d-flex align-items-center justify-content-center">
         <div class="box-element product">
-          <img class="thumbnail" src="{{product.imageURL}}">
+          <img class="thumbnail" src="{{product.imageURL}}" alt="product-image">
           <hr>
           <p><span class="text-danger">Price:</span><span class="float-end">${{ product.price }}</span></p>
           <p><span class="text-danger">In stock:</span><span class="float-end">{{ product.stock }}</span></p>

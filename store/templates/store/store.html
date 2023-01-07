@@ -44,18 +44,18 @@
             {% for product in products %}
             <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-4">
                 <div class="box-element product">
-                    <img class="thumbnail" src="{{product.imageURL}}">
+                    <img class="thumbnail" src="{{product.imageURL}}" alt="katana-image">
                     <div class="box-element product">
                         <h6><strong id="product-name">{{ product.name }}</strong>
-                            <span class="float-end">
-                                <h4 id="product-price"><strong>${{ product.price | floatformat:2 }}</strong></h4>
+                            <span class="fs-4 float-end">
+                                <span id="product-price"><strong>${{ product.price | floatformat:2 }}</strong></span>
                             </span>
                         </h6>
                         <hr>
                         {% if product.stock == 0 %}
-                        <button class="btn btn-secondary disabled" data-product="{{product.id}}" data-action="add"
-                            class="btn btn-primary add-btn update-cart"><i class="fa fa-cart-plus"></i>
+                        <button class="btn btn-secondary disabled" data-product="{{product.id}}" data-action="add"><i class="fa fa-cart-plus"></i>
                         </button>
+                        <span class="pt-2 float-end text-danger">No Stock</span>
                         {% else %}
                         <button data-product="{{product.id}}" data-action="add"
                             class="btn btn-primary add-btn update-cart"><i class="fa fa-cart-plus"></i>

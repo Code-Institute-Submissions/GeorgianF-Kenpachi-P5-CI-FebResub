@@ -12,7 +12,7 @@ tl.fromTo(".nav-list", {
     y: "-100%",
     opacity: 0
     }, {
-    duration: .3,
+    duration: .30,
     opacity: 1,
     y: "0%",
     stagger: 0.25

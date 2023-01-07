@@ -11,4 +11,4 @@ icon.addEventListener('click', () => {
         icon.src = "https://kenpachi-estore.s3.amazonaws.com/media/play.png";
         
     }
-})
+});

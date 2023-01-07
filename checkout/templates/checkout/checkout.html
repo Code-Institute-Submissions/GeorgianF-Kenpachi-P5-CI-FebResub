@@ -21,7 +21,7 @@
                     <hr>
                     <div class="row cart-row">
                         {% for item in items %}
-                        <div class="col-lg-3 col-md-2"><img class="row-image" src="{{ item.product.imageURL }}">
+                        <div class="col-lg-3 col-md-2"><img class="row-image" src="{{ item.product.imageURL }}" alt="product-checkout-image">
                         </div>
                         <div class="col-lg-4 col-md-2">
                             <p class="mt-3">{{ item.product.name }}</p>
@@ -53,9 +53,9 @@
                         <hr>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="box-element" id="payment-info">
+                                <div class="box-element">
                                     <input type="text" class="w-100 btn btn-primary" id="submitBtn"
-                                        value="Finish order"></input><br>
+                                        value="Finish order"><br>
                                     <div class="d-flex align-items-center justify-content-center">
                                         <img id="stripe-logo" class="mx-auto" src="{{ MEDIA_URL}}stripe1.png"
                                             alt="stripe-image">

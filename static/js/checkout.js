@@ -21,7 +21,7 @@ fetch("/checkout/config/")
           // Redirect to Stripe Checkout
           return stripe.redirectToCheckout({
             sessionId: data.sessionId
-          })
+          });
         })
         .then((res) => {
           console.log(res);
@@ -29,6 +29,8 @@ fetch("/checkout/config/")
     });
   });
 
+// For users that are not authenticated
+// Future enhancement
 
 document.getElementById('payment-btn').addEventListener('click', function (e) {
   submitFormData();
@@ -40,11 +42,11 @@ function submitFormData(event) {
     'last_name': null,
     'email': null,
     'total': total,
-  }
+  };
 
-  userData.first_name = form.first_name.value
-  userData.last_name = form.last_name.value
-  userData.email = form.email.value
+  userData.first_name = form.first_name.value;
+  userData.last_name = form.last_name.value;
+  userData.email = form.email.value;
 
   fetch("/checkout/config/")
     .then((result) => {
@@ -55,7 +57,7 @@ function submitFormData(event) {
       const stripe = Stripe(data.publicKey);
 
       // Get Checkout Session ID
-      var url = "/checkout/create-checkout-session/"
+      var url = "/checkout/create-checkout-session/";
       fetch(url, {
           method: "POST",
           headers: {
@@ -74,7 +76,7 @@ function submitFormData(event) {
           // Redirect to Stripe Checkout
           return stripe.redirectToCheckout({
             sessionId: data.sessionId
-          })
+          });
         })
         .then((res) => {
           console.log(res);

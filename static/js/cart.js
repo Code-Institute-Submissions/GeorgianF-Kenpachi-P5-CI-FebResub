@@ -1,4 +1,4 @@
-const updateBtns = document.getElementsByClassName('update-cart')
+const updateBtns = document.getElementsByClassName('update-cart');
 
 for (i = 0; i < updateBtns.length; i++) {
 	updateBtns[i].addEventListener('click', function(){
@@ -10,7 +10,7 @@ for (i = 0; i < updateBtns.length; i++) {
 		} else {
 			updateUserOrder(productId, action);
 		}
-	})
+	});
 }
 
 function updateCartAnonymusUser(productId, action) {
@@ -28,8 +28,8 @@ function updateCartAnonymusUser(productId, action) {
 		}
 	}
 
-	document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
-	location.reload()
+	document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/";
+	location.reload();
 }
 
 function updateUserOrder (productId, action) {
@@ -50,6 +50,6 @@ function updateUserOrder (productId, action) {
 		   return response.json();
 		})
 		.then((data) => {
-		    location.reload()
+		    location.reload();
 		});
 }
