@@ -89,7 +89,13 @@ def stripe_webhook(request):
         transaction_id = datetime.datetime.now().timestamp()
         total = session['amount_total']
         customer_email = session['customer_email']
-        shipping_details = session['customer_details']['address']
+        sh_det_address1 = session['shipping']['address']['line1'],
+        sh_det_address2 = session['shipping']['address']['line2'],
+        sh_det_city = session['shipping']['address']['city'],
+        sh_det_state = session['shipping']['address']['state'],
+        sh_det_zipcode = session['shipping']['address']['postal_code'],
+        sh_det_country = session['shipping']['address']['country'],
+        web_domain = 'https://kenpachi-estore.herokuapp.com/'
         customer = Customer.objects.get(email=customer_email)
         order, created = Order.objects.get_or_create(
             customer=customer,
@@ -118,16 +124,28 @@ def stripe_webhook(request):
                 "\n" +
                 "Below you can find the order details" +
                 "\n" +
+                "\n" +
                 f"Order Number: {order.transaction_id}" +
                 "\n" +
-                f"Order Total: {order.get_cart_total}" +
+                "\n" +
+                f"Order Total: ${total/100}" +
+                "\n" +
                 "\n" +
                 f"Order Date: {order.date_ordered}" +
                 "\n" +
-                f"Shipping details: {shipping_details}" +
+                "\n" +
+                f"Shipping details:" +
+                "\n" +
+                f"Address : {sh_det_address1 + sh_det_address2}" +
+                f"City : {sh_det_city}" +
+                f"State : {sh_det_state}" +
+                f"Postcode : {sh_det_zipcode}" +
+                f"Country : {sh_det_country}" +
                 "\n" +
                 "\n" +
                 "Your ordered item(s) will arrive shortly" +
+                "\n" +
+                f"For more information on the order, go to {web_domain}"
                 "\n" +
                 "\n" +
                 "Kenpachi Team"
