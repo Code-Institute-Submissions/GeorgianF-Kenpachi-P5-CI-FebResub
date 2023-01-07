@@ -3,6 +3,7 @@ from django.conf import settings
 from django.shortcuts import render
 from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.core.mail import send_mail
 import stripe
 from store.models import Customer
 from cart.utils import cart_details
@@ -107,7 +108,14 @@ def stripe_webhook(request):
             country=session['shipping']['address']['country'],
         )
         order.save()
-        print('Order was added to the database')
+
+        send_mail(
+            'Order confirmation',
+            'The order has been confirmed',
+            EMAIL_HOST_USER,
+            [customer_email],
+            fail_silently=False,
+        )
         return HttpResponse(status=200)
 
 
