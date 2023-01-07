@@ -4,9 +4,6 @@ from django.shortcuts import render
 from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import send_mail
-from django.core.mail import EmailMultiAlternatives
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
 import stripe
 from store.models import Customer
 from cart.utils import cart_details
@@ -113,31 +110,14 @@ def stripe_webhook(request):
         order.save()
 
         sender = settings.EMAIL_HOST_USER
-        html_content = render_to_string(
-            'checkout/email_template.html',
-            {
-                'title': 'Order Confirmation',
-                'content': order
-            })
-        text_content = strip_tags(html_content)
-
-        email = EmailMultiAlternatives(
-            # subject
-            'Order Confirmation',
-            # content
-            text_content,
-            # from email
-            sender,
-            # recepients
-            [customer_email]
-        )
-
-        email.attach_alternative(html_content, 'text/html')
-        email.send()
 
         send_mail(
             'Order confirmation',
-            'The order has been confirmed',
+            f'Hey there {customer},\
+                Congratulation on your purchase,\
+                below you can find the order details:\
+                    Order Number: {transaction_id}\
+                    Order Total: {total}',
             sender,
             [customer_email],
             fail_silently=False,
