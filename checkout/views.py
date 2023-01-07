@@ -89,6 +89,7 @@ def stripe_webhook(request):
         transaction_id = datetime.datetime.now().timestamp()
         total = session['amount_total']
         customer_email = session['customer_email']
+        shipping_details = session['shipping_address']
         customer = Customer.objects.get(email=customer_email)
         order, created = Order.objects.get_or_create(
             customer=customer,
@@ -110,14 +111,31 @@ def stripe_webhook(request):
         order.save()
 
         sender = settings.EMAIL_HOST_USER
+        message = (
+                f"Hey there {customer}," +
+                "\n\n" +
+                "Congratulations on your purchase!" +
+                "\n" +
+                "Below you can find the order details" +
+                "\n" +
+                f"Order Number: {order.transaction_id}" +
+                "\n" +
+                f"Order Total: {order.get_cart_total}" +
+                "\n" +
+                f"Order Date: {order.date_ordered}" +
+                "\n" +
+                f"Shipping details: {shipping_details}" +
+                "\n" +
+                "\n" +
+                "Your ordered item(s) will arrive shortly" +
+                "\n" +
+                "\n" +
+                "Kenpachi Team"
+                )
 
         send_mail(
             'Order confirmation',
-            f'Hey there {customer},\
-                Congratulation on your purchase,\
-                below you can find the order details:\
-                    Order Number: {transaction_id}\
-                    Order Total: {total}',
+            message,
             sender,
             [customer_email],
             fail_silently=False,
