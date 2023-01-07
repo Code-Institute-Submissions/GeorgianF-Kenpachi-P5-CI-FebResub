@@ -16,6 +16,9 @@ from cart.utils import cart_details
 
 @never_cache
 def store(request, category_slug=None):
+    """
+    A view to render the products into the store with pagination
+    """
     categories = None
     products = None
     query = None
@@ -135,7 +138,9 @@ def delete_message(request, message_id):
 
 
 def product_details(request, product_id):
-    """ A view to show individual product details """
+    """
+    A view to show individual product details
+    """
 
     product = get_object_or_404(Product, pk=product_id)
 
@@ -155,11 +160,17 @@ def product_details(request, product_id):
 
 
 def product_details_add(request, product_id):
+    """
+    A view to add add to cart from the product details page
+    """
     item_update(request)
     return redirect('cart')
 
 
 def add_to_bag(request, product_id):
+    """
+    A view to add to cart for non-logged users
+    """
     quantity = 1
     bag = request.session.get('cart', {})
 
@@ -174,6 +185,9 @@ def add_to_bag(request, product_id):
 
 
 def item_update(request):
+    """
+    A view to handle the actions and update items in the cart
+    """
     data = json.loads(request.body)
     product_id = data['productId']
     action = data['action']
@@ -209,6 +223,9 @@ def item_update(request):
 
 @login_required
 def profile(request):
+    """
+    A view to render the profile of the customer with order history
+    """
     profile = get_object_or_404(Customer, user=request.user)
     orders = Order.objects.filter(customer=profile, complete=True)
     if request.user.is_authenticated:
@@ -235,6 +252,9 @@ def profile(request):
 
 @login_required
 def view_order(request, transaction_id):
+    """
+    A view to render the order from the profile page
+    """
     order = Order.objects.filter(transaction_id=transaction_id)[0]
     order_items = OrderItem.objects.filter(order=order)
     shipping_details = get_object_or_404(ShippingAddress, order=order)
@@ -257,7 +277,7 @@ def view_order(request, transaction_id):
 @login_required
 def add_product(request):
     """
-    Add a product to the store
+    Add a product to the store // admin only
     """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
@@ -302,7 +322,7 @@ def add_product(request):
 @login_required
 def edit_product(request, product_id):
     """
-    Edit a product in the store
+    Edit a product in the store // admin only
     """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
@@ -345,7 +365,9 @@ def edit_product(request, product_id):
 
 @login_required
 def delete_product(request, product_id):
-    """ Delete a product from the store """
+    """
+    Delete a product from the store // admin only
+    """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect('store')

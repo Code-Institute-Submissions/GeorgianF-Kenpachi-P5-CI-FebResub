@@ -8,6 +8,9 @@ from .utils import cart_details
 
 
 def cart(request):
+    """
+    A view to render the cart page with the items
+    """
     cart_info = cart_details(request)
 
     cart_items = cart_info['cart_items']
@@ -24,6 +27,9 @@ def cart(request):
 
 
 def item_update(request):
+    """
+    A view to allow adding/deleting items on the cart page
+    """
     data = json.loads(request.body)
     product_id = data['productId']
     action = data['action']
