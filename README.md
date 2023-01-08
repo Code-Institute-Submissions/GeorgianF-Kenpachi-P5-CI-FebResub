@@ -161,3 +161,63 @@ When developing the website, I have put myself in the shoes of the visitor, and 
 **View Message (admin) page**
 ------------------
 ![Screenshot 2023-01-08 at 15 47 00](https://user-images.githubusercontent.com/91877102/211202724-fa550b38-8d14-434a-95fb-e27f3034a486.png)
+
+### **Database Schema**:
+TODO:
+
+### Color scheme:
+I wanted to keep the color scheme as simple as possible, because within the website there are a lot of pictures with the katanas, that I want to showcase.\
+The more vibrant colors I did't consider that will add value, and will take away from the objective of the webstore, that is chaftmanship.
+I have used for reference the website: [coolers.co](https://coolors.co) after looking for some color pallets into the website 
+[shutterstock.com](https://www.shutterstock.com/blog/color-palettes-for-websites) and decided that #24.Fearless Fitness will be a good fit 
+
+In the end I have used the following colors:
+- #F5F7F7
+- #EDB518
+- #79031D
+- #000407
+
+![Screenshot 2023-01-08 at 16 04 22](https://user-images.githubusercontent.com/91877102/211204066-5ecd2ea6-e9e1-49e0-ae9f-504f2a3fb3b2.png)
+
+### Typography:
+I have user only one font Bangers (uppercase) because it provided the **anime look** that I wanted to achieve.
+
+## Agile Development Process
+I have use GitHub to keep track of my progress.
+All of the user stories have been logged on **Github** [here](https://github.com/users/GeorgianF/projects/3/views/1)
+
+# **Features**
+
+## **Site Navigation**
+
+### **Navbar**
+The menu it's hidden from the view and it can be found by clicking the **MENU** on the left side of the screen
+Once the button is clicked, the menu will appear
+![Screenshot 2023-01-08 at 16 53 34](https://user-images.githubusercontent.com/91877102/211206283-a6217cd3-d317-4e2d-83ae-1833cebbcbf5.png)
+The user has full freedom on the page that he wants to visit, and everything is easy to reach.
+
+### **Contact page**
+From the hidden menu, the user can go to the contact page, where he can find a contact form that he can submit.
+
+![Screenshot 2023-01-08 at 16 58 56](https://user-images.githubusercontent.com/91877102/211206549-c4a16844-d311-44da-b45d-7a34a8c4a010.png)
+
+All fields are required, and a modal pops up upon submission to inform the user of the action:
+
+![Screenshot 2023-01-08 at 17 00 29](https://user-images.githubusercontent.com/91877102/211206605-f4a2fe68-05ed-4e86-941f-8c736f558a9c.png)
+
+A success message appears if the order is succesfull, otherwise a error one appears.
+
+![Screenshot 2023-01-08 at 17 00 58](https://user-images.githubusercontent.com/91877102/211206694-a00b176c-aeb3-479f-8f99-0252945b1849.png)
+
+### **Story page**
+From the Menu, the user can navigate to the **Our Story** page, where he can find some short information on how the end product is obtained and what is the process is which the blade is forged.
+The are 3 .mp4 videos with the process, for better understanding.
+
+
+
+### **Home page**
+The user is greeted with the image of a blacksmith and a video that plays only when the user clicks on the play button.\
+A small introduction to the webstore, and a main call to action button, to go to store.
+![Screenshot 2023-01-08 at 16 55 52](https://user-images.githubusercontent.com/91877102/211206388-241aae40-239c-4e8e-9348-c2847a790abd.png)
+
+
