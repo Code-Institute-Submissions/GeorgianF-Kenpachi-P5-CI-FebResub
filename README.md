@@ -1,5 +1,5 @@
 # **Kenpachi eStore**
-The website is a online platform that allows users to purchase high quality katanas, tantos, wakazashis.\ 
+The website is a online platform that allows users to purchase high quality katana, tanto, wakazashi.\
 The name of the store is based on the characted on Zaraki Kenpachi, from the anime [Bleach](https://bleach.fandom.com/wiki/Kenpachi_Zaraki)\
 Although he is known to be a violent fighter, Zaraki's actions tend to be for the best.\
 Zaraki lives for battle, and enjoys a good fight more than anything. He even holds back in an effort to make any fight last longer.\
@@ -19,22 +19,43 @@ Deployed site can be found here: [Kenpachi eStore](https://kenpachi-estore.herok
     * [**User Stories**](#user-stories)
   * [**Backbone**](#backbone)
     * [**Wireframes**](#wireframes)
-      * [**Landing page**](#landing-page)
-      * [**Story page**](#story-page)
-      * [**Contact Us page:**](#contact-us-page)
-      * [**Store:**](#store-page)
-      * [**Cart page:**](#cart-page)
-      * [**Checkout page:**](#checkout-page)
-      * [**Login page:**](#login-page)
-      * [**Logout page:**](#logout-page)
-      * [**Reset password page:**](#reset-password-page)
-      * [**User profile page:**](#user-profile-page)
-      * [**View order (by ID) page:**](#view-order-page)
-      * [**Admin page:**](#admin-page)
-      * [**Add product (admin) page:**](#admin-page)
-      * [**View Message (admin) page:**](#admin-page)
+      * [**WF Landing**](#wf-landing)
+      * [**WF Story**](#wf-story)
+      * [**WF Contact Us**](#wf-contact-us)
+      * [**WF Store**](#wf-store)
+      * [**WF Cart**](#wf-cart)
+      * [**WF Checkout**](#wf-checkout)
+      * [**WF Login**](#wf-login)
+      * [**WF Logout**](#wf-logout)
+      * [**WF Reset password**](#wf-reset-password)
+      * [**WF User profile**](#wf-user-profile)
+      * [**WF View order (by ID)**](#wf-view-order-by-id)
+      * [**WF Admin**](#wf-admin)
+      * [**WF Admin Add product**](#wf-admin-add-product)
+      * [**WF Admin View Message**](#wf-admin-view-message)
     * [**Database schema**](#database-schema)
     * [**Color scheme**](#color-scheme)
+* [**Features**](#features)
+  * [**Site Navigation**](#site-navigation)
+    * [**Navbar**](#navbar)
+    * [**Footer**](#footer)
+    * [**Home page**](#home-page)
+    * [**Contact page**](#contact-page)
+    * [**Story page**](#story-page)
+    * [**Store page**](#store-page)
+    * [**Cart page**](#cart-page)
+    * [**Checkout page**](#checkout-page)
+      * [**Checkout - success page**](#checkout-success-page)
+      * [**Checkout - canceled page**](#checkout-canceled-page)
+    * [**Login page**](#Login-page)
+    * [**Logout booking page**](#logout-page)
+    * [**Reset password page**](#reset-password-page)
+    * [**User profile page**](#user-profile-page)
+    * [**View order (by ID) page**](#view-order-by-id-page)
+    * [**Admin page**](#admin-page)
+    * [**Admin Add page**](#admin-page)
+    * [**Admin View Message page**](#admin-page)
+    * [**Admin Edit and Delete*](#admin-page)
 
 # **Planning Phase**
 ## **Site Objectives:**
@@ -106,59 +127,59 @@ When developing the website, I have put myself in the shoes of the visitor, and 
 ## **Backbone**
 
 ### **Wireframes**:
-**Landing page:**
+**WF Landing**
 ------------------
 <img width="751" alt="Screenshot 2023-01-08 at 14 46 55" src="https://user-images.githubusercontent.com/91877102/211199550-e149886a-319f-4a55-9c54-b0875aa09993.png">
 
-**Story page**
+**WF Story**
 ------------------
 ![Screenshot 2023-01-08 at 15 01 45](https://user-images.githubusercontent.com/91877102/211200331-584096fb-bdc8-4a97-9729-3fba6a5f1144.png)
 
-**Contact Us page**
+**WF Contact Us**
 ------------------
 ![Screenshot 2023-01-08 at 15 07 28](https://user-images.githubusercontent.com/91877102/211200660-51eb093d-c5c4-4303-a735-6a7b9aa67eb9.png)
 
-**Store page**
+**WF Store**
 ------------------
 ![Screenshot 2023-01-08 at 15 15 20](https://user-images.githubusercontent.com/91877102/211201073-a825d0ba-50e8-478e-8fab-8027deda83b6.png)
 
-**Cart page**
+**WF Cart**
 ------------------
 ![Screenshot 2023-01-08 at 15 19 11](https://user-images.githubusercontent.com/91877102/211201292-0e611744-4f9c-4aa3-a503-a5215e29e2eb.png)
 
-**Checkout page**
+**WF Checkout**
 ------------------
 ![Screenshot 2023-01-08 at 15 22 13](https://user-images.githubusercontent.com/91877102/211201417-9c7c976c-64bf-40df-b71d-66872d13a2f8.png)
 
-**Login page**
+**WF Login**
 ------------------
 ![Screenshot 2023-01-08 at 15 27 14](https://user-images.githubusercontent.com/91877102/211201681-0933c8d3-1ed0-448f-b6a0-cfa44f67b14f.png)
 
-**Logout page**
+**WF Logout**
 ------------------
 ![Screenshot 2023-01-08 at 15 29 01](https://user-images.githubusercontent.com/91877102/211201783-e8a01cce-f436-4b4f-9c29-c3e287c9730a.png)
 
-**Reset password page**
+**WF Reset password**
 ------------------
 ![Screenshot 2023-01-08 at 15 30 43](https://user-images.githubusercontent.com/91877102/211201892-fcacdfb2-cae5-4964-b72d-5d06e100edc9.png)
 
-**User profile page**
+**WF User profile**
 ------------------
 ![Screenshot 2023-01-08 at 15 33 41](https://user-images.githubusercontent.com/91877102/211202074-f24de57b-1813-4a2f-977e-b968020f20aa.png)
 
-**View order (by ID) page**
+**WF View order by ID**
 ------------------
 ![Screenshot 2023-01-08 at 15 36 39](https://user-images.githubusercontent.com/91877102/211202217-8328762a-61c2-43ab-9dd6-79673255c750.png)
 
-**Admin page**
+**WF Admin**
 ------------------
 ![Screenshot 2023-01-08 at 15 40 58](https://user-images.githubusercontent.com/91877102/211202435-eba58cc0-555c-4703-b95f-65159a37d9e8.png)
 
-**Add product (admin) page**
+**WF Admin Add product**
 ------------------
 ![Screenshot 2023-01-08 at 15 44 36](https://user-images.githubusercontent.com/91877102/211202605-ca9eeeca-26a4-465d-b4b7-c41850dd0159.png)
 
-**View Message (admin) page**
+**WF Admin View Message**
 ------------------
 ![Screenshot 2023-01-08 at 15 47 00](https://user-images.githubusercontent.com/91877102/211202724-fa550b38-8d14-434a-95fb-e27f3034a486.png)
 
@@ -196,6 +217,25 @@ Once the button is clicked, the menu will appear
 ![Screenshot 2023-01-08 at 16 53 34](https://user-images.githubusercontent.com/91877102/211206283-a6217cd3-d317-4e2d-83ae-1833cebbcbf5.png)
 The user has full freedom on the page that he wants to visit, and everything is easy to reach.
 
+### **Footer**
+The footer in present throughout the website and it includes the option to subscribe to the newsletter.\
+It's including also a few option to quick navigate through the website.
+
+![Screenshot 2023-01-08 at 18 35 24](https://user-images.githubusercontent.com/91877102/211210530-4b24f42b-9d83-44d3-a266-a844ceb41974.png)
+
+The user can find in the footer also the Privacy Policy
+
+The only links that are working into the footer is the [Privacy Policy](https://www.privacypolicygenerator.info/live.php?token=dxge6NpmlPRoOHxFIJMFZxD00w1A3jf8)
+
+![Screenshot 2023-01-08 at 18 37 21](https://user-images.githubusercontent.com/91877102/211210623-8ff025af-9b06-43b3-9ada-1cf0ea113803.png)
+
+Also the user can find the social links, where he can be redirected to the custom [FaceBook page](https://www.facebook.com/profile.php?id=100088979418667)
+
+### **Home page**
+The user is greeted with the image of a blacksmith and a video that plays only when the user clicks on the play button.\
+A small introduction to the webstore, and a main call to action button, to go to store.
+![Screenshot 2023-01-08 at 16 55 52](https://user-images.githubusercontent.com/91877102/211206388-241aae40-239c-4e8e-9348-c2847a790abd.png)
+
 ### **Contact page**
 From the hidden menu, the user can go to the contact page, where he can find a contact form that he can submit.
 
@@ -213,11 +253,69 @@ A success message appears if the order is succesfull, otherwise a error one appe
 From the Menu, the user can navigate to the **Our Story** page, where he can find some short information on how the end product is obtained and what is the process is which the blade is forged.
 The are 3 .mp4 videos with the process, for better understanding.
 
+### **Store page**
+Here the user can find all the available product in the store.
+He has the option to:
+- View products (6 at the time, due to pagination)
+- Search for products
+- Filter by categories
+- Move to different pages on the store
+- Add to cart
+- View individual product
 
+![Screenshot 2023-01-08 at 19 00 04](https://user-images.githubusercontent.com/91877102/211211530-f6b02f84-27f2-4aaf-8357-8c7285b0463e.png)
 
-### **Home page**
-The user is greeted with the image of a blacksmith and a video that plays only when the user clicks on the play button.\
-A small introduction to the webstore, and a main call to action button, to go to store.
-![Screenshot 2023-01-08 at 16 55 52](https://user-images.githubusercontent.com/91877102/211206388-241aae40-239c-4e8e-9348-c2847a790abd.png)
+If an item has stock 0, the button to Add to cart is disabled and a tag "No stock" is displayed
+
+![Screenshot 2023-01-08 at 19 01 10](https://user-images.githubusercontent.com/91877102/211211581-57b01efd-67ba-4a73-a7f2-573199726c3f.png)
+
+If the user is **NOT** logged in, if he tries to add a product into the cart, he will be notified with an alert, but the item will still be added into the cart. If the user creates an account, the cart will then reset.
+
+![Screenshot 2023-01-08 at 19 03 06](https://user-images.githubusercontent.com/91877102/211211680-8b0a47fa-4686-4ab3-881f-ff23155f578c.png)
+
+### **Cart page**
+Once the user starts adding items to the cart, he can click on the cart icon and he will be redirected to the cart page.
+He can easily check the items that are added into the cart (along with the cart and item total)\
+The cart details will contain:
+- Image of the product
+- Name of the product
+- Quantity
+- Item price
+- Total (the total is per line item)
+
+![Screenshot 2023-01-08 at 19 09 07](https://user-images.githubusercontent.com/91877102/211211902-a80bf067-96ad-44a7-a05d-590816828d85.png)
+
+He/she can easily adjust the quantity, by clicking the icons to increase and decrease the quantity.\
+If the quantity of the product is 0, it will be deleted from the cart.\
+If the user is ok proceeding with the order, he can click the button to continue to the checkout page.
+
+### **Checkout page**
+On the checkout page, the user can see a short Order Summary, with the total to be paid.\
+The shipping is free on all orders.\
+Payment is managed by Stripe and it has the button to Finish the Order.\
+The **shipping details** will be collected onto the next step.
+If the user is **Anonymus**, and he click on the button to finish the order, he will be redirected to Sign Up page.
+
+![Screenshot 2023-01-08 at 19 11 16](https://user-images.githubusercontent.com/91877102/211212120-b613cc62-5486-4edb-bdce-3b9eba6c8ae2.png)
+
+I have used the Stripe Checkout to manage the payments, and the email address of the user is autocompleted.\
+At this step it will require to enter the shipping details and credit card information
+
+![Screenshot 2023-01-08 at 19 19 33](https://user-images.githubusercontent.com/91877102/211212329-ebf95686-7852-4d4f-8f81-2ad295c0ac87.png)
+
+Once the payment is completed, the user will be redirected to the success page, and the items in the cart are set to 0.
+
+#### **Checkout - success page**
+It can be viewed only of the user has made a successful payment on the previous step.\
+Here he has the option to view the order details, or go back to the store. 
+
+![Screenshot 2023-01-08 at 19 20 48](https://user-images.githubusercontent.com/91877102/211212371-80d01ae4-9339-4267-971e-2c6c13989e54.png)
+
+#### **Checkout - cancelled page**
+It can be viewed only of the user has cancelled the payment on the previous step.\
+A .gif from [The Office](https://www.imdb.com/title/tt0386676/) informs the user that the operation failed.
+The cart is **NOT** reset, and he will have the option to redo the payment
+
+![Screenshot 2023-01-08 at 19 26 19](https://user-images.githubusercontent.com/91877102/211213344-59d984ce-1f72-4528-975f-92687896a466.png)
 
 
