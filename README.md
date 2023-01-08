@@ -17,6 +17,24 @@ Deployed site can be found here: [Kenpachi eStore](https://kenpachi-estore.herok
     * [**Feasibility study**](#feasibility-study)
   * [**Structure**](#structure)
     * [**User Stories**](#user-stories)
+  * [**Backbone**](#backbone)
+    * [**Wireframes**](#wireframes)
+      * [**Landing page**](#landing-page)
+      * [**Story page**](#story-page)
+      * [**Contact Us page:**](#contact-us-page)
+      * [**Store:**](#store-page)
+      * [**Cart page:**](#cart-page)
+      * [**Checkout page:**](#checkout-page)
+      * [**Login page:**](#login-page)
+      * [**Logout page:**](#logout-page)
+      * [**Reset password page:**](#reset-password-page)
+      * [**User profile page:**](#user-profile-page)
+      * [**View order (by ID) page:**](#view-order-page)
+      * [**Admin page:**](#admin-page)
+      * [**Add product (admin) page:**](#admin-page)
+      * [**View Message (admin) page:**](#admin-page)
+    * [**Database schema**](#database-schema)
+    * [**Color scheme**](#color-scheme)
 
 # **Planning Phase**
 ## **Site Objectives:**
@@ -84,3 +102,62 @@ When developing the website, I have put myself in the shoes of the visitor, and 
   * ... **filter and search the products model** so that I can **check the stock and availability**
   * ... **filter and search the contact us form model** so that I can **see what new messages are sent into the store**
   * ... **delete messages sent to the store** so that I can **avoid having a full inbox/or spams**
+
+## **Backbone**
+
+### **Wireframes**:
+**Landing page:**
+------------------
+<img width="751" alt="Screenshot 2023-01-08 at 14 46 55" src="https://user-images.githubusercontent.com/91877102/211199550-e149886a-319f-4a55-9c54-b0875aa09993.png">
+
+**Story page**
+------------------
+![Screenshot 2023-01-08 at 15 01 45](https://user-images.githubusercontent.com/91877102/211200331-584096fb-bdc8-4a97-9729-3fba6a5f1144.png)
+
+**Contact Us page**
+------------------
+![Screenshot 2023-01-08 at 15 07 28](https://user-images.githubusercontent.com/91877102/211200660-51eb093d-c5c4-4303-a735-6a7b9aa67eb9.png)
+
+**Store page**
+------------------
+![Screenshot 2023-01-08 at 15 15 20](https://user-images.githubusercontent.com/91877102/211201073-a825d0ba-50e8-478e-8fab-8027deda83b6.png)
+
+**Cart page**
+------------------
+![Screenshot 2023-01-08 at 15 19 11](https://user-images.githubusercontent.com/91877102/211201292-0e611744-4f9c-4aa3-a503-a5215e29e2eb.png)
+
+**Checkout page**
+------------------
+![Screenshot 2023-01-08 at 15 22 13](https://user-images.githubusercontent.com/91877102/211201417-9c7c976c-64bf-40df-b71d-66872d13a2f8.png)
+
+**Login page**
+------------------
+![Screenshot 2023-01-08 at 15 27 14](https://user-images.githubusercontent.com/91877102/211201681-0933c8d3-1ed0-448f-b6a0-cfa44f67b14f.png)
+
+**Logout page**
+------------------
+![Screenshot 2023-01-08 at 15 29 01](https://user-images.githubusercontent.com/91877102/211201783-e8a01cce-f436-4b4f-9c29-c3e287c9730a.png)
+
+**Reset password page**
+------------------
+![Screenshot 2023-01-08 at 15 30 43](https://user-images.githubusercontent.com/91877102/211201892-fcacdfb2-cae5-4964-b72d-5d06e100edc9.png)
+
+**User profile page**
+------------------
+![Screenshot 2023-01-08 at 15 33 41](https://user-images.githubusercontent.com/91877102/211202074-f24de57b-1813-4a2f-977e-b968020f20aa.png)
+
+**View order (by ID) page**
+------------------
+![Screenshot 2023-01-08 at 15 36 39](https://user-images.githubusercontent.com/91877102/211202217-8328762a-61c2-43ab-9dd6-79673255c750.png)
+
+**Admin page**
+------------------
+![Screenshot 2023-01-08 at 15 40 58](https://user-images.githubusercontent.com/91877102/211202435-eba58cc0-555c-4703-b95f-65159a37d9e8.png)
+
+**Add product (admin) page**
+------------------
+![Screenshot 2023-01-08 at 15 44 36](https://user-images.githubusercontent.com/91877102/211202605-ca9eeeca-26a4-465d-b4b7-c41850dd0159.png)
+
+**View Message (admin) page**
+------------------
+![Screenshot 2023-01-08 at 15 47 00](https://user-images.githubusercontent.com/91877102/211202724-fa550b38-8d14-434a-95fb-e27f3034a486.png)
