@@ -12,6 +12,7 @@ class ContactUsAdmin(admin.ModelAdmin):
         )
     search_fields = ['contact_email', 'email_status']
     ordering = ('sent_date',)
+    list_filter = ['email_status']
 
 
 class CustomerAdmin(admin.ModelAdmin):
