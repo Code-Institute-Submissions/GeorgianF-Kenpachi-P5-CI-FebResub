@@ -6,6 +6,12 @@ for (i = 0; i < updateBtns.length; i++) {
 		var action = this.dataset.action;
 
 		if (user == 'AnonymousUser'){
+			var alerted = localStorage.getItem('alerted') || '';
+        	if (alerted != 'yes') {
+         		alert(
+					"You must create an account to be able to submit orders. \nThe cart items won't be remembered at checkout");
+         		localStorage.setItem('alerted','yes');
+        	}
 			updateCartAnonymusUser(productId, action);
 		} else {
 			updateUserOrder(productId, action);
