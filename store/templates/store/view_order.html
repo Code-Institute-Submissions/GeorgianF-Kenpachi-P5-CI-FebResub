@@ -13,7 +13,7 @@
 
         <div class="box-element ">
             <div class="box-element">
-                <h3 class="fs-5 text-center">Order Details </h3>
+                <h1 class="fs-4 text-center">Order Details </h1>
                 <p><span class="text-decoration-underline">transaction ID</span>: {{ order.transaction_id }}</p>
                 <p><span class="text-decoration-underline">date ordered</span>: {{ order.date_ordered }}</p>
                 <p><span class="text-decoration-underline">Shipping details</span>: {{ shipping_details.address }},
@@ -34,7 +34,7 @@
                         {% for item in order_items %}
                         <tbody>
                             <tr>
-                                <td scope="row"><img class="row-image" src="{{ item.product.imageURL }}"></td>
+                                <td scope="row"><img class="row-image" src="{{ item.product.imageURL }}" alt="image-product-order"></td>
                                 <td scope="row" class="pt-4">{{ item.product.name }}</td>
                                 <td scope="row" class="pt-4">{{ item.product.price }}</td>
                                 <td scope="row" class="pt-4">{{ item.quantity }}</td>
