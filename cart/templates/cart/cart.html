@@ -5,8 +5,8 @@
 {% block content %}
 {% include 'includes/store-nav.html' %}
 
-<div class="container-fluid pt-5 pb-5 background-container">
-    <div class="container cart-container">
+<div class="container-fluid pt-5 pb-5 background-container h-100">
+    <div class="container cart-container my-auto">
         <div class="row">
             {% if order.get_cart_items == 0 %}
             <div class="col-lg-6 m-auto">

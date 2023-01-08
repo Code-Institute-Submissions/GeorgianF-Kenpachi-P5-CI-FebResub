@@ -10,7 +10,7 @@
                 {% csrf_token %}
                 <div class="form-group d-flex align-items-center justify-content-center flex-column">
                   <label class="text-white">Subscribe to get the latest Articles</label><br>
-                  <input class="newsletter-input" type="email" name="email" placeholder="Enter Email to Subscribe"><br>
+                  <input required class="newsletter-input" type="email" name="email" placeholder="Enter Email to Subscribe"><br>
                   <button class="btn btn-primary" type="submit">Submit</button>
                 </div>
             </form>            
