@@ -311,6 +311,11 @@ Here he has the option to view the order details, or go back to the store.
 
 ![Screenshot 2023-01-08 at 19 20 48](https://user-images.githubusercontent.com/91877102/211212371-80d01ae4-9339-4267-971e-2c6c13989e54.png)
 
+The user is notified also via email with the details of the order:
+
+![Screenshot 2023-01-08 at 19 54 45](https://user-images.githubusercontent.com/91877102/211213726-59b1c4a6-1d0f-4e31-a48e-e11b912eba85.png)
+
+
 #### **Checkout - cancelled page**
 It can be viewed only of the user has cancelled the payment on the previous step.\
 A .gif from [The Office](https://www.imdb.com/title/tt0386676/) informs the user that the operation failed.
