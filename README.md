@@ -47,15 +47,15 @@ Deployed site can be found here: [Kenpachi eStore](https://kenpachi-estore.herok
     * [**Checkout page**](#checkout-page)
       * [**success page**](#success-page)
       * [**canceled page**](#canceled-page)
-    * [**Login page**](#Login-page)
+    * [**Login page**](#login-page)
     * [**Logout page**](#logout-page)
     * [**Reset password page**](#reset-password-page)
     * [**User profile page**](#user-profile-page)
     * [**View order (by ID) page**](#view-order-by-id-page)
     * [**Admin page**](#admin-page)
     * [**Admin Add page**](#admin-page)
-    * [**Admin View Message page**](#admin-page)
-    * [**Admin Edit and Delete*](#admin-page)
+    * [**Admin Edit and Delete**](#admin-edit-and-delete)
+    * [**Admin View Message**](#admin-view-message)
 
 # **Planning Phase**
 ## **Site Objectives:**
@@ -183,7 +183,8 @@ When developing the website, I have put myself in the shoes of the visitor, and 
 ![Screenshot 2023-01-08 at 15 47 00](https://user-images.githubusercontent.com/91877102/211202724-fa550b38-8d14-434a-95fb-e27f3034a486.png)
 
 ### **Database Schema**:
-TODO:
+
+![Screenshot 2023-01-09 at 20 01 20](https://user-images.githubusercontent.com/91877102/211387029-cd295293-1e77-4084-a9f8-a6aa960ccfff.png)
 
 ### Color scheme:
 I wanted to keep the color scheme as simple as possible, because within the website there are a lot of pictures with the katanas, that I want to showcase.\
@@ -475,7 +476,7 @@ If the admin confirms the action, the product will be deleted from the database:
 
 ![Screenshot 2023-01-09 at 18 50 40](https://user-images.githubusercontent.com/91877102/211374271-5ea195a6-fc19-4c5c-9943-5fb39f8476b3.png)
 
-### **Admin View Message page**
+### **Admin View Message**
 In the Admin profile, the Admin can view all the messages that are received through the Contact Form, from the Contact Us page.
 
 ![Screenshot 2023-01-09 at 18 52 37](https://user-images.githubusercontent.com/91877102/211374571-463ad328-2682-438e-bd7e-178d7539318b.png)
