@@ -45,10 +45,10 @@ Deployed site can be found here: [Kenpachi eStore](https://kenpachi-estore.herok
     * [**Store page**](#store-page)
     * [**Cart page**](#cart-page)
     * [**Checkout page**](#checkout-page)
-      * [**Checkout - success page**](#checkout-success-page)
-      * [**Checkout - canceled page**](#checkout-canceled-page)
+      * [**success page**](#success-page)
+      * [**canceled page**](#canceled-page)
     * [**Login page**](#Login-page)
-    * [**Logout booking page**](#logout-page)
+    * [**Logout page**](#logout-page)
     * [**Reset password page**](#reset-password-page)
     * [**User profile page**](#user-profile-page)
     * [**View order (by ID) page**](#view-order-by-id-page)
@@ -92,7 +92,6 @@ When developing the website, I have put myself in the shoes of the visitor, and 
 * As a **User/Shopper** I can ...
   * ... **register for an account** so that I can **view my profile**
   * ... **receive a order confirmation after payment** so that I can **be sure that the payment was realized and the order was processed**
-  * ... **receive a email confirmation** so that I can **verify if my account has been successfully created**
   * ... **recover my password** so that I can **access my account in case I forgot my password**
   * ... **easy login or logout** so that I can **access my account**
   * ... **click on the nav bar** so that I can **easily navigate to the page of interest**
@@ -305,7 +304,7 @@ At this step it will require to enter the shipping details and credit card infor
 
 Once the payment is completed, the user will be redirected to the success page, and the items in the cart are set to 0.
 
-#### **Checkout - success page**
+#### **success page**
 It can be viewed only of the user has made a successful payment on the previous step.\
 Here he has the option to view the order details, or go back to the store. 
 
@@ -316,11 +315,189 @@ The user is notified also via email with the details of the order:
 ![Screenshot 2023-01-08 at 19 54 45](https://user-images.githubusercontent.com/91877102/211213726-59b1c4a6-1d0f-4e31-a48e-e11b912eba85.png)
 
 
-#### **Checkout - cancelled page**
+#### **canceled page**
 It can be viewed only of the user has cancelled the payment on the previous step.\
 A .gif from [The Office](https://www.imdb.com/title/tt0386676/) informs the user that the operation failed.
 The cart is **NOT** reset, and he will have the option to redo the payment
 
 ![Screenshot 2023-01-08 at 19 26 19](https://user-images.githubusercontent.com/91877102/211213344-59d984ce-1f72-4528-975f-92687896a466.png)
+
+### **Sign up page**
+The login page can be accessed from the main navbar that is hidden from the view of the user:
+
+![Screenshot 2023-01-09 at 17 51 00](https://user-images.githubusercontent.com/91877102/211362791-9bb3d218-eb42-4707-8645-fc1ccedc07cb.png)
+
+Or the user can log in from the store, cart, checkout page from the Login Button, next to the cart icon.\
+
+![Screenshot 2023-01-09 at 17 52 04](https://user-images.githubusercontent.com/91877102/211363070-9f9268bd-599e-47f9-9800-049fdad6b955.png)
+
+Once the user initiates the action to log into the account, he will find the login form, where he can sign up to a new account:
+
+![Screenshot 2023-01-09 at 17 58 27](https://user-images.githubusercontent.com/91877102/211364309-2d13ece9-911c-4383-a7bd-c015a9310d2d.png)
+
+All information are required, and once the process is complete, the user will be logged into the account.
+A toast Success message will be displayed:
+
+![Screenshot 2023-01-09 at 18 01 40](https://user-images.githubusercontent.com/91877102/211364948-0ebdde26-1405-4896-a96b-b0b7b8fb99e8.png)
+
+
+### **Login page**
+The login page can be accessed from the main navbar that is hidden from the view of the user:
+
+![Screenshot 2023-01-09 at 17 51 00](https://user-images.githubusercontent.com/91877102/211362791-9bb3d218-eb42-4707-8645-fc1ccedc07cb.png)
+
+Or the user can log in from the store, cart, checkout page from the Login Button, next to the cart icon.
+
+![Screenshot 2023-01-09 at 17 52 04](https://user-images.githubusercontent.com/91877102/211363070-9f9268bd-599e-47f9-9800-049fdad6b955.png)
+
+Once the user initiates the action to log into the account, he will find the login form:
+
+![Screenshot 2023-01-09 at 17 53 09](https://user-images.githubusercontent.com/91877102/211363272-31f79042-23ba-4891-b920-a0a92625fe87.png)
+
+It's a form based on the Django Allauth, and it a simple form, where the user needs to input the username and password that was previously created in the signup form.
+
+### **Logout page**
+If the user is logged in, and he wants to log out of the account, all that he needs to do is to click on the logout button next to the profile icon and cart icon:
+
+![Screenshot 2023-01-09 at 18 03 07](https://user-images.githubusercontent.com/91877102/211365332-9b374a67-e42a-4c7e-8230-ab21bd356f19.png)
+
+Or from the hidden navbar:
+
+![Screenshot 2023-01-09 at 18 04 38](https://user-images.githubusercontent.com/91877102/211365431-9b716069-fb00-4e49-8007-34a688ffc7ae.png)
+
+If the option is to log out, the user will be redirected to a page to confirm the action.\
+
+![Screenshot 2023-01-09 at 18 06 08](https://user-images.githubusercontent.com/91877102/211365699-3eca1477-7d9e-4473-b9f2-6b98ca4cc8c9.png)
+
+### **Reset password page**
+If the user has forgotten the password, he can easily ask to reset it.\
+From the previously described, login page, the user can find the button to reset the password.\
+He will need to enter the email address of the account and confirm the action:
+
+![Screenshot 2023-01-09 at 18 08 52](https://user-images.githubusercontent.com/91877102/211366545-471cf9a3-1038-44eb-a1ae-bbf34486fdf3.png)
+
+The user will receive and email from the store:
+
+![Screenshot 2023-01-09 at 18 11 57](https://user-images.githubusercontent.com/91877102/211366863-0b97e5e5-8db9-43d8-a7e4-1e6b9ca55565.png)
+
+![Screenshot 2023-01-09 at 18 12 22](https://user-images.githubusercontent.com/91877102/211366925-3c58b759-7d9b-45ee-810f-5fa17a7c9d7d.png)
+
+The user is required to click on the link from the email to reset the password:
+
+![Screenshot 2023-01-09 at 18 12 45](https://user-images.githubusercontent.com/91877102/211367218-d879553c-b825-4e5e-9943-954bcf3a6283.png)
+
+Once the password is correctly entered 2 times, he will be redirected to the password success page:
+
+![Screenshot 2023-01-09 at 18 12 58](https://user-images.githubusercontent.com/91877102/211367347-30509263-4410-4c4c-8dc2-49da26ac8bab.png)
+![Screenshot 2023-01-09 at 18 15 25](https://user-images.githubusercontent.com/91877102/211367581-305e7e03-a2de-4213-9f3d-e03c32c9d33f.png)
+
+### **User profile page**
+The user has the option to view his order history from within the profile page, that can be accessed from the profile icon, next to the cart icon
+
+![Screenshot 2023-01-09 at 18 19 54](https://user-images.githubusercontent.com/91877102/211368450-5a9f620b-74bb-4b86-9603-c37aefd2c48e.png)
+
+Here he can check his order history, and click on the order number that he wants to see, or go back to the store.\
+
+![Screenshot 2023-01-09 at 18 20 31](https://user-images.githubusercontent.com/91877102/211368647-6e116cc6-59a8-45f4-ab0b-1b74701d3c3d.png)
+
+### **View order (by ID) page**
+If the user chooses to see the order details, he needs to click on the button with the transaction number.\
+Here he can get all of the details of the order:
+- shipping address
+- date ordered
+- transaction id
+- items ordered (image, name, quantity, price)
+
+![Screenshot 2023-01-09 at 18 22 41](https://user-images.githubusercontent.com/91877102/211369248-c9fa2d1c-1194-46ba-857b-de4116e93a19.png)
+
+### **Admin page**
+The admin panel can be acessed from the profile icon, in the corner right of the screen, next to the cart icon:
+
+![Screenshot 2023-01-09 at 18 31 28](https://user-images.githubusercontent.com/91877102/211370549-9caff106-c165-4555-b336-de51fc49234e.png)
+
+Here the admin has a few options available:
+- go back to the store
+- add a product to the store
+- edit a product
+- delete a product
+- view messages incoming from the contact us form
+
+![Screenshot 2023-01-09 at 18 31 56](https://user-images.githubusercontent.com/91877102/211370834-82c1a3a8-fd5f-4693-8627-67e03086e39c.png)
+
+### **Admin Add page**
+If the admin wishes to add a product into the store, he can click on the Add a Product button, from within the Admin Panel.\
+A form will open, where he can add all of the details of the new item.
+If the form is valid, the product will be added to the store:
+
+![Screenshot 2023-01-09 at 18 37 44](https://user-images.githubusercontent.com/91877102/211371720-c1e327ad-c80e-4880-87ef-4ec12075a600.png)
+
+If the form is invalid, the product won't be added to the store, and a toast error message will be displayed, along side with the box that is not entered correctly, and a helper text:
+![Screenshot 2023-01-09 at 18 37 22](https://user-images.githubusercontent.com/91877102/211371920-d1ea35c2-6d78-4efd-bcc9-52ff80b5a410.png)
+![Screenshot 2023-01-09 at 18 37 29](https://user-images.githubusercontent.com/91877102/211371957-7092c1c4-9575-4b45-bf51-69438770ccd9.png)
+
+Of course, all of these actions will need to be confimed via a modal:
+
+![Screenshot 2023-01-09 at 18 37 14](https://user-images.githubusercontent.com/91877102/211372107-ee799e91-bb61-440a-bbc3-bf1b3cd4c307.png)
+
+If the product is added succesfully to the store, the admin and all of the visitors of the website can imediatly view the item and added to the cart, and finally, order it.
+
+![Screenshot 2023-01-09 at 18 41 29](https://user-images.githubusercontent.com/91877102/211372414-8cdc4312-500a-47a1-a8f7-9215eaf26d40.png)
+
+### **Admin Edit and Delete**
+These 2 options are available directly into the store, next to the item that needs to be adjusted or deleted
+There are 2 icons:
+- a pencil icon: to edit
+- a trash icon: to delete
+
+If the actions is to **Edit** the product into the store, the admin needs to click on the pencil icon, and a toast message is displayed:
+
+![Screenshot 2023-01-09 at 18 44 06](https://user-images.githubusercontent.com/91877102/211372997-814fe847-2a1b-423e-a098-d784e3441e79.png)
+
+All of the details of the product are prepoluated with the data from the database.
+Once all of the changes to the product have been added/adjusted, the admin needs to click on the button to Save the Product, and a modal will be triggered to confirm the change:
+
+![Screenshot 2023-01-09 at 18 45 28](https://user-images.githubusercontent.com/91877102/211373428-7e32a5dd-72c3-4904-a3ef-d6befcc51ed9.png)
+
+If the form is valid, the item will be saved into the database, and he will be informed about the action:
+
+![Screenshot 2023-01-09 at 18 47 17](https://user-images.githubusercontent.com/91877102/211373555-46f5ba7e-fe0c-4c83-963e-d4b80249071f.png)
+
+If the form is invalid, the item will not be saved into the database, and a toast error message will be displayed, along side with the box that is not entered correctly, and a helper text:
+
+![Screenshot 2023-01-09 at 18 37 22](https://user-images.githubusercontent.com/91877102/211371920-d1ea35c2-6d78-4efd-bcc9-52ff80b5a410.png)
+![Screenshot 2023-01-09 at 18 37 29](https://user-images.githubusercontent.com/91877102/211371957-7092c1c4-9575-4b45-bf51-69438770ccd9.png)
+
+If the actions is to **Delete** the product into the store, the admin needs to click on the trash icon, and a modal message is displayed:
+
+![Screenshot 2023-01-09 at 18 49 51](https://user-images.githubusercontent.com/91877102/211374065-7b342c8c-d4b2-437b-b659-e1831bc43bda.png)
+
+If the admin confirms the action, the product will be deleted from the database:\
+
+![Screenshot 2023-01-09 at 18 50 40](https://user-images.githubusercontent.com/91877102/211374271-5ea195a6-fc19-4c5c-9943-5fb39f8476b3.png)
+
+### **Admin View Message page**
+In the Admin profile, the Admin can view all the messages that are received through the Contact Form, from the Contact Us page.
+
+![Screenshot 2023-01-09 at 18 52 37](https://user-images.githubusercontent.com/91877102/211374571-463ad328-2682-438e-bd7e-178d7539318b.png)
+
+Here there are some basic information about the message:
+- Contact name
+- Email
+- Date
+- Status
+- View button
+- Delete button
+
+If the actions is to View the message, all of the details of the message that was sent will be prepopulated.
+If the actions is to Delete the message, the admin will need to confirm the action from the modal that was triggered:
+
+![Screenshot 2023-01-09 at 18 59 39](https://user-images.githubusercontent.com/91877102/211375864-83197f32-b94d-479c-9e07-9eeeb2def91e.png)
+
+If the actions is confirmed, the message will be delete.
+Currently there isn't the option to reply directly from the admin panel, nor to change the status of the email.
+This will be a future enhancement, to give more options.
+The status of the message can be change, currently, from the Django Admin panel.
+
+
 
 
