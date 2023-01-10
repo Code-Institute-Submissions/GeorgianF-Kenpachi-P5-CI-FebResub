@@ -56,6 +56,21 @@ Deployed site can be found here: [Kenpachi eStore](https://kenpachi-estore.herok
     * [**Admin Add page**](#admin-page)
     * [**Admin Edit and Delete**](#admin-edit-and-delete)
     * [**Admin View Message**](#admin-view-message)
+* [**Future enhancements**](#future-enhancements)
+  * [**Emails**](#emails)
+  * [**Verification emails**](#verification-emails)
+  * [**Checkout guest users**](#checkout-guest-users)
+  * [**Reply to emails**](#reply-to-emails)
+  * [**Product rating**](#product-rating)
+  * [**Testimonials section**](#testimonials-section)
+  * [**Previously viewed products**](#previously-viewed-products)
+  * [**Multiple sort options**](#multiple-sort-options)
+  * [**Discount codes**](#discount-codes)
+  * [**Multiple gateways**](#multiple-gateways)
+* [**Testing Phase**](#testing-phase)
+* [**Deployment**](#deployment)
+* [**Technologies used**](#technologies-used)
+* [**Credits**](#credits)
 
 # **Planning Phase**
 ## **Site Objectives:**
@@ -499,6 +514,94 @@ Currently there isn't the option to reply directly from the admin panel, nor to 
 This will be a future enhancement, to give more options.
 The status of the message can be change, currently, from the Django Admin panel.
 
+# **Future enhancements**
+### **Emails**
+Apply styles to the email that is sent via Django, to make it more appealing.
+
+### **Verification emails**
+The ability to send verification email when the user is create, for the user to confirm the email.
+
+### **Checkout guest users**
+Currently, only authentificated user can submit orders.
+I am looking to expand this functionality to submit orders as guest user, to add on the checkout form a form for the user to add the First Name, Last Name, Email address to update the Customer model.
+Then I can retrieve the data from the Stripe Checkout and process the order in the backend.
+
+### **Reply to emails**
+On the admin panel, to add a reply textarea and the option to update the status of the email once it's sent.
+Also store the replied message for accountability.
+
+### **Product rating**
+On the store page to add product rating for each product
+
+### **Testimonials section**
+On the store page to add a testimonials section, for guest users/authenticated user to see feedbaks received
+
+### **Previously viewed products**
+On the store page to add a previously viewed product, to improve user experience
+
+### **Multiple sort options**
+On the store page to add the option for user to filter by name, price, etc.
+Since the products added to the store are relatively low, I didn't see it as a priority this time.
+
+### **Discount codes**
+To enhance the checkout app to allow users to use discount coupons
+
+### **Multiple gateways**
+To enhance the checkout app to allow user to pay via PayPal, WePay (US/Canada), iDeal (The Netherlands), etc.
+
+# **Testing Phase**
+I have included testing details during and post-development in a separate document called [TESTING.md](TESTING.md).
+
+# **Deployment**
+The final Deployed site can be found [here](https://kenpachi-estore.herokuapp.com/)
+I have included details of my initial deployment in a separate document called [DEPLOYMENT.md](DEPLOYMENT.md).
+
+# **Technologies used**
+* Python
+  * The packages installed for the is project can be found in [the requirements.txt](requirements.txt)
+* Django
+  * Django was used as the python framework in the project.
+  * Django all auth was used to handle user authentication and related tasks i.e. sign in, sign up, sign out.
+* Heroku
+  * Used to deploy the page and make it publicly available.
+* Heroku PostgreSQL
+  * Used for the database during development and in deployment.
+* Amazon AWS
+  * Used to store the static files and host images
+* HTML
+  * HTML was the base language used to layout the skeleton of all templates along side 
+* CSS
+  * Custom CSS used to style the page.
+* Javascript and JQuery
+  * I have used Javascript and JQuery to manipulate the DOM.
+* Bootstrap 5.2.1
+  * Used to style HTML, CSS, minor javascript tasks. 
+* Font awesome
+  * All icons throughout the page.
 
 
+# **Credits**
+* Balsamiq was used to create the wireframes.
+* The site was developed using Gitpod and Visual Studio Code.
+* GitHub was used to store my repository, and it can be found [here](https://github.com/GeorgianF/Kenpachi-P5-CI)
+* Guidance on file structure for templates folder from [learndjango.com article](https://learndjango.com/tutorials/template-structure)
+* [coolers.co](https://coolors.co/) was used to generate the basic color scheme
+* [W3cschool](https://www.w3schools.com/) was used to source some of the code
+* Fonts were taken from [Google Fonts](https://fonts.google.com/)
+* Images:
+  * Hero images taken from [toki.tokyo](https://www.toki.tokyo/experience/katana/) 
+* Nav Bar animation from the GitHub [Repository](https://github.com/taimoorshahzada/Fullscreen-Overlay-Navigation-Menu-using-GSAP-HTML-CSS-JAVASCRIPT)
+* Videos are downloaded from [katana-sword.com](https://katana-sword.com/pages/katana-forge)
+* Images are downloaded from [katana-sword.com](https://katana-sword.com/pages/katana-forge) or from Google Images
+* JS Function getCookie() [source](https://www.autoscripts.net/get-cookie-value-in-javascript/)
+* JS Function getToken() [source] (https://docs.djangoproject.com/en/3.2/ref/csrf/#ajax)
+* Models structure based on the project [here](https://codewithsteps.herokuapp.com/)
+* Search feature based on the [Boutique Ado source code](https://github.com/GeorgianF/Boutique-Ado)
 
+* General references:
+    * [Geeks for Geeks](https://www.geeksforgeeks.org/)
+    * [Stack Overflow](https://stackoverflow.com/)
+    * [Code Institute Learning Platform](https://codeinstitute.net/)
+    * [Django Documentation](https://docs.djangoproject.com/en/4.0/)
+    * [Bootstrap Documentation](https://getbootstrap.com/)
+    * [GreenSock](https://greensock.com/)
