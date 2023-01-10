@@ -69,6 +69,7 @@ Deployed site can be found here: [Kenpachi eStore](https://kenpachi-estore.herok
   * [**Multiple gateways**](#multiple-gateways)
 * [**Testing Phase**](#testing-phase)
 * [**Deployment**](#deployment)
+* [**Marketing**](#marketing)
 * [**Technologies used**](#technologies-used)
 * [**Credits**](#credits)
 
@@ -555,6 +556,9 @@ I have included testing details during and post-development in a separate docume
 # **Deployment**
 The final Deployed site can be found [here](https://kenpachi-estore.herokuapp.com/)
 I have included details of my initial deployment in a separate document called [DEPLOYMENT.md](DEPLOYMENT.md).
+
+# **Marketing**
+I have included the marketing details and stategies in a separate document called [MARKETING.md](MARKETING.md).
 
 # **Technologies used**
 * Python
