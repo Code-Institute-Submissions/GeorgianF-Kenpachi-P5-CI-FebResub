@@ -124,6 +124,6 @@ class Product(models.Model):
     def imageURL(self):
         try:
             url = self.image.url
-        except:
+        except ValueError:
             url = ''
         return url
