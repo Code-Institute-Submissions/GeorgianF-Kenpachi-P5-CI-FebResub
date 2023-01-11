@@ -8,6 +8,7 @@
   * [**JS Validator**](#js-validator)
 * [**Lighthouse**](#lighthouse)
 * [**Manual testing**](#manual-testing)
+* [**Bugs and fixes**](#bugs-and-fixes)
 
 
 ## **Validators**
@@ -148,6 +149,27 @@ Below is a summary of how I manually tested each user story:
   * | &check; |... **filter and search the products model** so that I can **check the stock and availability**
   * | &check; |... **filter and search the contact us form model** so that I can **see what new messages are sent into the store**
   * | &check; |... **delete messages sent to the store** so that I can **avoid having a full inbox/or spams**
+
+## **Bugs and fixes**
+1. Menu button had full width and every time that you clicked on the same line the menu pops
+   **Solution**: Adjusted the width of the button to fit content
+2. Top product container buttons were not working
+   Tried: adjusting the z-index on the button to put them on top, did not work.
+   **Solution**: The nav container had a 100vh, pussing the content to the bottom of the page
+3. Line image on the cart was not displaying
+   **Solution**: had to adjust the  {{ product.imageURL }} into {{ item.product.imageURL }}
+4. Pause image on the home page was not showing in the deployed app
+   **Solution**: changed the scr to match the AWS path
+5. Image field on the add product form in the admin panel did not upload the file to the correct path.
+   **Solution**: I had to modify the Product Model to tell it where to upload, and use the [ClearableFileInput](https://docs.djangoproject.com/en/2.2/ref/forms/widgets/#django.forms.ClearableFileInput) widget in the form.
+6. Contact form was displaying “Opps Error…” from the beggining
+   **Solution**: I corrected the view, and moved the else statement in the nested if statement and defined the form variable at the top of the function.
+   
+**NO** other bugs have been identified
+
+
+
+
 
 
 [Back to Readme](README.md)
