@@ -516,6 +516,10 @@ This will be a future enhancement, to give more options.
 The status of the message can be change, currently, from the Django Admin panel.
 
 # **Future enhancements**
+
+For each future enhancement has been created an issue in the GitHub project.
+Currently are in status "Done", but I will reopen them once the project has been graded.
+
 ### **Emails**
 Apply styles to the email that is sent via Django, to make it more appealing.
 
