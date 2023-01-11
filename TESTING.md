@@ -165,12 +165,8 @@ Below is a summary of how I manually tested each user story:
 6. Contact form was displaying “Opps Error…” from the beggining
    **Solution**: I corrected the view, and moved the else statement in the nested if statement and defined the form variable at the top of the function.
    
-**NO** other bugs have been identified
-
-
-
-
-
+**NO** other bugs have been identified.
+For each issue found, I have created also one in Github Project [here](https://github.com/users/GeorgianF/projects/3)
 
 [Back to Readme](README.md)
 
