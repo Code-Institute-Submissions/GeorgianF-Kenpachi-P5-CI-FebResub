@@ -148,3 +148,7 @@ Below is a summary of how I manually tested each user story:
   * | &check; |... **filter and search the products model** so that I can **check the stock and availability**
   * | &check; |... **filter and search the contact us form model** so that I can **see what new messages are sent into the store**
   * | &check; |... **delete messages sent to the store** so that I can **avoid having a full inbox/or spams**
+
+
+[Back to Readme](README.md)
+
