@@ -8,6 +8,7 @@
   * [**JS Validator**](#js-validator)
 * [**Lighthouse**](#lighthouse)
 * [**Manual testing**](#manual-testing)
+* [**Stripe Payments Live**](#stripe-payments-live)
 * [**Bugs and fixes**](#bugs-and-fixes)
 
 
@@ -149,6 +150,30 @@ Below is a summary of how I manually tested each user story:
   * | &check; |... **filter and search the products model** so that I can **check the stock and availability**
   * | &check; |... **filter and search the contact us form model** so that I can **see what new messages are sent into the store**
   * | &check; |... **delete messages sent to the store** so that I can **avoid having a full inbox/or spams**
+
+
+## **Stripe Payments Live**
+After changing the API KEYs on the Heroku app and deploying, I have tested the integration.
+
+I have created a test item with the value of $1.00 and generated a order:
+
+![Screenshot 2023-01-12 at 21 06 02](https://user-images.githubusercontent.com/91877102/212169751-f5dd2a45-532f-4d10-bb0f-68b6a7ff5d0f.png)
+
+I have received the checkout.session.completed on the webhook:
+
+![Screenshot 2023-01-12 at 21 06 58](https://user-images.githubusercontent.com/91877102/212170033-e0b757b3-4217-4dc7-ada1-62c28f47fa08.png)
+
+The order was generated succesfully into the backend:
+
+![Screenshot 2023-01-12 at 21 09 31](https://user-images.githubusercontent.com/91877102/212170437-379b5ca5-1f60-4272-aad2-6b09b6e4e5ba.png)
+
+The email confirmation was delivered:
+
+![Screenshot 2023-01-12 at 21 10 33](https://user-images.githubusercontent.com/91877102/212170697-c0d4412e-fc1c-490c-8e53-ebe11ab98f30.png)
+
+The payment was received into Stripe:
+
+![Screenshot 2023-01-12 at 21 12 18](https://user-images.githubusercontent.com/91877102/212171088-997e4333-610e-4abf-bad9-340843fea776.png)
 
 ## **Bugs and fixes**
 1. Menu button had full width and every time that you clicked on the same line the menu pops
