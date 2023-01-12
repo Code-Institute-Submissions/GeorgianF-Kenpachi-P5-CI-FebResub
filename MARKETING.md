@@ -4,6 +4,8 @@
 * [**Facebook**](#facebook)
 * [**Search Engine Optimization**](#search-engine-optimization)
 * [**Content Marketing**](#content-marketing)
+* [**Public Relations**](#public-relations)
+* [**Email Marketing**](#email-marketing)
 
 
 ## **Facebook**
@@ -11,7 +13,9 @@ Facebook Pages help people connect with my mock business.\
 I have created FreshBooks Page that can be found [here](https://www.facebook.com/profile.php?id=100088979418667)
 I have added multiple products from the store and also video about the process.
 
-## **SEO**
+![Screenshot 2023-01-12 at 18 16 40](https://user-images.githubusercontent.com/91877102/212138062-ca2364c3-7d50-4847-af38-78a8c756e381.png)
+
+## **Search Engine Optimization**
 
 All my pages are all at 100% SEO from all the reports generated from Lighthouse via Google Chrome.
 
@@ -77,4 +81,32 @@ All my pages are all at 100% SEO from all the reports generated from Lighthouse 
 
 Currently, the work count on the website is small, but I'm looking to expand it in the near future.
 
+![Screenshot 2023-01-12 at 18 26 32](https://user-images.githubusercontent.com/91877102/212138171-eecdd7b4-3426-4a4a-9040-709ac493fc4a.png)
 
+## **Content Marketing**
+
+Planning to add more content on the FreshBooks page with tutorials of how to sharpen swords, katana maintenance, manufacturing process
+The more of store content someone sees, the more familiar the potential customer becomes with the brand.\
+It can also educate your customers so that they can improve their performance within the niche.
+
+## **Public Relations**
+
+### **Customer appreciation days**
+Expanding the customer model to allow the customer to set his Date of Birth into his profile, and send a discount code to a customer a day before his birthday.
+
+### **Google Alert**
+Setting up a Google Alert so I can track what people say about my store or products
+
+![Screenshot 2023-01-12 at 18 45 17](https://user-images.githubusercontent.com/91877102/212140702-01f7c8d1-eb7c-4b14-a392-0e5fb5c7c287.png)
+
+## **Email Marketing**
+I have set up the option for clients to sign-up to notification and marketing emails via a form in the footer of the website.
+
+![Screenshot 2023-01-12 at 19 01 50](https://user-images.githubusercontent.com/91877102/212144399-1e1ef600-111c-4b13-a4c0-0594e702f5c5.png)
+
+Once a user enters the email address, it will be stored on MailChimp:
+
+![Screenshot 2023-01-12 at 19 02 36](https://user-images.githubusercontent.com/91877102/212144474-a7065c70-01dc-4f88-85be-ac79620ef624.png)
+
+
+![Screenshot 2023-01-12 at 18 48 53](https://user-images.githubusercontent.com/91877102/212141425-25c58cbb-f913-4a00-b740-da42a46be4c7.png)
