@@ -6,6 +6,7 @@
 * [**Content Marketing**](#content-marketing)
 * [**Public Relations**](#public-relations)
 * [**Email Marketing**](#email-marketing)
+* [**Advertising**](#advertising)
 
 
 ## **Facebook**
@@ -108,3 +109,10 @@ Once a user enters the email address, it will be stored on MailChimp:
 
 ![Screenshot 2023-01-12 at 19 02 36](https://user-images.githubusercontent.com/91877102/212144474-a7065c70-01dc-4f88-85be-ac79620ef624.png)
 
+## **Advertising**
+Facebook has been the biggest source of revenue from advertising for online retailers, and it can represent a solution for future advertising
+
+## **Giveaways**
+Giving away once a year (or twice a year) one product from the store, for emails that are captured via the email marketing.
+
+[Back to Readme](README.md)
