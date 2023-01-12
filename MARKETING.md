@@ -1,5 +1,9 @@
 # **MARKETING**
 
+The business model of the online store is Business to Consumer (B2C).\
+Where the business sells to individuals, but business is conducted online as opposed to in a physical store.
+The main target countries are US, CAN, UK, The Netherlands.
+
 ## **Table Of Contents**
 * [**Facebook**](#facebook)
 * [**Search Engine Optimization**](#search-engine-optimization)
