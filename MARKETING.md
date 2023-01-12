@@ -7,6 +7,7 @@
 * [**Public Relations**](#public-relations)
 * [**Email Marketing**](#email-marketing)
 * [**Advertising**](#advertising)
+* [**Giveaways**](#giveaways)
 
 
 ## **Facebook**
