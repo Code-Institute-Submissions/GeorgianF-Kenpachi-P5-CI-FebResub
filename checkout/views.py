@@ -168,7 +168,7 @@ def stripe_webhook(request):
             [customer_email],
             fail_silently=False,
         )
-        return HttpResponse(status=200)
+        return JsonResponse('Checkout Complete!', safe=False)
 
 
 def success(request):
