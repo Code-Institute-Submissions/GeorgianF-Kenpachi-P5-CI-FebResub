@@ -478,11 +478,11 @@ input.form-control:active {
     padding: 10px;
 }
 
-#product-name {
+.product-name {
     font-size: 25px;
 }
 
-#product-price {
+.product-price {
     margin-bottom: 0 !important;
 }
 
@@ -756,16 +756,16 @@ input.form-control:active {
         padding-top: 100px;
     }
 
-    #product-price,
-    #product-name {
+    .product-price,
+    .product-name {
         font-size: 18px;
     }
 }
 
 @media screen and (max-width: 991.98px) {
 
-    #product-price,
-    #product-name {
+    .product-price,
+    .product-name {
         font-size: 16px;
     }
 

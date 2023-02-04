@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="row">
-            <form class="" method="post" action="{% url 'subscription' %}">
+            <form method="post" action="{% url 'subscription' %}">
                 {% csrf_token %}
                 <div class="form-group d-flex align-items-center justify-content-center flex-column">
                     <label class="text-white">Subscribe to get the latest Articles</label><br>

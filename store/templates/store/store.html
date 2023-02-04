@@ -15,7 +15,8 @@
                 <div class="input-group w-50 mx-auto">
                     <input class="form-control rounded-0" type="text" name="q" aria-label="Search-input">
                     <div class="input-group-append">
-                        <button class="form-control btn btn-dark border border-black rounded-0" type="submit" aria-label="search">
+                        <button class="form-control btn btn-dark border border-black rounded-0" type="submit"
+                            aria-label="search">
                             <span class="icon">
                                 <i class="fas fa-search"></i>
                             </span>
@@ -23,7 +24,7 @@
                     </div>
                 </div>
             </form>
-        
+
 
             <div class="dropdown text-center">
                 <button class="btn btn-secondary dropdown-toggle mt-3" type="button" data-bs-toggle="dropdown"
@@ -38,7 +39,8 @@
                 </ul>
             </div>
             <div>
-                <h2 class="fs-5 mt-2 mb-2 float-start">{{ products_count }} products | showing {{ products|length }} {% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}</h2>
+                <h2 class="fs-5 mt-2 mb-2 float-start">{{ products_count }} products | showing {{ products|length }}
+                    {% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}</h2>
             </div>
 
             {% for product in products %}
@@ -46,32 +48,36 @@
                 <div class="box-element product">
                     <img class="thumbnail" src="{{product.imageURL}}" alt="katana-image">
                     <div class="box-element product">
-                        <h3><strong id="product-name">{{ product.name }}</strong>
+                        <h3><strong class="product-name">{{ product.name }}</strong>
                             <span class="fs-4 float-end">
-                                <span id="product-price"><strong>${{ product.price | floatformat:2 }}</strong></span>
+                                <span class="product-price"><strong>${{ product.price | floatformat:2 }}</strong></span>
                             </span>
                         </h3>
                         <hr>
                         {% if product.stock == 0 %}
-                        <button class="btn btn-secondary disabled" data-product="{{product.id}}" data-action="add" aria-label="Add-To-Cart"><i class="fa fa-cart-plus"></i>
+                        <button class="btn btn-secondary disabled" data-product="{{product.id}}" data-action="add"
+                            aria-label="Add-To-Cart"><i class="fa fa-cart-plus"></i>
                         </button>
                         <span class="pt-2 float-end text-danger">No Stock</span>
                         {% else %}
                         <button data-product="{{product.id}}" data-action="add"
-                            class="btn btn-primary add-btn update-cart" aria-label="Add-To-Cart"><i class="fa fa-cart-plus"></i>
+                            class="btn btn-primary add-btn update-cart" aria-label="Add-To-Cart"><i
+                                class="fa fa-cart-plus"></i>
                         </button>
                         {% endif %}
-                        <a class="btn btn-secondary" href="{% url 'product_details' product.id %}" aria-label="View-Product"><i
-                                class="fa fa-magnifying-glass"></i></a>
+                        <a class="btn btn-secondary" href="{% url 'product_details' product.id %}"
+                            aria-label="View-Product"><i class="fa fa-magnifying-glass"></i></a>
                         {% if request.user.is_superuser %}
-                        <a class="btn btn-secondary" href="{% url 'edit_product' product.id %}" aria-label="Edit-Product"><i
-                                class="fa fa-pencil"></i></a>
+                        <a class="btn btn-secondary" href="{% url 'edit_product' product.id %}"
+                            aria-label="Edit-Product"><i class="fa fa-pencil"></i></a>
                         <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdropDelete" aria-label="Delete-Product"><i class="fa fa-trash"></i></button>
+                            data-bs-target="#staticBackdropDelete" aria-label="Delete-Product"><i
+                                class="fa fa-trash"></i></button>
 
                         <!-- Modal for the delete event -->
-                        <div class="modal fade" id="staticBackdropDelete" data-bs-backdrop="static" data-bs-keyboard="false"
-                            tabindex="-1" aria-labelledby="staticBackdropDeleteLabel" aria-hidden="true">
+                        <div class="modal fade" id="staticBackdropDelete" data-bs-backdrop="static"
+                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropDeleteLabel"
+                            aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
