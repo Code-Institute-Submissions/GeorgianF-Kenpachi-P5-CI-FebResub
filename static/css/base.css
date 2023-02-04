@@ -106,15 +106,15 @@ body {
 
 .background {
     position: absolute;
-    width: 400px;
+    width: 250px;
     filter: grayscale(1);
-    height: 400px;
+    height: 250px;
     mix-blend-mode: difference;
 }
 
 .nav-item-bg-1 {
     top: 45px;
-    left: 120px;
+    left: 170px;
     background: url('/media/Katana-Blacksmith.jpeg') no-repeat 50% 50%;
     background-size: cover;
     opacity: 0;
@@ -124,7 +124,7 @@ body {
 
 .nav-item-bg-2 {
     top: 100px;
-    left: 150px;
+    left: 220px;
     background: url('/media/blacksmith-at-work.jpeg') no-repeat 50% 50%;
     background-size: cover;
     opacity: 0;
@@ -133,8 +133,8 @@ body {
 }
 
 .nav-item-bg-3 {
-    top: 250px;
-    left: 200px;
+    top: 170px;
+    left: 220px;
     background: url('/media/katana-store.jpeg') no-repeat 50% 50%;
     background-size: cover;
     opacity: 0;
@@ -143,23 +143,25 @@ body {
 }
 
 .nav-item-bg-4 {
-    top: 400px;
-    left: 200px;
+    top: 450px;
+    left: 380px;
     background: url('/media/japanese-samurai.jpeg') no-repeat 50% 50%;
     background-size: cover;
     opacity: 0;
     transform: translateY(-50%);
     transition: 1s ease-in-out;
+    z-index: -1;
 }
 
 .nav-item-bg-5 {
-    top: 400px;
-    left: 200px;
+    top: 450px;
+    left: 380px;
     background: url('/media/great-wave.jpeg') no-repeat 50% 50%;
     background-size: cover;
     opacity: 0;
     transform: translateY(-50%);
     transition: 1s ease-in-out;
+    z-index: -1;
 }
 
 .nav-item-1:hover~.nav-item-bg-1,
@@ -947,12 +949,13 @@ input.form-control:active {
         width: auto;
     }
 
-    .nav-item-bg-1 {
-        top: 115px;
-    }
-
-    .nav-item-bg-2 {
-        top: 175px;
+    .nav-item-bg-1,
+    .nav-item-bg-2,
+    .nav-item-bg-3,
+    .nav-item-bg-4,
+    .nav-item-bg-5 {
+        top: 195px;
+        left: 100px;
     }
 
     .social {
@@ -1069,6 +1072,15 @@ input.form-control:active {
 @media screen and (max-width: 320px) {
     .newsletter-input {
         width: 200px;
+    }
+
+    .nav-item-bg-1,
+    .nav-item-bg-2,
+    .nav-item-bg-3,
+    .nav-item-bg-4,
+    .nav-item-bg-5 {
+        top: 195px;
+        left: 50px;
     }
 
     .social ul {
