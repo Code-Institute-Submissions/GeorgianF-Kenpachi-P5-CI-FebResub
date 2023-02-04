@@ -16,26 +16,27 @@
          <li class="nav-item-3 nav-list"><a href="{% url 'store' %}">The Blacksmith Store</a></li>
          <li class="nav-item-4 nav-list"><a href="{% url 'contact' %}">Contact Us</a></li>
          {% if user.is_authenticated %}
-            <li class="nav-item-5 nav-list"><a href="{% url 'account_logout' %}">Logout</a></li>
-            {% else %}
-            <li class="nav-item-5 nav-list"><a href="{% url 'account_login' %}">Login or Sign Up</a></li>
-        {% endif%}
-         
+         <li class="nav-item-5 nav-list"><a href="{% url 'account_logout' %}">Logout</a></li>
+         {% else %}
+         <li class="nav-item-5 nav-list"><a href="{% url 'account_login' %}">Login or Sign Up</a></li>
+         {% endif%}
+
          <!-- END NAV ITEMS -->
 
          <!-- NAV IMAGES -->
-         <div class="nav-item-bg-1 background"></div>
-         <div class="nav-item-bg-2 background"></div>
-         <div class="nav-item-bg-3 background"></div>
-         <div class="nav-item-bg-4 background"></div>
-         <div class="nav-item-bg-5 background"></div>
+         <p class="nav-item-bg-1 background"></p>
+         <p class="nav-item-bg-2 background"></p>
+         <p class="nav-item-bg-3 background"></p>
+         <p class="nav-item-bg-4 background"></p>
+         <p class="nav-item-bg-5 background"></p>
          <!-- END NAV IMAGES -->
      </ul>
 
      <!-- SOCIAL Links -->
      <div class="social">
          <ul>
-             <li class="social-li"><a href="https://www.facebook.com/profile.php?id=100088979418667" target="_blank">facebook</a></li>
+             <li class="social-li"><a href="https://www.facebook.com/profile.php?id=100088979418667"
+                     target="_blank">facebook</a></li>
              <li class="social-li"><a href="https://www.instagram.com/" target="_blank">instagram</a></li>
              <li class="social-li"><a href="https://twitter.com/" target="_blank">twitter</a></li>
              <li class="social-li"><a href="https://nl.pinterest.com/" target="_blank">pinterest</a></li>
