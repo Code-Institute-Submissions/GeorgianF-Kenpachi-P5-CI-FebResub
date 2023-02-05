@@ -106,9 +106,9 @@ body {
 
 .background {
     position: absolute;
-    width: 250px;
+    width: 255px;
     filter: grayscale(1);
-    height: 250px;
+    height: 255px;
     mix-blend-mode: difference;
 }
 
